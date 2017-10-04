@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Myclasses</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="myclass in vm.myclasses"
+       ui-sref="myclasses.view({ myclassId: myclass._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="myclass.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="myclass.user" ng-bind="myclass.user.displayName"></span>
+        <span ng-if="!myclass.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="myclass.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.myclasses.$resolved && !vm.myclasses.length">
+    No Myclasses yet, why don't you <a ui-sref="myclasses.create">create one</a>?
+  </div>
+</section>
