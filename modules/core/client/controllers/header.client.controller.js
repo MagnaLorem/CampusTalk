@@ -19,5 +19,14 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     $scope.$on('$stateChangeSuccess', function () {
       $scope.isCollapsed = false;
     });
+    
+    $scope.getRoute = function(){
+     // debugger;
+      if($scope.authentication.user){
+        $state.go('classlist', $state.previous.params);
+      }else{
+        $state.go('home', $state.previous.params);
+      }
+    };
   }
 ]);

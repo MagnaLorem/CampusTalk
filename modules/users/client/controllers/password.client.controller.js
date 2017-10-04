@@ -20,7 +20,7 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 
       }).error(function (response) {
         // Show user error message and clear form
-        $scope.credentials = null;
+       //$scope.credentials = null;
         $scope.error = response.message;
       });
     };

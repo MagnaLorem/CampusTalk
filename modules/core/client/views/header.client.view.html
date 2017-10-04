@@ -6,7 +6,9 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a data-ui-sref="home" class="navbar-brand">CampusTalk</a>
+   <!-- <a data-ui-sref="home" class="navbar-brand">CampusTalk</a> data-ng-click="getRoute() " <a class="navbar-brand getDefaultRoute">CampusTalk</a>-->
+   
+   <a data-ng-click="getRoute()" class="navbar-brand getDefaultRoute">CampusTalk</a>
   </div>
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -20,6 +22,7 @@
         <a ng-switch-default data-ui-sref="{{item.state}}" data-ng-bind="item.title"></a>
       </li>
     </ul>
+    <!-- data-ng-hide if sign in then hide -->
     <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
       <li data-ui-sref-active="active">
         <a data-ui-sref="authentication.signup">Sign Up</a>
@@ -29,6 +32,7 @@
         <a data-ui-sref="authentication.signin">Sign In</a>
       </li>
     </ul>
+    <!-- if you are loged in, it shows below -->
     <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
       <li class="dropdown" dropdown>
         <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
