@@ -1,6 +1,9 @@
 <section data-ng-controller="HomeController">
   <div>
-    <h1 align ="center">Campus Talk</h1>
+    <row>
+      <h1 align ="center" >Hello, {{authentication.user.firstName}}</h1>
+      <div  data-ng-bind="user.firstName"></div>
+    </row>
   </div>
   <div class="row">
     <div class="col-md-3">
