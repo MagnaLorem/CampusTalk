@@ -1,8 +1,8 @@
 <section>
-  <div class="page-header">
-    <h1>Myclasses</h1>
+  <div class="page-header" style="text-align:center;">
+    <h1>My Classes</h1>
   </div>
-  <div class="list-group">
+  <!--div class="list-group">
     <a ng-repeat="myclass in vm.myclasses"
        ui-sref="myclasses.view({ myclassId: myclass._id })"
        class="list-group-item">
@@ -15,8 +15,46 @@
       </small>
       <h4 class="list-group-item-heading" ng-bind="myclass.name"></h4>
     </a>
+  </div-->
+<div id="spacing">
+  <div class="list_of_classes">
+    <ul>
+        <table class="table">
+            <tr ng-repeat="classes in myclasses |filter:query | orderBy:'code'" ng-click="addCourse($index)">
+                <th> {{ course.code }} </th>
+                <th> {{ course.name }} </th>
+                <th>
+                    <button class = "btn" ng-click = "addCourse($index)">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+                </th>
+            </tr>
+            <tr>
+                <a href="#search">Add a Class <span class="glyphicon glyphicon-plus"></span></a>
+            </tr>
+        </table>
+
+    </ul>
   </div>
-  <div class="alert alert-warning text-center" ng-if="vm.myclasses.$resolved && !vm.myclasses.length">
-    No Myclasses yet, why don't you <a ui-sref="myclasses.create">create one</a>?
+</div>
+    <div class="search">
+      <h2 id="search">Search For Classes</h2>
+      <div class="input-group" id="searchBar">
+          <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+          <input type="text" class="form-control" placeholder="Search" ng-model="query">
+      </div>
+          <table class="table">
+              <tr ng-repeat="classes in myclasses |filter:query | orderBy:'code'" ng-click="addCourse($index)">
+                  <th> {{ course.code }} </th>
+                  <th> {{ course.name }} </th>
+                  <th>
+                      <button class = "btn" ng-click = "addCourse($index)">
+                          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      </button>
+                  </th>
+              </tr>
+          </table>
+
+
   </div>
 </section>
