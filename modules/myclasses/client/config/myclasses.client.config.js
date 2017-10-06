@@ -18,15 +18,9 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'myclasses', {
-      title: 'List Myclasses',
+      title: 'List My Classes',
       state: 'myclasses.list'
     });
 
-    // Add the dropdown create item
-    menuService.addSubMenuItem('topbar', 'myclasses', {
-      title: 'Create Myclass',
-      state: 'myclasses.create',
-      roles: ['user']
-    });
   }
 }());
