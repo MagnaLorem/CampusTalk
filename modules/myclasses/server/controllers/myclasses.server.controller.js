@@ -14,7 +14,7 @@ var path = require('path'),
  */
 exports.create = function(req, res) {
   var myclass = new Myclass(req.body);
-  myclass.user = req.user;
+  //myclass.user = req.user;
 
   myclass.save(function(err) {
     if (err) {
@@ -81,7 +81,7 @@ exports.delete = function(req, res) {
  * List of Myclasses
  */
 exports.list = function(req, res) {
-  Myclass.find().sort('-created').populate('user', 'displayName').exec(function(err, myclasses) {
+  Myclass.find().sort('courseCode').exec(function(err, myclasses) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
