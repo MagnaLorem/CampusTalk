@@ -4,7 +4,7 @@ var defaultEnvConfig = require('./default');
 
 module.exports = {
   db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || ('mongodb://admin:campusally_admin@ds149144.mlab.com:49144/campusally') + '/mean-dev',
+    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || ('mongodb://username:password@ds149144.mlab.com:49144/campusally') + '/mean-dev',
     options: {
       user: '',
       pass: ''
@@ -56,14 +56,14 @@ module.exports = {
     sandbox: true
   },
   mailer: {
-    from: process.env.MAILER_FROM || 'MAILER_FROM' || 'campusally1@gmail.com',
+    from: process.env.MAILER_FROM || 'MAILER_FROM' || 'swampstudygmail',
     options: {
       service: 'Gmail',
       secure: false,
       port:25,
       auth: {
-        user: 'campusally1@gmail.com',
-        pass: 'machosheep1'
+        user: 'swampstudygmail',
+        pass: 'password'
       }
     }
   },
