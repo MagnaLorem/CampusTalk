@@ -41,17 +41,21 @@
       <h2 id="search">Search For Classes</h2>
       <div class="input-group" id="searchBar">
           <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-          <input type="text" class="form-control" placeholder="Search" ng-model="query">
+          <input type="text" class="form-control" placeholder="Enter the course code or name" ng-model="query">
       </div>
           <table class="table">
-              <tr ng-repeat="classes in myclasses |filter:query | orderBy:'code'" ng-click="addCourse($index)">
-                  <th> {{ course.code }} </th>
-                  <th> {{ course.name }} </th>
-                  <th>
+              <tr>
+                <th>Code</th>
+                <th>Course Name</th>
+              </tr>
+              <tr ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 15" ng-click="addCourse($index)">
+                  <td> {{ myclass.courseCode }} </td>
+                  <td> {{ myclass.name }} </td>
+                  <td>
                       <button class = "btn" ng-click = "addCourse($index)">
                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                       </button>
-                  </th>
+                  </td>
               </tr>
           </table>
 

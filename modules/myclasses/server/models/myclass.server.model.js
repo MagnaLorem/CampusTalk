@@ -10,20 +10,9 @@ var mongoose = require('mongoose'),
  * Myclass Schema
  */
 var MyclassSchema = new Schema({
-  name: {
-    type: String,
-    default: '',
-    required: 'Please fill Myclass name',
-    trim: true
-  },
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  }
+  /* your code here */
+    courseCode: {type: String, required: true},
+    name: {type: String, required: true}
 });
 
 mongoose.model('Myclass', MyclassSchema);
