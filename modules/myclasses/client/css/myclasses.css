@@ -36,3 +36,17 @@
     outline: none !important;
     box-shadow: 0 0 5px green;
 }
+
+.btn .glyphicon-plus{
+    color: green;
+}
+
+.btn:hover{
+    opacity: 10;
+    background-color: gainsboro;
+    cursor: pointer;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}
