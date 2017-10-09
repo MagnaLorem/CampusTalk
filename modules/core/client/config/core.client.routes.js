@@ -13,10 +13,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         url: '/',
         templateUrl: 'modules/users/views/authentication/signin.client.view.html'
       })
-      .state('myclasses', {
+      /**.state('myclasses', {
         url: '/myclasses',
         templateUrl: 'modules/core/views/home.client.view.html'
-      })
+      })*/
       .state('not-found', {
         url: '/not-found',
         templateUrl: 'modules/core/views/404.client.view.html'
