@@ -1,0 +1,23 @@
+<section>
+  <div class="page-header">
+    <h1>News</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="news in vm.news"
+       ui-sref="news.view({ newsId: news._id })"
+       class="list-group-item">
+      <h2 class="list-group-item-heading" ng-bind="news.title"></h2>
+      <h4 class="list-group-item-heading" ng-bind="news.content"></h4>
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="news.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="news.user" ng-bind="news.user.displayName"></span>
+        <span ng-if="!news.user">Deleted User</span>
+      </small>
+    </a>
+  </div>
+  <!--<div class="alert alert-warning text-center" ng-if="vm.news.$resolved && !vm.news.length">-->
+    <!--No News yet, why don't you <a ui-sref="news.create">create one</a>?-->
+  <!--</div>-->
+</section>

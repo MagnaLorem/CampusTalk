@@ -6,7 +6,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a data-ui-sref="home" class="navbar-brand">CampusTalk</a>
+    <a data-ng-click="getDefaultPage()" class="navbar-brand">StudySwamp</a>
   </div>
   <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -25,9 +25,6 @@
         <a data-ui-sref="authentication.signup">Sign Up</a>
       </li>
       <li class="divider-vertical"></li>
-      <li data-ui-sref-active="active">
-        <a data-ui-sref="authentication.signin">Sign In</a>
-      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
       <li class="dropdown" dropdown>

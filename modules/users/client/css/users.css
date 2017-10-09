@@ -34,3 +34,14 @@
   min-height: 150px;
   max-height: 150px;
 }
+.campusAllyLogo{
+  /* height: 5%; */
+  /* width:  5%;   */
+  padding-left: 46%;
+}
+footer {
+	background: #333;
+	color: #eee;
+	font-size: 11px;
+	padding: 20px;
+}
