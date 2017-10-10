@@ -1,5 +1,5 @@
 <section>
-  <div class="page-header" style="text-align:center;">
+  <div class="page-header">
     <h1>My Classes</h1>
   </div>
   <!--div class="list-group">
@@ -16,7 +16,7 @@
       <h4 class="list-group-item-heading" ng-bind="myclass.name"></h4>
     </a>
   </div-->
-<div id="spacing">
+<div class="spacing_above_list_of_classes">
   <div class="list_of_classes">
     <ul>
         <table class="table">
@@ -30,15 +30,15 @@
                 </th>
             </tr>
             <tr>
-                <a href="#search">Add a Class <span class="glyphicon glyphicon-plus"></span></a>
+                <a href="#search_for_classes">Add a Class <span class="glyphicon glyphicon-plus"></span></a>
             </tr>
         </table>
 
     </ul>
   </div>
 </div>
-    <div class="search">
-      <h2 id="search">Search For Classes</h2>
+    <div class="search_box">
+      <h2 id="search_for_classes">Search For Classes</h2>
       <div class="input-group" id="searchBar">
           <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
           <input type="text" class="form-control" placeholder="Enter the course code or name" ng-model="query">
