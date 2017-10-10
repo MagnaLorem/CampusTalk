@@ -1,0 +1,61 @@
+.page-header{
+    text-align:center;
+}
+
+.list_of_classes{
+    margin: 0 auto;
+    font-size: 25px;
+    width: 60%;
+    border-top: solid green 2px;
+    border-right: solid green 2px;
+    border-left: solid green 2px;
+}
+
+.list_of_classes a{
+    border-bottom: solid green 2px;
+    display: block;
+    padding: 10px;
+}
+
+.list_of_classes ul{
+    padding: 0px;
+}
+.list_of_classes .glyphicon{
+    font-size: 20px;
+    padding-right: 10px;
+    padding-top: 7px;
+    float: right;
+}
+
+.search_box{
+    margin: 0 auto;
+    width: 60%
+}
+
+.search_box h2{
+    margin-top: 50px;
+}
+
+.form-control:focus {
+    outline: none !important;
+    box-shadow: 0 0 5px green;
+}
+
+.btn .glyphicon-plus{
+    color: green;
+}
+
+/*.btn:hover{
+    opacity: 10;
+    background-color: gainsboro;
+    cursor: pointer;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}*/
+
+.spacing_above_list_of_classes{
+    margin-top: 50px;
+
+}
