@@ -14,6 +14,15 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/users/views/authentication/signin.client.view.html'
       })
 
+    .state('home-signedIn', {
+      url: '/home-signedIn',
+      templateUrl: 'modules/myclasses/views/list-myclasses.client.view.html',
+      controller: 'MyclassesListController',
+      controllerAs: 'vm',
+      data: {
+        pageTitle: 'Myclasses List'
+      }
+    })
       .state('not-found', {
         url: '/not-found',
         templateUrl: 'modules/core/views/404.client.view.html'
