@@ -1,6 +1,6 @@
-<section>
+<section data-ng-controller="UserClassesController">
   <div class="page-header">
-    <h1>My Classes</h1>
+    <h1>{{ user.firstName }}'s Classes</h1>
   </div>
   <!--div class="list-group">
     <a ng-repeat="myclass in vm.myclasses"
@@ -20,14 +20,14 @@
   <div class="list_of_classes">
     <ul>
         <table class="table">
-            <tr ng-repeat="classes in myclasses |filter:query | orderBy:'code'" ng-click="addCourse($index)">
-                <th> {{ course.code }} </th>
-                <th> {{ course.name }} </th>
-                <th>
+            <tr ng-repeat="class in user.classes | orderBy:'courseCode'">
+                <td> {{ class.courseCode }} </td>
+                <td> {{ class.name }} </td>
+                <td>
                     <button class = "btn" ng-click = "addCourse($index)">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                     </button>
-                </th>
+                </td>
             </tr>
             <tr>
                 <a href="#search_for_classes">Add a Class <span class="glyphicon glyphicon-plus"></span></a>
@@ -48,7 +48,7 @@
                 <th>Code</th>
                 <th>Course Name</th>
               </tr>
-              <tr ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 15" ng-click="addCourse($index)">
+              <tr ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 15" ng-click="addCourse(myclass)">
                   <td> {{ myclass.courseCode }} </td>
                   <td> {{ myclass.name }} </td>
                   <td>

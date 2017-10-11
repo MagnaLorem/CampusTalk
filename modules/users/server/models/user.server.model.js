@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema,
+  ClassModel = require('Myclass'),
   crypto = require('crypto'),
   validator = require('validator');
 
@@ -67,6 +68,7 @@ var UserSchema = new Schema({
     default: '',
     validate: [validateLocalStrategyPassword, 'Password should be longer']
   },
+  classes: [ClassModel.schema],
   salt: {
     type: String
   },
