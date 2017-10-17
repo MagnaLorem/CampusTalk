@@ -1,21 +1,30 @@
 var path = require('path'),
-mongoose = require('mongoose'),
-chatschema = mongoose.model('chatschema'),
-errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
-_ = require('lodash');
+    mongoose = require('mongoose'),
+    chatData = require('../models/chat.server.model.js'),
+    path = require('path'),
+    config = require(path.resolve('./config/config')), /** not being used for now**/
+    User = mongoose.model('User'),
+    request = require('request');
 
 
-exports.create = function(req, res) {
-  var newMessage = new chatschema(req.body);
+exports.savechat = function(req, res) {
+  debugger;
+  var newChatData = new chatData(req.body);
   //myclass.user = req.user;
 
-  newMessage.save(function(err) {
+  newChatData.save(function(err) {
     if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
+      console.log(err);
+      res.status(400).send(err);
     } else {
-      res.jsonp(newMessage);
+      console.log("Successfully created chat data!\n " + newChatData);
+      res.json(newChatData);
     }
   });
+};
+
+exports.read = function(req,res){
+  var duc = req.measurement ? req.measurement.toJSON() : {};
+
+  res.jsonp(req.measurement);
 };

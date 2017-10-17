@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket',
-  function ($scope, $location, Authentication, Socket) {
+angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService',
+  function ($scope, $location, Authentication, Socket,chatService) {
     // Create a messages array
     $scope.messages = [];
 
@@ -29,10 +29,19 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
         text: this.messageText
       };
 
+      //debugger;
+      console.log("at chatService: chat.client.controller.js");
+      chatService.saveChatData(message)
+        .then(function(response){
+          console.log("succefully saved chat data");
+        },function(err){
+          console.log(err);
+      });
+      
       
       // Emit a 'chatMessage' message event
       Socket.emit('chatMessage', message);
-
+      
 
       // Clear the message text
       this.messageText = '';

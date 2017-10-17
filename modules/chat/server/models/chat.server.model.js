@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * Module dependencies.
- */
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
@@ -15,6 +12,6 @@ var chatSchema = new Schema({
     createdTime: {type:Date,default:Date.now}
 });
 
-var Chat = mongoose.model('chatschema', chatSchema);
+var Chat = mongoose.model('Chat', chatSchema);
 
-//modules.exports = Chat;
+module.exports = Chat;
