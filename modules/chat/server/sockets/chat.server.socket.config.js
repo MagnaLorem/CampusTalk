@@ -17,8 +17,7 @@ module.exports = function (io, socket) {
     message.created = Date.now();
     message.profileImageURL = socket.request.user.profileImageURL;
     message.username = socket.request.user.username;
-
-    // Emit the 'chatMessage' event
+    
     io.emit('chatMessage', message);
   });
 
