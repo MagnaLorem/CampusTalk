@@ -1,6 +1,6 @@
-<section data-ng-controller="UserClassesController">
+<section>
   <div class="page-header">
-    <h1>{{ user.firstName }}'s Classes</h1>
+    <h1>{{ vm.authentication.user.firstName }}'s Classes</h1>
   </div>
   <!--div class="list-group">
     <a ng-repeat="myclass in vm.myclasses"
@@ -20,7 +20,11 @@
   <div class="list_of_classes">
     <ul>
         <table class="table">
-            <tr ng-repeat="class in user.classes | orderBy:'courseCode'">
+            <tr>
+                <th>Code</th>
+                <th>Course Name</th>
+              </tr>
+            <tr ng-repeat="class in vm.authentication.user.classes | orderBy:'courseCode'">
                 <td> {{ class.courseCode }} </td>
                 <td> {{ class.name }} </td>
                 <td>
@@ -52,13 +56,11 @@
                   <td> {{ myclass.courseCode }} </td>
                   <td> {{ myclass.name }} </td>
                   <td>
-                      <button class = "btn" ng-click = "addCourse($index)">
+                      <button class = "btn" ng-click = "vm.addCourse(myclass)">
                           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                       </button>
                   </td>
               </tr>
           </table>
-
-
   </div>
 </section>
