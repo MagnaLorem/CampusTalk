@@ -6,12 +6,12 @@ var path = require('path'),
     User = mongoose.model('User'),
     request = require('request');
 
+/*object for chat data */
 var newChatData;
 
 exports.savechat = function(req, res) {
   //console.log("savechat"); 
   newChatData = new chatData(req.body);
-  newChatData.username = req.user.username;
   //console.log(req.user);
 
   newChatData.save(function(err) {
@@ -26,15 +26,15 @@ exports.savechat = function(req, res) {
 };
 
 exports.read = function(req,res){
-  console.log("read");
-  /*
-  newChatData.find({}, function(err,docs){
+ // newChatData = new chatData(req.body);
+ chatData.find({}, function(err,docs){
     if(err){
       res.status(400).send(err);
     }else{
       res.send(docs);
+     //Socket.emit('load old messages');
     }
   });
-  */
+  
 };
 

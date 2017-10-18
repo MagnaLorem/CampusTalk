@@ -11,7 +11,6 @@ var chatSchema = new Schema({
     message: String,
     profileImageURL: String,
     createdTime: {type:Date,default:Date.now}
-    /** add profile picture **/
 });
 
 var Chat = mongoose.model('Chat', chatSchema);

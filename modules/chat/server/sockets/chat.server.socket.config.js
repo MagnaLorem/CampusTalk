@@ -32,4 +32,10 @@ module.exports = function (io, socket) {
       username: socket.request.user.username
     });
   });
+
+  socket.on('load old messages',function(docs){
+    for(var i = 0; docs.length; i++){
+      Socket.emit('chatMessage', docs[i]);
+    }
+  });
 };
