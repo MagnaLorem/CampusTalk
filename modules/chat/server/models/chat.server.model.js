@@ -9,7 +9,9 @@ var mongoose = require('mongoose'),
 var chatSchema = new Schema({
     username: String,
     message: String,
+    profileImageURL: String,
     createdTime: {type:Date,default:Date.now}
+    /** add profile picture **/
 });
 
 var Chat = mongoose.model('Chat', chatSchema);

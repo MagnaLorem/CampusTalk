@@ -19,21 +19,7 @@ module.exports = function (io, socket) {
     message.created = Date.now();
     message.profileImageURL = socket.request.user.profileImageURL;
     message.username = socket.request.user.username;
-/*
-    //chat model
-    chatData.username = message.username;
-    chatData.message = message.type;
 
-    chatData.save(function(err){
-      if(err){
-        console.log(err);
-        res.status(400).send(err);
-      }else{
-        console.log("successfully created: chatData:\n" + chatData);
-        res.json(chatData);
-      }
-    });
-  */
     io.emit('chatMessage', message);
   });
 

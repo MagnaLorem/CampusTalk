@@ -23,21 +23,27 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
     // Create a controller method for sending messages
     $scope.sendMessage = function () {
-      // Create a new message object
-      //debugger;
+      // Create a new message object to show 
       var message = {
         text: this.messageText
       };
 
-      //debugger;
-      console.log("at chatService: chat.client.controller.js");
-      chatService.saveChatData(message)
+      //console.log(Authentication.user);
+      //create a object to save to db
+      var messageToSave = {
+        "username": Authentication.user.username,
+        "profileImageURL": Authentication.user.profileImageURL,
+        "message" : this.messageText
+      }
+
+      console.log(messageToSave);
+      
+      chatService.saveChatData(messageToSave)
         .then(function(response){
           console.log("succefully saved chat data");
         },function(err){
           console.log(err);
       });
-      
       
       // Emit a 'chatMessage' message event
       Socket.emit('chatMessage', message);

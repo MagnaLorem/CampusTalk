@@ -6,11 +6,13 @@ var path = require('path'),
     User = mongoose.model('User'),
     request = require('request');
 
+var newChatData;
 
 exports.savechat = function(req, res) {
-  debugger;
-  var newChatData = new chatData(req.body);
-  //myclass.user = req.user;
+  //console.log("savechat"); 
+  newChatData = new chatData(req.body);
+  newChatData.username = req.user.username;
+  //console.log(req.user);
 
   newChatData.save(function(err) {
     if (err) {
@@ -24,7 +26,15 @@ exports.savechat = function(req, res) {
 };
 
 exports.read = function(req,res){
-  var duc = req.measurement ? req.measurement.toJSON() : {};
-
-  res.jsonp(req.measurement);
+  console.log("read");
+  /*
+  newChatData.find({}, function(err,docs){
+    if(err){
+      res.status(400).send(err);
+    }else{
+      res.send(docs);
+    }
+  });
+  */
 };
+

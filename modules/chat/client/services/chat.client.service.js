@@ -4,16 +4,18 @@
 
 angular.module('chat').factory('chatService', ['$http', function($http) {
   
-  console.log("in chat.client.service.js");
+  
 
   var methods = {
     
-    getChatData: function() {
-        return $http.get('http://localhost:8080/api/chatHistory');
+    saveChatData: function(message) {
+      console.log("in chat.client.service.js post ");
+      return $http.post('/api/chatHistory', message);
     },
 
-    saveChatData: function(message) {
-      return $http.post('http://localhost:8080/api/chatHistory' + message);
+    getChatData: function() {
+      console.log("in chat.client.service.js get ");
+        return $http.get('/api/chatHistory');
     }
 
   };
