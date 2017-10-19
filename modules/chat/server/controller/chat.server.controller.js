@@ -25,6 +25,7 @@ exports.savechat = function(req, res) {
   });
 };
 
+//displays all info to /api/chatHistory
 exports.read = function(req,res){
 
  chatData.find({}, function(err,docs){
@@ -32,11 +33,11 @@ exports.read = function(req,res){
       res.status(400).send(err);
     }else{
       res.send(docs);
-     //Socket.emit('load old messages');
     }
   });
 };
 
+//obtain chat data when the page is loaded. 
 exports.getAllchatData = function(req,res){
   
    chatData.find({}, function(err,docs){

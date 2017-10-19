@@ -15,7 +15,6 @@ angular.module('chat').factory('chatService', ['$http', function($http) {
     },
 
     getAllChatData: function() {
-      console.log("in chat.client.service.js getAllChatData ");
         return $http.get('/api/getAllChatData');
     },
 

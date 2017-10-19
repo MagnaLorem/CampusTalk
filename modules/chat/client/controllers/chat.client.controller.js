@@ -36,13 +36,12 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     // Create a controller method for sending messages
     $scope.sendMessage = function () {
 
-      //console.log(Authentication.user);
       //create a object to save to db
       var chatData = {
         "username": Authentication.user.username,
         "profileImageURL": Authentication.user.profileImageURL,
         "message" : this.messageText,
-        "created" : Date.now() /*will be defined in Socket.emit */
+        "created" : Date.now()
       }
       
       chatService.saveChatData(chatData)
