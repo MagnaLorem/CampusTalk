@@ -10,7 +10,7 @@ var chatSchema = new Schema({
     username: String,
     message: String,
     profileImageURL: String,
-    createdTime: {type:Date,default:Date.now}
+    created: {type:Date,default:Date.now}
 });
 
 var Chat = mongoose.model('Chat', chatSchema);

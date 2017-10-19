@@ -10,7 +10,7 @@ var path = require('path'),
 var newChatData;
 
 exports.savechat = function(req, res) {
-  //console.log("savechat"); 
+
   newChatData = new chatData(req.body);
   //console.log(req.user);
 
@@ -26,7 +26,7 @@ exports.savechat = function(req, res) {
 };
 
 exports.read = function(req,res){
- // newChatData = new chatData(req.body);
+
  chatData.find({}, function(err,docs){
     if(err){
       res.status(400).send(err);
@@ -35,6 +35,16 @@ exports.read = function(req,res){
      //Socket.emit('load old messages');
     }
   });
-  
 };
+
+exports.getAllchatData = function(req,res){
+  
+   chatData.find({}, function(err,docs){
+      if(err){
+        res.status(400).send(err);
+      }else{
+        res.send(docs);
+      }
+    });
+  };
 
