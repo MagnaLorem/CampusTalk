@@ -1,8 +1,8 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket',
-  function ($scope, $location, Authentication, Socket) {
+angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService',
+  function ($scope, $location, Authentication, Socket,chatService) {
     // Create a messages array
     $scope.messages = [];
 
@@ -21,16 +21,39 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       $scope.messages.unshift(message);
     });
 
+    $scope.retrieveChatAllData = function(){
+
+      chatService.getAllChatData()
+        .then(function(response){
+
+          $scope.messages = response.data;
+          console.log($scope.messages);
+        },function(err){
+          console.log(err);
+        });
+    }
+
     // Create a controller method for sending messages
     $scope.sendMessage = function () {
-      // Create a new message object
-      var message = {
-        text: this.messageText
-      };
 
+      //create a object to save to db
+      var chatData = {
+        "username": Authentication.user.username,
+        "profileImageURL": Authentication.user.profileImageURL,
+        "message" : this.messageText,
+        "created" : Date.now()
+      }
+      
+      chatService.saveChatData(chatData)
+        .then(function(response){
+          console.log("succefully saved chat data");
+        },function(err){
+          console.log(err);
+      });
+      
       // Emit a 'chatMessage' message event
-      Socket.emit('chatMessage', message);
-
+      Socket.emit('chatMessage', chatData);
+      
       // Clear the message text
       this.messageText = '';
     };
