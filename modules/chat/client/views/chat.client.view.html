@@ -1,9 +1,9 @@
 <!-- The chat view -->
 <section class="container" data-ng-controller="ChatController">
   <div class="page-header">
-    <h1>Chat Example</h1>
+    <h1>Chat </h1>
   </div>
-  <!-- The message form -->
+  <!-- The message form
   <form class="col-xs-12 col-md-offset-4 col-md-4" ng-submit="sendMessage();">
     <fieldset class="row">
       <div class="input-group">
@@ -14,8 +14,8 @@
       </div>
     </fieldset>
   </form>
-  <ul class="list-unstyled">
-    <!-- List all messages -->
+  <ul class="list-unstyled">-->
+    <!-- List all messages
     <div ng-init="retrieveChatAllData()">
       <li class="col-xs-12 col-md-offset-4 col-md-4 chat-message" data-ng-repeat="message in messages">
         <div ng-init="userCheck(message.username)">
@@ -42,5 +42,76 @@
         </div>
       </li>
     </div>
-  </ul>
+  </ul>-->
+
+  <div class="col-md-4 bg-white ">
+    <div class="row border-bottom padding-sm" style="height: 40px;">
+      <h2 class="myclasses-heading">My Classes</h2>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- class list -->
+    <ul class="class-list">
+      <li class="active bounceInDown">
+        <a href="#" class="clearfix">
+          <div class="class-name">
+            <strong>List of a Users Classes will go here</strong>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!--=========================================================-->
+  <!-- List All Messages -->
+    <div class="col-md-8 bg-white">
+        <div class="chat-message">
+          <ul class="chat">
+            <div ng-init="retrieveChatAllData()">
+            <li data-ng-repeat="message in messages">
+              <div ng-init="userCheck(message.username)">
+            <div class="left clearfix" ng-show="notUser">
+                    	<span class="chat-img pull-left">
+                    		<img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
+                    	</span>
+              <div class="chat-body clearfix">
+                <div class="header">
+                  <strong class="primary-font" data-ng-bind="message.username"></strong>
+                  <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
+                </div>
+                <span data-ng-bind="message.message"></span>
+              </div>
+            </div>
+              </div>
+              <div ng-init="userCheck(message.username)">
+            <div class="right clearfix" ng-show="isUser">
+                    	<span class="chat-img pull-right">
+                    		<img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
+                    	</span>
+              <div class="chat-body clearfix">
+                <div class="header">
+                  <strong class="primary-font" data-ng-bind="message.username"></strong>
+                  <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
+                </div>
+                <span data-ng-bind="message.message"></span>
+              </div>
+            </div>
+              </div>
+            </div>
+          </ul>
+
+        </div>
+
+      <!--=========================================================-->
+      <!-- Send Messages -->
+        </div>
+        <div class="chat-box bg-white">
+          <form ng-submit="sendMessage();">
+          <div class="input-group">
+            <input type="text" name="messageText"class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
+            <span class="input-group-btn">
+              <button class="btn btn-success no-rounded" type="submit">Send</button>
+            </span>
+          </div>
+          </form>
+        </div>
 </section>
