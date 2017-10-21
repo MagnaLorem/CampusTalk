@@ -27,8 +27,14 @@
             <tr ng-repeat="class in vm.authentication.user.classes | orderBy:'courseCode'">
                 <td> {{ class.courseCode }} </td>
                 <td> {{ class.name }} </td>
+                <!--button to delete item listed-->
                 <td>
-                    <button class = "btn" ng-click = "addCourse($index)">
+                    <button class="btn btn-danger pull-right" type="button" ng-click="vm.remove()">
+                        <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+                    </button>
+                </td>
+                <td>
+                    <button class = "btn" ng-click="goToChat()">
                         <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                     </button>
                 </td>
