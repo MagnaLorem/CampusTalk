@@ -38,9 +38,10 @@ exports.read = function(req,res){
 };
 
 //obtain chat data when the page is loaded. 
+//sort by the created date
 exports.getAllchatData = function(req,res){
-  
-   chatData.find({}, function(err,docs){
+
+   chatData.find().sort('created').exec(function(err,docs){
       if(err){
         res.status(400).send(err);
       }else{
