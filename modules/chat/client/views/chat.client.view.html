@@ -69,6 +69,7 @@
             <div ng-init="retrieveChatAllData()">
             <li data-ng-repeat="message in messages">
               <div ng-init="userCheck(message.username)">
+            <!--if they are not the user display on the left-->
             <div class="left clearfix" ng-show="notUser">
                     	<span class="chat-img pull-left">
                     		<img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
@@ -83,7 +84,8 @@
             </div>
               </div>
               <div ng-init="userCheck(message.username)">
-            <div class="right clearfix" ng-show="isUser">
+                <!--if they are the user display on the left-->
+                <div class="right clearfix" ng-show="isUser">
                     	<span class="chat-img pull-right">
                     		<img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
                     	</span>
