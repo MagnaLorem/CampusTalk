@@ -5,6 +5,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
   function ($scope, $location, Authentication, Socket,chatService) {
     // Create a messages array
     $scope.messages = [];
+    $scope.isUser = false;
 
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -20,6 +21,17 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     Socket.on('chatMessage', function (message) {
       $scope.messages.unshift(message);
     });
+
+    //function to check if isUser
+      $scope.userCheck = function(userID){
+        debugger;
+        console.log(userID+" == " + Authentication.user.username + "\n")
+          if(userID === Authentication.user.username){
+              $scope.isUser = true;
+              console.log("same\n")
+          }
+      };
+
 
     $scope.retrieveChatAllData = function(){
 
