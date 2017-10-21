@@ -164,7 +164,7 @@ img {
 .chat-box {
   position: fixed;
   bottom: 0;
-  left: 444px;
+  left: 720px;
   right: 62px;
   padding: 15px;
   border-top: 1px solid #eee;
@@ -183,3 +183,4 @@ a:hover, a:active, a:focus {
   text-decoration: none;
   outline: 0;
 }
+

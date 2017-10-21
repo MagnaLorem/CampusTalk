@@ -5,8 +5,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
   function ($scope, $location, Authentication, Socket,chatService) {
     // Create a messages array
     $scope.messages = [];
-    $scope.isUser = false;
-    $scope.notUser = false;
+    $scope.isSameUser = {bool:false};
 
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -24,16 +23,19 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     });
 
     //function to check if isUser
-      $scope.userCheck = function(userID){
+      $scope.checkIfSameUser = function(userID){
         console.log(userID +" == " + Authentication.user.username + "\n")
           if(userID === Authentication.user.username){
-              $scope.isUser = true;
-              console.log("same\n");
+              $scope.isSameUser.bool = true;
+         //     console.log("same\n");
+          }else{
+            $scope.isSameUser.bool = false;
           }
-          else{
-            $scope.notUser = true;
-            console.log("No Match\n");
-          }
+          console.log("isSameUser is : ");
+          if($scope.isSameUser.bool === true)
+            console.log("true\n");
+            else
+            console.log("false\n");
       };
 
 
