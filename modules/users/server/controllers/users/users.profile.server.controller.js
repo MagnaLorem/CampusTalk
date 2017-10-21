@@ -20,6 +20,8 @@ exports.update = function (req, res) {
   // For security measurement we remove the roles from the req.body object
   delete req.body.roles;
 
+  console.log(req.body);
+
   if (user) {
     // Merge existing user
     user = _.extend(user, req.body);
@@ -47,6 +49,29 @@ exports.update = function (req, res) {
     });
   }
 };
+
+/**
+ * Update the user's classes
+ */
+ exports.updateclasses = function (req, res) {
+    var user = User.findById(req.userId);
+    var classes;
+
+    //console.log('classes');
+    classes.idnumber = req.classes._id;
+    classes.courseCode = req.classes.courseCode;
+    classes.name = req.classes.name;
+
+    user.update({classes : classes});
+ }
+
+/**
+ * Get user's classes
+ */
+ exports.getclasses = function(req, res) {
+    var user = User.findById(req.id);
+    res.json(user.classes);
+ }
 
 /**
  * Update profile picture
