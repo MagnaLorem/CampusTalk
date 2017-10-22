@@ -22,5 +22,11 @@
       state: 'myclasses.list'
     });
 
+    // Add the dropdown create item
+    menuService.addSubMenuItem('topbar', 'myclasses', {
+      title: 'Create Class',
+      state: 'myclasses.create',
+      roles: ['admin']
+    });
   }
 }());

@@ -1,67 +1,49 @@
 <section>
-  <div class="page-header">
-    <h1>{{ vm.authentication.user.firstName }}'s Classes</h1>
-  </div>
-  <!--div class="list-group">
-    <a ng-repeat="myclass in vm.myclasses"
-       ui-sref="myclasses.view({ myclassId: myclass._id })"
-       class="list-group-item">
-      <small class="list-group-item-text">
-        Posted on
-        <span ng-bind="myclass.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="myclass.user" ng-bind="myclass.user.displayName"></span>
-        <span ng-if="!myclass.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="myclass.name"></h4>
-    </a>
-  </div-->
-<div class="spacing_above_list_of_classes">
-  <div class="list_of_classes">
-    <ul>
+    <div class="page-header">
+        <h1>{{ vm.authentication.user.firstName }}'s Classes</h1>
+    </div>
+    <div class="spacing_above_list_of_classes">
+        <div class="list_of_classes">
+            <ul>
+                <table class="table">
+                    <tr>
+                        <th>Code</th>
+                        <th>Course Name</th>
+                    </tr>
+                    <tr ng-repeat="class in vm.authentication.user.classes | orderBy:'courseCode'">
+                        <td> {{ class.courseCode }} </td>
+                        <td> {{ class.name }} </td>
+                        <!--button to delete item listed-->
+                        <td>
+                            <button class="btn btn-danger pull-right" type="button" ng-click="vm.deleteCourse(class)">
+                                <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </ul>
+        </div>
+    </div>
+    <div class="search_box">
+        <h2 id="search_for_classes">Search For Classes</h2>
+        <div class="input-group" id="searchBar">
+            <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+            <input type="text" class="form-control" placeholder="Enter the course code or name" ng-model="query">
+        </div>
         <table class="table">
             <tr>
                 <th>Code</th>
                 <th>Course Name</th>
-              </tr>
-            <tr ng-repeat="class in vm.authentication.user.classes | orderBy:'courseCode'">
-                <td> {{ class.courseCode }} </td>
-                <td> {{ class.name }} </td>
-                <!--button to delete item listed-->
+            </tr>
+            <tr ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 15" ng-click="addCourse(myclass)">
+                <td> {{ myclass.courseCode }} </td>
+                <td> {{ myclass.name }} </td>
                 <td>
-                    <button class="btn btn-danger pull-right" type="button" ng-click="vm.deleteCourse(class)">
-                        <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+                    <button class = "btn" ng-click="vm.addCourse(myclass)">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </button>
                 </td>
             </tr>
-            <tr>
-                <a href="#search_for_classes">Add a Class <span class="glyphicon glyphicon-plus"></span></a>
-            </tr>
         </table>
-
-    </ul>
-  </div>
-</div>
-    <div class="search_box">
-      <h2 id="search_for_classes">Search For Classes</h2>
-      <div class="input-group" id="searchBar">
-          <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-          <input type="text" class="form-control" placeholder="Enter the course code or name" ng-model="query">
-      </div>
-          <table class="table">
-              <tr>
-                <th>Code</th>
-                <th>Course Name</th>
-              </tr>
-              <tr ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 15" ng-click="addCourse(myclass)">
-                  <td> {{ myclass.courseCode }} </td>
-                  <td> {{ myclass.name }} </td>
-                  <td>
-                      <button class = "btn" ng-click = "vm.addCourse(myclass)">
-                          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                      </button>
-                  </td>
-              </tr>
-          </table>
-  </div>
+    </div>
 </section>
