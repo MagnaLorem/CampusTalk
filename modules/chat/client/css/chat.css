@@ -162,10 +162,11 @@ img {
 }
 
 .chat-box {
+  width: auto;
   position: fixed;
   bottom: 0;
-  left: 720px;
-  right: 62px;
+  left: 458px;
+  right: 77px;
   padding: 15px;
   border-top: 1px solid #eee;
   transition: all .5s ease;
