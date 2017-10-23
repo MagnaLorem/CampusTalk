@@ -55,6 +55,10 @@ body {
   font-family: 'Open Sans',sans-serif;
   margin-top:20px;
 }
+.messageWrapper{
+  max-height: 394px;
+  overflow: auto;
+}
 
 .bg-white {
   background-color: #fff;
@@ -162,10 +166,11 @@ img {
 }
 
 .chat-box {
+  width: auto;
   position: fixed;
   bottom: 0;
-  left: 720px;
-  right: 62px;
+  left: 450px;
+  right: 70px;
   padding: 15px;
   border-top: 1px solid #eee;
   transition: all .5s ease;
