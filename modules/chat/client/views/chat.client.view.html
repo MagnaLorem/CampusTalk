@@ -68,7 +68,6 @@
           <ul class="chat">
             <div ng-init="retrieveChatAllData()">
             <li data-ng-repeat="message in messages">
-            <div ng-init="checkIfSameUser(message.username)">
               <!--if they are not the user display on the left-->
               <div class="left clearfix" ng-show = "message.username != UserName">
                         <span class="chat-img pull-left">
@@ -95,7 +94,6 @@
                   <span data-ng-bind="message.message"></span>
                 </div>
                </div> <!-- end of right -->
-             </div>
             </li>
           </div><!-- enf of checkifSameUser-->
         </ul>
