@@ -51,15 +51,27 @@
 
     <!-- =============================================================== -->
     <!-- class list -->
-    <ul class="class-list">
-      <li class="active bounceInDown">
-        <a href="#" class="clearfix">
-          <div class="class-name">
-            <strong>List of a Users Classes will go here</strong>
-          </div>
-        </a>
-      </li>
-    </ul>
+    <!--<ul class="class-list">-->
+      <!--<li class="active bounceInDown">-->
+        <!--<a href="#" class="clearfix">-->
+          <!--<div class="class-name">-->
+            <!--<strong>List of a Users Classes will go here</strong>-->
+          <!--</div>-->
+        <!--</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <div class="class-list" ng-controller="MyclassesListController">
+      <ul>
+        <table class="table">
+          <tr>
+            <th>Course Name</th>
+          </tr>
+          <tr data-ng-repeat="class in vm.authentication.user.classes  | orderBy:'courseCode'">
+            <td> {{ class.name }} </td>
+          </tr>
+        </table>
+      </ul>
+    </div>
   </div>
   <!--=========================================================-->
   <!-- List All Messages -->
