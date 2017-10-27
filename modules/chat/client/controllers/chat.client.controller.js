@@ -6,8 +6,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     // Create a messages array
     $scope.messages = [];
     $scope.UserName = Authentication.user.username;
-    //$scope.classes = Authentication.user.classes;
-    //console.log("classes in chat " + $scope.classes);
+    $scope.classes = Authentication.user.classes;
+    
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
       $location.path('/');

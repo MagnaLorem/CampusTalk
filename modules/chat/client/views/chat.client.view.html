@@ -60,14 +60,16 @@
         <!--</a>-->
       <!--</li>-->
     <!--</ul>-->
-    <div class="class-list" ng-controller="MyclassesListController">
+    <div class="class-list">
       <ul>
         <table class="table">
           <tr>
+            <th>Course Code</th>
             <th>Course Name</th>
           </tr>
-          <tr data-ng-repeat="class in vm.authentication.user.classes  | orderBy:'courseCode'">
-            <td> {{ class.name }} </td>
+          <tr data-ng-repeat="class in classes | orderBy:'courseCode'">
+              <td>{{ class.courseCode }}</td>
+              <td>{{ class.name }}</td>
           </tr>
         </table>
       </ul>
