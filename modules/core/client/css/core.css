@@ -38,3 +38,16 @@ h1 {
   align: center";
 }
 
+.mainbuttom{
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 30px;
+  margin-left: 30px;
+  background-color: #d8ffda;
+}
+
+.btn-outline-success, .btn-outline-success:hover, .btn-primary:active, .btn-primary:visited {
+  background-image: linear-gradient(to bottom, #62f442 0%, #d8ffda 100%);
+}
