@@ -1,27 +1,20 @@
 <section>
-  <div class="page-header">
-      <h1 align="center">View-myclasses</h1>
-    <h1 ng-bind="vm.myclass.name"></h1>
-  </div>
-  <div class="pull-right"
-       ng-show="vm.myclass.isCurrentUserOwner">
-    <a class="btn btn-primary"
-       ui-sref="myclasses.edit({ myclassId: vm.myclass._id })">
-      <i class="glyphicon glyphicon-edit"></i>
-    </a>
-    <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
-  </div>
-  <small>
-    <em class="text-muted">
-      Posted on
-      <span ng-bind="vm.myclass.created | date:'mediumDate'"></span>
-      by
-      <span ng-if="vm.myclass.user"
-            ng-bind="vm.myclass.user.displayName"></span>
-      <span ng-if="!vm.myclass.user">Deleted User</span>
-    </em>
-  </small>
-  <p class="lead" ng-bind="vm.myclass.content"></p>
+    <div class="page-header">
+        <h1>Class successfully added</h1>
+        <h2 ng-bind="vm.myclass.courseCode"></h2>
+        <h2 ng-bind="vm.myclass.name"></h2>
+    </div>
+    <!--to make the edit and the remove options appear we will-->
+    <!--need to add "user": {} into the classes schema-->
+    <!--isCurrentUserOwner has nothing to compare with-->
+    <div class="pull-right"
+         ng-show="vm.myclass.isCurrentUserOwner">
+        <a class="btn btn-primary"
+           ui-sref="myclasses.edit({ myclassId: vm.myclass._id })">
+            <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-primary" ng-click="vm.remove()">
+            <i class="glyphicon glyphicon-trash"></i>
+        </a>
+    </div>
 </section>

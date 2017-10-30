@@ -1,24 +1,29 @@
 <section>
-  <div class="page-header">
-    <h1>{{vm.myclass._id ? 'Edit Myclass' : 'New Myclass'}}</h1>
-  </div>
-  <div class="col-md-12">
-    <form name="vm.form.myclassForm" class="form-horizontal" ng-submit="vm.save(vm.form.myclassForm.$valid)" novalidate>
-      <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="name">Name</label>
-          <input name="name" type="text" ng-model="vm.myclass.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.myclassForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Myclass name is required.</p>
-          </div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.myclass._id ? 'Update' : 'Create'}}</button>
-        </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+    <div class="page-header">
+        <h1>{{vm.myclass._id ? 'Edit Class' : 'New Class'}}</h1>
+    </div>
+    <div class="col-md-12">
+        <form name="vm.form.myclassForm" class="form-horizontal" ng-submit="vm.save(vm.form.myclassForm.$valid)" novalidate>
+            <fieldset>
+                <div class="form-group" show-errors>
+                    <label class="control-label" for="courseCode">Code</label>
+                    <input name="courseCode" type="text" ng-model="vm.myclass.courseCode" id="courseCode" class="form-control" placeholder="Code" required>
+                    <div ng-messages="vm.form.myclassForm.name.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Code is required.</p>
+                    </div>
+                    <label class="control-label" for="name">Course Name</label>
+                    <input name="name" type="text" ng-model="vm.myclass.name" id="name" class="form-control" placeholder="Course Name" required>
+                    <div ng-messages="vm.form.myclassForm.name.$error" role="alert">
+                        <p class="help-block error-text" ng-message="required">Course Name is required.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">{{vm.myclass._id ? 'Update' : 'Create'}}</button>
+                </div>
+                <div ng-show="vm.error" class="text-danger">
+                    <strong ng-bind="vm.error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
 </section>
