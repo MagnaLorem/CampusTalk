@@ -11,9 +11,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'modules/users/views/authentication/signin.client.view.html'
-      })
+        templateUrl: 'modules/core/views/home.client.view.html'
+        })
 
+      .state('not-found', {
+        url: '/not-found',
+        templateUrl: 'modules/core/views/404.client.view.html'
+      });
+/*      
     .state('home-signedIn', {
       url: '/home-signedIn',
       templateUrl: 'modules/myclasses/views/list-myclasses.client.view.html',
@@ -23,9 +28,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         pageTitle: 'Myclasses List'
       }
     })
-      .state('not-found', {
-        url: '/not-found',
-        templateUrl: 'modules/core/views/404.client.view.html'
-      });
+*/
   }
 ]);

@@ -21,11 +21,8 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     });
 
     $scope.getDefaultPage = function(){
-      if($scope.authentication.user){
-        $state.go('home-signedIn', $state.previous.params);
-      }else{
-        $state.go('home', $state.previous.params);
-      }
+
+      $state.go('home', $state.previous.params);
     }
   }
 ]);
