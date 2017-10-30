@@ -8,6 +8,7 @@ var _ = require('lodash'),
   path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
+  Userclasses = require(path.resolve('./modules/myclasses/server/models/userclasses.server.model')),
   User = mongoose.model('User');
 
 /**
@@ -54,23 +55,33 @@ exports.update = function (req, res) {
  * Update the user's classes
  */
  exports.updateclasses = function (req, res) {
-    var user = User.findById(req.userId);
-    var classes;
+   // Create a new model
+   var newUserclasses = new Userclasses(req.body);
+   console.log(req.body.userId);
 
-    //console.log('classes');
-    classes.idnumber = req.classes._id;
-    classes.courseCode = req.classes.courseCode;
-    classes.name = req.classes.name;
-
-    user.update({classes : classes});
+   // Save
+   newUserclasses.save(function(err) {
+    if(err){
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      console.log("Successfully created userclasses!\n" + newUserclasses);
+      res.json(newUserclasses);
+    }
+   });
  }
 
 /**
  * Get user's classes
  */
  exports.getclasses = function(req, res) {
-    var user = User.findById(req.id);
-    res.json(user.classes);
+    var userId = req.user._id;
+    console.log(req.user);
+
+    Userclasses.findOne({ userId: userId }).populate('_courses').exec(function (err, classes) {
+    if (err);
+    res.json(classes);
+    })
  }
 
 /**
