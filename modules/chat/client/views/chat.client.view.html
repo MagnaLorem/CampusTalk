@@ -51,15 +51,29 @@
 
     <!-- =============================================================== -->
     <!-- class list -->
-    <ul class="class-list">
-      <li class="active bounceInDown">
-        <a href="#" class="clearfix">
-          <div class="class-name">
-            <strong>List of a Users Classes will go here</strong>
-          </div>
-        </a>
-      </li>
-    </ul>
+    <!--<ul class="class-list">-->
+      <!--<li class="active bounceInDown">-->
+        <!--<a href="#" class="clearfix">-->
+          <!--<div class="class-name">-->
+            <!--<strong>List of a Users Classes will go here</strong>-->
+          <!--</div>-->
+        <!--</a>-->
+      <!--</li>-->
+    <!--</ul>-->
+    <div class="class-list">
+      <ul>
+        <table class="table">
+          <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+          </tr>
+          <tr data-ng-repeat="class in classes | orderBy:'courseCode'">
+              <td>{{ class.courseCode }}</td>
+              <td>{{ class.name }}</td>
+          </tr>
+        </table>
+      </ul>
+    </div>
   </div>
   <!--=========================================================-->
   <!-- List All Messages -->
