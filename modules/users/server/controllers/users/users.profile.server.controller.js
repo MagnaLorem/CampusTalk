@@ -56,10 +56,28 @@ exports.update = function (req, res) {
  */
  exports.updateclasses = function (req, res) {
    // Create a new model
-   var newUserclasses = new Userclasses(req.body);
-   console.log(req.body.userId);
+   var newUserclasses = new Userclasses();
 
-   // Save
+   console.log("Request Body: " + req.body);
+
+   // Set userId to the given userId
+   newUserclasses.userId = req.body.userId; 
+   for(var i = 0; i < req.body.courses.length; i++){
+    // Create a new variable for each course and set its fields to the given values
+    var newClass = {
+      "classId": req.body.courses[i]._id,
+      "classCode": req.body.courses[i].courseCode,
+      "className": req.body.courses[i].name
+    };
+
+    // Push each class into the courses array
+    newUserclasses.courses.push(newClass);  
+   }
+
+   // Check to see if it is correct
+   console.log("New Model to be Added: " + newUserclasses);
+
+   // Save the new list of classes for the user
    newUserclasses.save(function(err) {
     if(err){
       console.log(err);

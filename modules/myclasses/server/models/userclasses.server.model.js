@@ -16,9 +16,13 @@ var Myclass = mongoose.model('Myclass');
  * Myclass Schema
  */
 var UserclassesSchema = new Schema({
-  /* your code here */
+  /* Schema which holds the user's id and the course's info */
   	userId: {type: String},
-    courses: [{"type": Schema.Types.ObjectId, "ref": "Myclass"}]
+    courses: [{
+    	classId: {type: Schema.Types.ObjectId},
+    	classCode: {type: String},
+    	className: {type: String}
+	}]
 });
 
 var Userclasses = mongoose.model('Userclasses', UserclassesSchema);
