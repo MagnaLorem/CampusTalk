@@ -7,10 +7,11 @@ var mongoose = require('mongoose'),
  * chat Schema
  */
 var chatSchema = new Schema({
-    username: String,
+    username: String, 
     message: String,
     profileImageURL: String,
-    created: {type:Date,default:Date.now}
+    created: {type:Date,default:Date.now},
+    classID: String
 });
 
 var Chat = mongoose.model('Chat', chatSchema);
