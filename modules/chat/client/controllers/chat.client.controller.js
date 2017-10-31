@@ -49,13 +49,19 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.sendMessage = function () {
 
       //create a object to save to db
+
+      var classID = "asd";
+     // var JsonClassID = JSON.stringify(classID);
+      
       var chatData = {
         "username": Authentication.user.username,
         "profileImageURL": Authentication.user.profileImageURL,
         "message" : this.messageText,
-        "created" : Date.now()
+        "created" : Date.now(),
+        "classID" : classID
       }
       
+      console.log(chatData);
       chatService.saveChatData(chatData)
         .then(function(response){
           console.log("succefully saved chat data");

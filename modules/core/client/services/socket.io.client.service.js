@@ -8,6 +8,8 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
       // Connect only when authenticated
       if (Authentication.user) {
         this.socket = io();
+        
+        //this.socket = io('chatRoom2');
       }
     };
     this.connect();
@@ -25,6 +27,7 @@ angular.module('core').service('Socket', ['Authentication', '$state', '$timeout'
 
     // Wrap the Socket.io 'emit' method
     this.emit = function (eventName, data) {
+      console.log("eventName : "+eventName+"\n");
       if (this.socket) {
         this.socket.emit(eventName, data);
       }
