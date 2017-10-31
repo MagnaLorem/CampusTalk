@@ -16,9 +16,13 @@
 
         vm.findCourses = function(){
           // Find the user's classes through the factory
-          UserclassesService.getUserclasses(vm.authentication.user._id).then(function(response){
-            console.log("User's classes from database: " + response.data);
-            //vm.userclasses = response.data;
+          UserclassesService.getUserclasses().then(function(response){
+            for(var i = 0; i < response.data.courses.length; i++){
+                // Push the courses into the user's class list
+                vm.userclasses.push(response.data.courses[i]);
+            }
+            console.log(vm.userclasses);
+
           });
         }
 
@@ -26,7 +30,7 @@
             // Find the index of the class
             var index = vm.myclasses.indexOf(myclass);
 
-            // Add class to the user's classes
+            // Add class to the user's classes on the front end
             vm.userclasses.push(vm.myclasses[index]);
 
             // Alert the user that the class was added
@@ -48,11 +52,15 @@
             UserclassesService.updateUserclasses(courseData);
         }
 
-        vm.deleteCourse = function(userclass) {
+        vm.deleteCourse = function(userclass) {     // Delete a course from the user's classes
             if($window.confirm('Are you sure you want to delete the class?')) {
-                var index = vm.authentication.user.classes.indexOf(userclass);  // Find in the index of the course in user's classes
-                vm.authentication.user.classes.splice(index, 1);                // Delete from the list on the front end
-                UserclassesService.updateUserclasses(vm.authentication.user._id, vm.authentication.user.classes);
+                // Find in the index of the course in user's classes
+                var index = vm.userclasses.indexOf(userclass);  
+
+                // Delete from the list on the front end
+                vm.userclasses.splice(index, 1);
+
+                //UserclassesService.updateUserclasses(vm.authentication.user._id, vm.authentication.user.classes);
             }
         }
     }

@@ -1,12 +1,12 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService',
-  function ($scope, $location, Authentication, Socket,chatService) {
+angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService', 'UserclassesService', 
+  function ($scope, $location, Authentication, Socket, chatService, UserclassesService) {
     // Create a messages array
     $scope.messages = [];
     $scope.UserName = Authentication.user.username;
-    $scope.classes = Authentication.user.classes;
+    $scope.classes = [];
     
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -22,6 +22,16 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     Socket.on('chatMessage', function (message) {
       $scope.messages.push(message);
     });
+
+    $scope.getAllCourses = function(){
+      // Find the user's classes through the factory
+      UserclassesService.getUserclasses().then(function(response){
+        for(var i = 0; i < response.data.courses.length; i++){
+           // Push the courses into the user's class list
+            $scope.classes.push(response.data.courses[i]);
+          }
+      });
+    }
 
     $scope.retrieveChatAllData = function(){
 

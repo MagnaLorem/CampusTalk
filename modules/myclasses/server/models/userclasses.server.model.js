@@ -20,8 +20,8 @@ var UserclassesSchema = new Schema({
   	userId: {type: String},
     courses: [{
     	classId: {type: Schema.Types.ObjectId},
-    	classCode: {type: String},
-    	className: {type: String}
+    	courseCode: {type: String},
+    	name: {type: String}
 	}]
 });
 

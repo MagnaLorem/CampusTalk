@@ -66,8 +66,8 @@ exports.update = function (req, res) {
     // Create a new variable for each course and set its fields to the given values
     var newClass = {
       "classId": req.body.courses[i]._id,
-      "classCode": req.body.courses[i].courseCode,
-      "className": req.body.courses[i].name
+      "courseCode": req.body.courses[i].courseCode,
+      "name": req.body.courses[i].name
     };
 
     // Push each class into the courses array
@@ -93,13 +93,13 @@ exports.update = function (req, res) {
  * Get user's classes
  */
  exports.getclasses = function(req, res) {
-    var userId = req.user._id;
     console.log(req.user);
-
-    Userclasses.findOne({ userId: userId }).populate('_courses').exec(function (err, classes) {
-    if (err);
-    res.json(classes);
-    })
+    var thisuserId = req.user._id;
+    
+    Userclasses.findOne({ userId: thisuserId }).exec(function (err, object) {
+      console.log(object);
+      res.json(object);
+    });
  }
 
 /**
