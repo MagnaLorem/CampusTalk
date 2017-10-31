@@ -1,7 +1,3 @@
-
-/* Google Fonts*/
-@import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400italic,700italic,400,700);
-
 .myclasses-heading{
   text-align: center;
 }
@@ -50,15 +46,7 @@ small, .small {
   width: 28px;
   border-radius: 50%;
 }
-body {
-  padding-top: 0;
-  font-size: 12px;
-  color: #777;
-  background: #f9f9f9;
-  /*font-family: 'Open Sans',sans-serif;*/
-  font-family: 'Varela Round', sans-serif;
-  margin-top:20px;
-}
+
 .messageWrapper{
   max-height: 394px;
   overflow: auto;
