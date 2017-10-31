@@ -8,6 +8,7 @@ var _ = require('lodash'),
   path = require('path'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller')),
   mongoose = require('mongoose'),
+  Userclasses = require(path.resolve('./modules/myclasses/server/models/userclasses.server.model')),
   User = mongoose.model('User');
 
 /**
@@ -54,23 +55,51 @@ exports.update = function (req, res) {
  * Update the user's classes
  */
  exports.updateclasses = function (req, res) {
-    var user = User.findById(req.userId);
-    var classes;
+   // Create a new model
+   var newUserclasses = new Userclasses();
 
-    //console.log('classes');
-    classes.idnumber = req.classes._id;
-    classes.courseCode = req.classes.courseCode;
-    classes.name = req.classes.name;
+   console.log("Request Body: " + req.body);
 
-    user.update({classes : classes});
+   // Set userId to the given userId
+   newUserclasses.userId = req.body.userId; 
+   for(var i = 0; i < req.body.courses.length; i++){
+    // Create a new variable for each course and set its fields to the given values
+    var newClass = {
+      "classId": req.body.courses[i]._id,
+      "courseCode": req.body.courses[i].courseCode,
+      "name": req.body.courses[i].name
+    };
+
+    // Push each class into the courses array
+    newUserclasses.courses.push(newClass);  
+   }
+
+   // Check to see if it is correct
+   console.log("New Model to be Added: " + newUserclasses);
+
+   // Save the new list of classes for the user
+   newUserclasses.save(function(err) {
+    if(err){
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      console.log("Successfully created userclasses!\n" + newUserclasses);
+      res.json(newUserclasses);
+    }
+   });
  }
 
 /**
  * Get user's classes
  */
  exports.getclasses = function(req, res) {
-    var user = User.findById(req.id);
-    res.json(user.classes);
+    console.log(req.user);
+    var thisuserId = req.user._id;
+    
+    Userclasses.findOne({ userId: thisuserId }).exec(function (err, object) {
+      console.log(object);
+      res.json(object);
+    });
  }
 
 /**
