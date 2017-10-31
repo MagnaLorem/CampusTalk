@@ -56,7 +56,7 @@ small, .small {
   background-color: #fff;
 }
 .chat-message {
-  padding: 60px 20px 115px;
+  padding: 45px 20px 11px;
 }
 
 .chat {
@@ -158,11 +158,7 @@ img {
 }
 
 .chat-box {
-  width: auto;
-  position: fixed;
-  bottom: 0;
-  left: 450px;
-  right: 70px;
+  left: 380px;
   padding: 15px;
   border-top: 1px solid #eee;
   transition: all .5s ease;
