@@ -7,6 +7,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.messages = [];
     $scope.UserName = Authentication.user.username;
     $scope.classes = [];
+    $scope.currentlySelectedClassID;
+    $scope.isDefaultSet = false;
     
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -22,6 +24,34 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     Socket.on('chatMessage', function (message) {
       $scope.messages.push(message);
     });
+
+    $scope.setDefaultClassId = function(selectedClass){
+      if(!$scope.isDefaultSet){
+        $scope.currentlySelectedClassID = selectedClass.classId;
+        $scope.isDefaultSet = true;
+        console.log("default currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
+      }
+    }
+
+    $scope.getClassInfoOnChatPage = function(selectedClass){
+      $scope.currentlySelectedClassID = selectedClass.classId;
+      console.log("currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
+
+
+    /*
+    
+      whenever the id changed, we switch the chat room/db
+
+      chatService.updateClassID()
+        .then(function(response){
+          
+                    $scope.messages = response.data;
+                    console.log($scope.messages);
+                  },function(err){
+                    console.log(err);
+        });
+    */
+    }// end of getClassInfoOnChatPage
 
     $scope.getAllCourses = function(){
       // Find the user's classes through the factory
@@ -49,16 +79,12 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.sendMessage = function () {
 
       //create a object to save to db
-
-      var classID = "asd";
-     // var JsonClassID = JSON.stringify(classID);
-      
       var chatData = {
         "username": Authentication.user.username,
         "profileImageURL": Authentication.user.profileImageURL,
         "message" : this.messageText,
         "created" : Date.now(),
-        "classID" : classID
+        "classID" : $scope.currentlySelectedClassID
       }
       
       console.log(chatData);
@@ -80,5 +106,6 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.$on('$destroy', function () {
       Socket.removeListener('chatMessage');
     });
+
   }
 ]);

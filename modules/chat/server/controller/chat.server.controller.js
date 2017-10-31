@@ -12,7 +12,22 @@ var newChatData;
 exports.savechat = function(req, res) {
 
   newChatData = new chatData(req.body);
-  //console.log(req.user);
+
+  console.log("req.body.classID = ");
+  console.log(req.body.classID);
+
+  var NewSchema = new chatData({
+    username: String, 
+    message: String,
+    profileImageURL: String,
+    created: {type:Date,default:Date.now},
+    classID: String
+  });
+  
+  var newClass = mongoose.model('Registration',NewSchema);
+  var testNewClass = new newClass(req.body);
+  testNewClass.save();
+
 
   newChatData.save(function(err) {
     if (err) {
