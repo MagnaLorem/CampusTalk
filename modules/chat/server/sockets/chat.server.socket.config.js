@@ -16,14 +16,17 @@ module.exports = function (io, socket) {
   // Send a chat messages to all connected sockets when a message is received
   socket.on('chatMessage', function (chatData) {
     console.log("message in socket chatMessage\n");
-
+    console.log("charData : \n");
+    console.log(chatData.message);
+   // socket.join(chatData.classID);
     //create the chat object to show 
     var Message = {
       message: chatData.message,
       type:'message',
       created: Date.now(),
       profileImageURL: chatData.profileImageURL,
-      username: chatData.username
+      username: chatData.username,
+      classID: chatData.classID
     }
     
     console.log("\ndisplayMessage");
