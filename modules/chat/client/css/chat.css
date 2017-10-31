@@ -158,7 +158,7 @@ img {
 }
 
 .chat-box {
-  left: 380px;
+    float: right;
   padding: 15px;
   border-top: 1px solid #eee;
   transition: all .5s ease;

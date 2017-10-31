@@ -43,3 +43,10 @@
   width: 32px !important;
   height: 32px !important;
 }
+
+.list_of_users{
+  margin-left: 9%;
+  margin-right: 9%;
+  font-size: 25px;
+  border: solid #333 2px;
+}
