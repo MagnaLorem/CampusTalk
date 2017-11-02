@@ -13,6 +13,7 @@
         vm.myclasses = MyclassesService.query();	// Grabs all of the classes from the db
         vm.authentication = Authentication;			// Grabs current user info from db
         vm.userclasses = [];                        // User's classes array
+        vm.newuserclasses = [];                     // User's new classes array
 
         vm.findCourses = function(){
           // Find the user's classes through the factory
@@ -33,13 +34,17 @@
             // Add class to the user's classes on the front end
             vm.userclasses.push(vm.myclasses[index]);
 
+            // Add class to user's new classes (for db)
+            vm.newuserclasses.push(vm.myclasses[index]);
+
             // Alert the user that the class was added
             window.alert('Class added');
         };
 
         vm.addAllCourses = function() {             // Add all of the user's courses to db
             // Converting js array to String
-            var classesToString = JSON.stringify(vm.userclasses);
+            //var classesToString = JSON.stringify(vm.userclasses);
+            var classesToString = JSON.stringify(vm.newuserclasses);
 
             // Insert into new JSON object
             var courseData = {
@@ -60,7 +65,10 @@
                 // Delete from the list on the front end
                 vm.userclasses.splice(index, 1);
 
-                //UserclassesService.updateUserclasses(vm.authentication.user._id, vm.authentication.user.classes);
+                console.log(userclass);
+
+                // Delete the class from the user's list of classes through the factory service
+                UserclassesService.deleteUserclass(userclass);
             }
         }
     }

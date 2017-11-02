@@ -58,26 +58,33 @@ exports.update = function (req, res) {
    // Create a new model
    var newUserclasses = new Userclasses();
 
+   var thisuserId = req.user._id;
+
    console.log("Request Body: " + req.body);
 
    // Set userId to the given userId
    newUserclasses.userId = req.body.userId; 
    for(var i = 0; i < req.body.courses.length; i++){
-    // Create a new variable for each course and set its fields to the given values
-    var newClass = {
-      "classId": req.body.courses[i]._id,
-      "courseCode": req.body.courses[i].courseCode,
-      "name": req.body.courses[i].name
-    };
+      // Create a new variable for each course and set its fields to the given values
+      var newClass = {
+        "classId": req.body.courses[i]._id,
+        "courseCode": req.body.courses[i].courseCode,
+        "name": req.body.courses[i].name
+      };
 
-    // Push each class into the courses array
-    newUserclasses.courses.push(newClass);  
+      Userclasses.findOneAndUpdate({userId: thisuserId}, {$push:{courses: newClass}}, {upsert: true}, function(err){
+        if(err) console.log(err);
+      });
+
+      // Push each class into the courses array
+      //newUserclasses.courses.push(newClass);  
    }
 
    // Check to see if it is correct
-   console.log("New Model to be Added: " + newUserclasses);
+   //console.log("New Model to be Added: " + newUserclasses);
 
    // Save the new list of classes for the user
+   /*
    newUserclasses.save(function(err) {
     if(err){
       console.log(err);
@@ -87,6 +94,7 @@ exports.update = function (req, res) {
       res.json(newUserclasses);
     }
    });
+   */
  }
 
 /**
@@ -99,6 +107,25 @@ exports.update = function (req, res) {
     Userclasses.findOne({ userId: thisuserId }).exec(function (err, object) {
       console.log(object);
       res.json(object);
+    });
+ }
+
+
+/**
+ * Delete user's class
+ */
+ exports.deleteclass = function(req, res) {
+    console.log(req.user);
+    var thisuserId = req.user._id;
+
+    // Search for the user, then remove the class from the user's courses array
+    Userclasses.findOneAndUpdate({userId: thisuserId}, {$pull:{courses: req.body}}, function(err, object) {
+      if(err){
+        console.log(err);
+      }
+      else{
+        res.json(object);
+      }
     });
  }
 

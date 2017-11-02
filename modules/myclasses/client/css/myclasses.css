@@ -6,9 +6,9 @@
     margin: 0 auto;
     font-size: 25px;
     width: 60%;
-    border-top: solid green 2px;
+    /*border-top: solid green 2px;
     border-right: solid green 2px;
-    border-left: solid green 2px;
+    border-left: solid green 2px;*/
 }
 
 .list_of_classes a{
@@ -20,7 +20,7 @@
 .list_of_classes ul{
     padding: 0px;
 }
-.list_of_classes .glyphicon{
+.list_of_classes{
     font-size: 20px;
     padding-right: 10px;
     padding-top: 7px;
@@ -29,7 +29,6 @@
 
 .search_box{
     margin: 0 auto;
-    width: 60%
 }
 
 .search_box h2{
@@ -42,7 +41,7 @@
 }
 
 .btn .glyphicon-plus{
-    color: green;
+    /*color: green;*/
 }
 
 /*.btn:hover{
@@ -57,5 +56,14 @@
 
 .spacing_above_list_of_classes{
     margin-top: 50px;
+}
 
+.classestable{
+    max-height: calc(100vh - 205px);
+    overflow: scroll;
+}
+
+.usersclassesdiv{
+    height: calc(100vh - 55px);
+    overflow: scroll;
 }

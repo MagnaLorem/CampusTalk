@@ -11,6 +11,10 @@ angular.module('myclasses').factory('UserclassesService', ['$http', function($ht
 
     getUserclasses: function() {
 		return $http.get('/api/userclasses/');
+	},
+
+	deleteUserclass: function(userclass) {
+		return $http.put('/api/userclasses/deleteclass', userclass);
 	}
   };
 

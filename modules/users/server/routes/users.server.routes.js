@@ -9,6 +9,7 @@ module.exports = function (app) {
   app.route('/api/users').put(users.update);
   app.route('/api/userclasses').put(users.updateclasses);  // Put for the userclasses
   app.route('/api/userclasses').get(users.getclasses);     // Grab the user classes
+  app.route('/api/userclasses/deleteclass').put(users.deleteclass); // Delete the user class
   app.route('/api/users/accounts').delete(users.removeOAuthProvider);
   app.route('/api/users/password').post(users.changePassword);
   app.route('/api/users/picture').post(users.changeProfilePicture);
