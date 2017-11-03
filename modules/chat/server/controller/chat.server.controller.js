@@ -4,40 +4,34 @@ var path = require('path'),
     path = require('path'),
     config = require(path.resolve('./config/config')), /** not being used for now**/
     User = mongoose.model('User'),
-    request = require('request');
-
+    request = require('request'),
+    connect = require('connect');
 /*object for chat data */
 var newChatData;
 
 exports.savechat = function(req, res) {
 
-  newChatData = new chatData(req.body);
+  newChatData = new chatData();
+  newChatData.classID = req.body.classID;
+  var newMessage = {
+    username: req.body.username, 
+    message: req.body.message,
+    profileImageURL: req.body.profileImageURL,
+    created: req.body.created
+  }
 
-  console.log("req.body.classID = ");
-  console.log(req.body.classID);
-
-  var NewSchema = new chatData({
-    username: String, 
-    message: String,
-    profileImageURL: String,
-    created: {type:Date,default:Date.now},
-    classID: String
-  });
-  
-  var newClass = mongoose.model('Registration',NewSchema);
-  var testNewClass = new newClass(req.body);
-  testNewClass.save();
-
-
-  newChatData.save(function(err) {
-    if (err) {
-      console.log(err);
-      res.status(400).send(err);
-    } else {
-      console.log("Successfully created chat data!\n " + newChatData);
-      res.json(newChatData);
-    }
-  });
+  //upsert cretes new class if the classID does not exist.
+  //if classID is found, then update it based on the given condition which is $push:{messages:newMessage} 
+  chatData.findOneAndUpdate({'classID':req.body.classID},{$push:{messages:newMessage}},{upsert:true},
+    function(err,req){
+      if (err) {
+        console.log(err);
+        res.status(400).send(err);  
+      } else {
+        console.log("Successfully created chat updated!\n " + newChatData);
+        res.json(newChatData);
+      }
+    });
 };
 
 //displays all info to /api/chatHistory
@@ -52,11 +46,14 @@ exports.read = function(req,res){
   });
 };
 
-//obtain chat data when the page is loaded. 
+//obtain chat data when the class is selected
 //sort by the created date
 exports.getAllchatData = function(req,res){
 
-   chatData.find().sort('created').exec(function(err,docs){
+   console.log("classID = "+req.body.classID+"\n");
+   console.log("body = "+req.body+"\n");
+   console.log("body = "+req.classID+"\n");
+   chatData.find({'classID':req.body.classID}).sort('created').exec(function(err,docs){
       if(err){
         res.status(400).send(err);
       }else{

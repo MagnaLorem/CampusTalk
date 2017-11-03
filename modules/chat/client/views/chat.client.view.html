@@ -16,7 +16,7 @@
             <th>Course Code</th>
             <th>Course Name</th>
           </tr>
-          <tr data-ng-repeat="class in classes | orderBy:'courseCode'" ng-click = "getClassInfoOnChatPage(class)" ng-init = "setDefaultClassId(class)">
+          <tr data-ng-repeat="class in classes | orderBy:'courseCode'" ng-click = "retrieveChatAllData(class)" ng-init = "setDefaultClassId(class)">
               <td>{{ class.courseCode }}</td>
               <td>{{ class.name }}</td>
           </tr>
@@ -29,7 +29,6 @@
     <div class="col-md-8 bg-white messageWrapper">
         <div class="chat-message">
           <ul class="chat">
-            <div ng-init="retrieveChatAllData()">
             <li data-ng-repeat="message in messages">
               <!--if they are not the user display on the left-->
               <div class="left clearfix" ng-show = "message.username != UserName">
@@ -58,7 +57,6 @@
                 </div>
                </div> <!-- end of right -->
             </li>
-          </div><!-- enf of checkifSameUser-->
         </ul>
       </div>
     </div>

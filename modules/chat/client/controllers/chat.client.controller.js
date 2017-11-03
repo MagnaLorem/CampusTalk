@@ -37,20 +37,6 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       $scope.currentlySelectedClassID = selectedClass.classId;
       console.log("currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
 
-
-    /*
-    
-      whenever the id changed, we switch the chat room/db
-
-      chatService.updateClassID()
-        .then(function(response){
-          
-                    $scope.messages = response.data;
-                    console.log($scope.messages);
-                  },function(err){
-                    console.log(err);
-        });
-    */
     }// end of getClassInfoOnChatPage
 
     $scope.getAllCourses = function(){
@@ -63,9 +49,19 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       });
     }
 
-    $scope.retrieveChatAllData = function(){
+    $scope.retrieveChatAllData = function(selectedClass){
 
-      chatService.getAllChatData()
+      //save the selected classID
+      $scope.currentlySelectedClassID = selectedClass.classId;
+      
+      //created the object to pass to server side
+      var currentCLassID = {
+        "classID" : $scope.currentlySelectedClassID,
+        "testVal" : "asdf"
+      }
+      console.log("currentlySelectedClassID : " + currentCLassID.classID+"\n");
+
+      chatService.getAllChatData(currentCLassID)
         .then(function(response){
 
           $scope.messages = response.data;
