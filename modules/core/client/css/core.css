@@ -1,5 +1,6 @@
 /* Google Fonts*/
-@import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400italic,700italic,400,700);
+/*@import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400italic,700italic,400,700)*/
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 
 /*From landing page template*/
@@ -7,9 +8,10 @@ body,
 html {
     width: 100%;
     height: 100%;
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Oswald', sans-serif;
     background-color: #92ef92;
     /*background-color: #a7efb9;*/
+    font-weight: 500;
 }
 
 body,
@@ -19,7 +21,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Varela Round', sans-serif;
+    f/*ont-family: 'Varela Round', sans-serif;*/
     font-weight: 700;
 }
 
