@@ -5,12 +5,12 @@ angular.module('myclasses').factory('UserclassesService', ['$http', function($ht
   
   var methods = {
     
-    updateUserclasses: function(userId, classes) {
-		return $http.put('api/userclasses/', {userId, classes});
+    updateUserclasses: function(courseData) {
+		return $http.put('/api/userclasses/', courseData);
 	},
 
     getUserclasses: function() {
-		return $http.get('api/userclasses');
+		return $http.get('/api/userclasses/');
 	}
   };
 

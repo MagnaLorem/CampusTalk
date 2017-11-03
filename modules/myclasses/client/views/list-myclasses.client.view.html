@@ -5,12 +5,12 @@
     <div class="spacing_above_list_of_classes">
         <div class="list_of_classes">
             <ul>
-                <table class="table">
+                <table class="table" ng-init="vm.findCourses()">
                     <tr>
                         <th class="firstRow">Code</th>
                         <th class="firstRow">Course Name</th>
                     </tr>
-                    <tr ng-repeat="class in vm.authentication.user.classes | orderBy:'courseCode'">
+                    <tr ng-repeat="class in vm.userclasses | orderBy:'courseCode'">
                         <td> {{ class.courseCode }} </td>
                         <td> {{ class.name }} </td>
                         <!--button to delete item listed-->
@@ -21,6 +21,7 @@
                         </td>
                     </tr>
                 </table>
+                <button type="button" ng-click="vm.addAllCourses()"> Save Changes </button>
             </ul>
         </div>
     </div>
