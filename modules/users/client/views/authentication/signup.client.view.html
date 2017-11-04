@@ -1,47 +1,82 @@
 <div data-ng-controller="AuthenticationController">
-  <h2 class="col-md-12 text-center">Sign up for Study Swamp! </h2>
-  <div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
-    <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
-      <fieldset>
-        <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" required id="firstName" name="firstName" class="form-control"
-               data-ng-model="credentials.firstName" placeholder="First Name">
+    <div class="container">
+        <div class="intro-header">
+            <div class="intro-message">
+                <img id="mainLogo" src="/modules/core/img/brand/C.jpeg">
+                <h1 class="col-md-12 text-center">Sign up for Study Swamp!</h1>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" class="form-control"
-               data-ng-model="credentials.lastName" placeholder="Last Name">
+        <div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
+            <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" required id="firstName" name="firstName" class="form-control"
+                               data-ng-model="credentials.firstName" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" class="form-control"
+                               data-ng-model="credentials.lastName" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email"
+                               placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control"
+                               data-ng-model="credentials.username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                               data-ng-model="credentials.password" placeholder="Password">
+                    </div>
+                    <!--Payment services will be add here using paypall api-->
+                    <div class="form-group">
+                        <label>Paypal</label>
+                        <a href="https://www.paypal.com/signin?country.x=US&locale.x=en_US">Go here</a>
+                        <img ng-src="/modules/users/img/buttons/paypal.png">
+                    </div>
+                    <!-- Payment will end here -->
+                    <div class="text-center form-group">
+                        <button type="submit" class="btn btn-large btn-primary">Sign up</button>
+                    </div>
+                    <div data-ng-show="error" class="text-center text-danger">
+                        <strong data-ng-bind="error"></strong>
+                    </div>
+                </fieldset>
+            </form>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email"
-               placeholder="Email">
-        </div>
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" class="form-control"
-               data-ng-model="credentials.username" placeholder="Username">
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password" class="form-control"
-               data-ng-model="credentials.password" placeholder="Password">
-        </div>
-        <!--Payment services will be add here using paypall api-->
-        <div class="form-group">
-          <label>Paypal</label>
-          <a href="https://www.paypal.com/signin?country.x=US&locale.x=en_US">Go here</a>
-          <img ng-src="/modules/users/img/buttons/paypal.png">
-        </div>
-        <!-- Payment will end here -->
-        <div class="text-center form-group">
-          <button type="submit" class="btn btn-large btn-primary">Sign up</button>
-        </div>
-        <div data-ng-show="error" class="text-center text-danger">
-          <strong data-ng-bind="error"></strong>
-        </div>
-      </fieldset>
-    </form>
-  </div>
+    </div>
 </div>
+<!-- Footer -->
+<footer>
+    <div class="container" data-ng-controller="HeaderController">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-inline">
+                    <li>
+                        <!--<a href="#">Home</a>-->
+                        <a data-ng-click="getDefaultPage()">Home</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#services">Services</a>
+                    </li>
+                    <li class="footer-menu-divider">&sdot;</li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <p class="copyright text-muted small">Copyright &copy; Study Swamp 2017. All Rights Reserved</p>
+            </div>
+        </div>
+    </div>
+</footer>
