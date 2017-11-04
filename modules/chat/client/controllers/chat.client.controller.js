@@ -51,23 +51,20 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
     $scope.retrieveChatAllData = function(selectedClass){
 
-      //save the selected classID
-      $scope.currentlySelectedClassID = selectedClass.classId;
-      console.log("currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
-      //created the object to pass to server side
-      var currentCLassID = {
-        "classID" : $scope.currentlySelectedClassID
+      if($scope.currentlySelectedClassID != selectedClass.classId){
+        
+        //update the selected classID
+        $scope.currentlySelectedClassID = selectedClass.classId;
+
+        chatService.getAllChatData($scope.currentlySelectedClassID)
+          .then(function(response){
+
+            $scope.messages = response.data;
+            console.log($scope.messages);
+          },function(err){
+            console.log(err);
+          });
       }
-      console.log(currentCLassID);
-
-      chatService.getAllChatData(currentCLassID)
-        .then(function(response){
-
-          $scope.messages = response.data;
-          console.log($scope.messages);
-        },function(err){
-          console.log(err);
-        });
     }
 
     // Create a controller method for sending messages

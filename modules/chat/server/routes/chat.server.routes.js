@@ -8,7 +8,8 @@ module.exports = function(app){
         .get(chatData.read)
         .post(chatData.savechat);
 
-    app.route('/api/getAllChatData')
+    app.route('/api/getAllChatData/:classID')
         .get(chatData.getAllchatData);
 
+    app.param('classID',chatData.getChatDataByCurrentClassID);
 };
