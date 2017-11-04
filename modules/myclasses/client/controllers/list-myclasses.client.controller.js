@@ -37,24 +37,7 @@
 
             // Alert the user that the class was added
             window.alert('Class added');
-        };
-
-        /*
-        vm.addAllCourses = function() {             // Add all of the user's courses to db
-            // Converting js array to String
-            //var classesToString = JSON.stringify(vm.userclasses);
-            var classesToString = JSON.stringify(vm.newuserclasses);
-
-            // Insert into new JSON object
-            var courseData = {
-                "userId": vm.authentication.user._id,
-                "courses": JSON.parse(classesToString)  // Convert array string to JSON object
-            }
-            console.log("Courses added to database: " + courseData);
-
-            // Add the course throught the factory
-            UserclassesService.updateUserclasses(courseData);
-        }*/
+        }
 
         vm.deleteCourse = function(userclass) {     // Delete a course from the user's classes
             if($window.confirm('Are you sure you want to delete the class?')) {

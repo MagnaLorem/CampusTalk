@@ -64,6 +64,6 @@
 }
 
 .usersclassesdiv{
-    height: calc(100vh - 55px);
+    max-height: calc(100vh - 55px);
     overflow: scroll;
 }
