@@ -50,9 +50,12 @@ exports.read = function(req,res){
 //sort by the created date
 exports.getAllchatData = function(req,res){
 
+   console.log("-------------------------------------------");
+   console.log(req.body);
+   console.log(req.body.classID);
    console.log("classID = "+req.body.classID+"\n");
-   console.log("body = "+req.body+"\n");
    console.log("body = "+req.classID+"\n");
+
    chatData.find({'classID':req.body.classID}).sort('created').exec(function(err,docs){
       if(err){
         res.status(400).send(err);

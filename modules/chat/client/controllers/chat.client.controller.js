@@ -53,13 +53,12 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
       //save the selected classID
       $scope.currentlySelectedClassID = selectedClass.classId;
-      
+      console.log("currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
       //created the object to pass to server side
       var currentCLassID = {
-        "classID" : $scope.currentlySelectedClassID,
-        "testVal" : "asdf"
+        "classID" : $scope.currentlySelectedClassID
       }
-      console.log("currentlySelectedClassID : " + currentCLassID.classID+"\n");
+      console.log(currentCLassID);
 
       chatService.getAllChatData(currentCLassID)
         .then(function(response){
