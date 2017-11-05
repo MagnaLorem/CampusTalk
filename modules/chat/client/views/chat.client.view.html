@@ -16,7 +16,7 @@
             <th>Course Code</th>
             <th>Course Name</th>
           </tr>
-          <tr data-ng-repeat="class in classes | orderBy:'courseCode'" ng-click = "retrieveChatAllData(class)" ng-init = "setDefaultClassId(class)">
+          <tr data-ng-repeat="class in classes | orderBy:'courseCode'" ng-click = "retrieveSelectedChat(class)" ng-init = "setDefaultClassId(class)">
               <td>{{ class.courseCode }}</td>
               <td>{{ class.name }}</td>
           </tr>

@@ -28,11 +28,31 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.setDefaultClassId = function(selectedClass){
       if(!$scope.isDefaultSet){
         $scope.currentlySelectedClassID = selectedClass.classId;
-        $scope.isDefaultSet = true;
         console.log("default currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
+
+        /*
+          make a function outside so that it will be used called.
+        */
+        //retreived the default chat history
+        if(!$scope.isDefaultSet){
+          chatService.getAllChatData($scope.currentlySelectedClassID)
+          .then(function(response){
+
+            $scope.messages = []; 
+            for(var i = 0;i<response.data.messages.length;i++){
+              $scope.messages.push(response.data.messages[i]);
+            }
+            console.log($scope.messages);
+          },function(err){
+            console.log(err);
+          });
+        }
+
+        $scope.isDefaultSet = true;
       }
     }
 
+    // function not used
     $scope.getClassInfoOnChatPage = function(selectedClass){
       $scope.currentlySelectedClassID = selectedClass.classId;
       console.log("currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
@@ -49,7 +69,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       });
     }
 
-    $scope.retrieveChatAllData = function(selectedClass){
+    $scope.retrieveSelectedChat = function(selectedClass){
 
       if($scope.currentlySelectedClassID != selectedClass.classId){
         
@@ -59,7 +79,12 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
         chatService.getAllChatData($scope.currentlySelectedClassID)
           .then(function(response){
 
-            $scope.messages = response.data;
+           // $scope.messages = response.data;
+           // everytime chat is switched, it reload the new chat
+            $scope.messages = []; 
+            for(var i = 0;i<response.data.messages.length;i++){
+              $scope.messages.push(response.data.messages[i]);
+            }
             console.log($scope.messages);
           },function(err){
             console.log(err);
