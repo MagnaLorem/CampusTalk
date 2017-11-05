@@ -23,9 +23,9 @@
         <h2 id="search_for_classes">Add A Class</h2>
         <div class="input-group" id="searchBar">
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Enter the course code or name" ng-model="query">
+            <input type="text" class="form-control" placeholder="Enter the course code or name (e.g. 'IUF 1000' or 'What is the Good Life')" ng-model="query">
         </div>
-        <table class="table table-hover">
+        <table ng-show="query" class="table table-hover">
             <tr>
                 <th>Course Code</th>
                 <th>Course Name</th>
@@ -33,12 +33,15 @@
         </table>
         <div class="classestable">
             <table class="table table-hover">
-                <tr ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode'" ng-click="addCourse(myclass)">
+                <tr ng-show="query" ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 200" ng-click="addCourse(myclass)">
                     <td> {{ myclass.courseCode }} </td>
                     <td> {{ myclass.name }} </td>
                     <td>
-                        <button class="btn btn-success btn-sm pull-right" type="button" ng-click="vm.addCourse(myclass)">
+                        <button ng-show="!vm.checkIfAdded(myclass)" class="btn btn-default btn-sm pull-right" type="button" ng-click="vm.addCourse(myclass)">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                        <button ng-show="vm.checkIfAdded(myclass)" class="btn btn-success btn-sm pull-right" type="button">
+                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                         </button>
                     </td>
                 </tr>

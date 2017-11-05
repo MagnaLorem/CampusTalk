@@ -15,14 +15,14 @@
         vm.userclasses = [];                        // User's classes array
 
         vm.findCourses = function(){
-          // Find the user's classes through the factory
-          UserclassesService.getUserclasses().then(function(response){
-            for(var i = 0; i < response.data.courses.length; i++){
-                // Push the courses into the user's class list
-                vm.userclasses.push(response.data.courses[i]);
-            }
-            console.log(vm.userclasses);
-          });
+            // Find the user's classes through the factory
+            UserclassesService.getUserclasses().then(function(response){
+                for(var i = 0; i < response.data.courses.length; i++){
+                    // Push the courses into the user's class list
+                    vm.userclasses.push(response.data.courses[i]);
+                }
+                console.log(vm.userclasses);
+            });
         }
 
         vm.addCourse = function(myclass) {			// Add a course to the user's classes
@@ -52,6 +52,16 @@
                 // Delete the class from the user's list of classes through the factory service
                 UserclassesService.deleteUserclass(userclass);
             }
+        }
+
+        vm.checkIfAdded = function(myclass) {       // Check if myclass is in userclasses
+            // Loop through the user's classes and check if myclass is there
+            for(var i = 0; i < vm.userclasses.length; i++){
+                if(vm.userclasses[i].courseCode == myclass.courseCode)
+                    return true;
+            }
+
+            return false;
         }
     }
 }());
