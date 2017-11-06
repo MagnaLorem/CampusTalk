@@ -1,13 +1,11 @@
 <!-- The chat view -->
 <section class="container" data-ng-controller="ChatController">
-  <div class="page-header">
-    <h1>Chat </h1>
-  </div>
 
-  <div class="col-md-4 bg-white ">
-    <div class="row border-bottom padding-sm" style="height: 40px;">
-      <h2 class="myclasses-heading">My Classes</h2>
-    </div>
+    <div class="col-md-4 bg-white ">
+        <div class="row border-bottom padding-sm" style="height: 40px;">
+            <h2 class="myclasses-heading">My Classes</h2>
+        </div>
+
 
     <div class="class-list" ng-init="getAllCourses()">
       <ul>
@@ -23,29 +21,31 @@
           </tr>
         </table>
       </ul>
+      </div>
     </div>
-  </div>
-  <!--=========================================================-->
-  <!-- List All Messages -->
+    <!--=========================================================-->
+    <!-- List All Messages -->
     <div class="col-md-8 bg-white messageWrapper">
         <div class="chat-message">
+
           <ul class="chat">
             <li data-ng-repeat="message in messages">
               <!--if they are not the user display on the left-->
               <div class="left clearfix" ng-show = "message.username != UserName">
+
                         <span class="chat-img pull-left">
                           <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
                         </span>
-                <div class="chat-body clearfix">
-                  <div class="header">
-                    <strong class="primary-font" data-ng-bind="message.username"></strong>
-                    <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
-                  </div>
-                  <span data-ng-bind="message.message"></span>
-                </div>
-              </div><!-- end of left -->
-              <!--if they are the user display on the left--> 
-              <div class="right clearfix" ng-show = "message.username == UserName">
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font" data-ng-bind="message.username"></strong>
+                                    <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
+                                </div>
+                                <span data-ng-bind="message.message"></span>
+                            </div>
+                        </div><!-- end of left -->
+                        <!--if they are the user display on the left-->
+                        <div class="right clearfix" ng-show = "message.username == UserName">
                         <span class="chat-img pull-right">
                           <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
                         </span>
@@ -61,17 +61,17 @@
         </ul>
       </div>
     </div>
-   
-      <!--=========================================================-->
-      <!-- Send Messages -->
-        <div class="chat-box bg-white col-md-4">
-          <form ng-submit="sendMessage();">
-          <div class="input-group">
-            <input type="text" name="messageText"class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
-            <span class="input-group-btn">
+
+    <!--=========================================================-->
+    <!-- Send Messages -->
+    <div class="chat-box bg-white col-md-4">
+        <form ng-submit="sendMessage();">
+            <div class="input-group">
+                <input type="text" name="messageText"class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
+                <span class="input-group-btn">
               <button class="btn btn-success no-rounded" type="submit">Send</button>
             </span>
-          </div>
-          </form>
-        </div>
+            </div>
+        </form>
+    </div>
 </section>
