@@ -20,7 +20,7 @@
     padding-left: 20px;
     padding-right: 20px;
 }
-.list_of_classes .glyphicon{
+.list_of_classes{
     font-size: 20px;
     float: right;
 }
@@ -67,7 +67,16 @@
 
 .spacing_above_list_of_classes{
     margin-top: 50px;
+}
 
+.classestable{
+    max-height: calc(100vh - 205px);
+    overflow: scroll;
+}
+
+.usersclassesdiv{
+    max-height: calc(100vh - 55px);
+    overflow: scroll;
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
