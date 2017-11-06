@@ -14,8 +14,10 @@ angular.module('chat').factory('chatService', ['$http', function($http) {
         return $http.get('/api/chatHistory');
     },
 
-    getAllChatData: function() {
-        return $http.get('/api/getAllChatData');
+    getAllChatData: function(currentlySelectedClassID) {
+        console.log("chat.server.controller");
+        console.log(currentlySelectedClassID)
+        return $http.get('/api/getAllChatData/'+ currentlySelectedClassID);
     },
 
   };
