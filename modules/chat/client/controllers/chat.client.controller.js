@@ -81,9 +81,13 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
            // $scope.messages = response.data;
            // everytime chat is switched, it reload the new chat
-            $scope.messages = []; 
-            for(var i = 0;i<response.data.messages.length;i++){
-              $scope.messages.push(response.data.messages[i]);
+            $scope.messages = [];
+            console.log("response.data");
+            console.log(response.data);
+            if(response.data != null){
+              for(var i = 0;i<response.data.messages.length;i++){
+                $scope.messages.push(response.data.messages[i]);
+              }
             }
             console.log($scope.messages);
           },function(err){
