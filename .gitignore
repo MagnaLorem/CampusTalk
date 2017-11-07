@@ -421,4 +421,4 @@ config/env/development.js
 # By default, sensitive information, such as encrypted password
 # should be stored in the .pubxml.user file.
 
-# End of https://www.gitignore.io/api/node,webstorm,visualstudio
+# End of https://www.gitignore.io/api/node,webstorm,visualstudionode_modules
