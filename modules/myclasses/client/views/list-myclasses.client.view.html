@@ -33,7 +33,7 @@
         </table>
         <div class="classestable">
             <table class="table table-hover">
-                <tr ng-show="query" ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 200" ng-click="addCourse(myclass)">
+                <tr ng-show="query" ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 200">
                     <td> {{ myclass.courseCode }} </td>
                     <td> {{ myclass.name }} </td>
                     <td>

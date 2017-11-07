@@ -9,20 +9,21 @@
             <h2 class="myclasses-heading">My Classes</h2>
         </div>
 
-        <div class="class-list" ng-init="getAllCourses()">
-            <ul>
-                <table class="table">
-                    <tr>
-                        <th class="col-sm-4">Course Code</th>
-                        <th class="col-sm-8">Course Name</th>
-                    </tr>
-                    <tr data-ng-repeat="class in classes | orderBy:'courseCode'">
-                        <td>{{ class.courseCode }}</td>
-                        <td>{{ class.name }}</td>
-                    </tr>
-                </table>
-            </ul>
-        </div>
+    <div class="class-list" ng-init="getAllCourses()">
+      <ul>
+        <table class="table">
+          <tr>
+              <th class="col-sm-4">Course Code</th>
+              <th class="col-sm-8">Course Name</th>
+          </tr>
+          <tr data-ng-repeat="class in classes | orderBy:'courseCode'" ng-click = "retrieveSelectedChat(class)" ng-init = "setDefaultClassId(class)" 
+              ng-class = "{'custom-class': class.classId == currentlySelectedClassID}">
+              <td>{{ class.courseCode }}</td>
+              <td>{{ class.name }}</td>
+          </tr>
+        </table>
+      </ul>
+      </div>
     </div>
     <div class="col-md-8">
     <!--=========================================================-->
@@ -30,11 +31,12 @@
         <div class="test">
     <div class="bg-white messageWrapper">
         <div class="chat-message">
-            <ul class="chat">
-                <div ng-init="retrieveChatAllData()">
-                    <li data-ng-repeat="message in messages">
-                        <!--if they are not the user display on the left-->
-                        <div class="left clearfix" ng-show = "message.username != UserName">
+
+          <ul class="chat">
+            <li data-ng-repeat="message in messages">
+              <!--if they are not the user display on the left-->
+              <div class="left clearfix" ng-show = "message.username != UserName">
+
                         <span class="chat-img pull-left">
                           <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
                         </span>
@@ -47,19 +49,21 @@
                             </div>
                         </div><!-- end of left -->
                         <!--if they are the user display on the left-->
-                        <div class="right clearfix" ng-show = "message.username == UserName">
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font" data-ng-bind="message.username"></strong>
-                                    <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
-                                </div>
-                                <span data-ng-bind="message.message"></span>
-                            </div>
-                        </div> <!-- end of right -->
-                    </li>
-                </div><!-- enf of checkifSameUser-->
-            </ul>
-        </div>
+                <div class="right clearfix" ng-show = "message.username == UserName">
+                        <span class="chat-img pull-right">
+                          <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
+                        </span>
+                <div class="chat-body clearfix">
+                  <div class="header">
+                    <strong class="primary-font" data-ng-bind="message.username"></strong>
+                    <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
+                  </div>
+                  <span data-ng-bind="message.message"></span>
+                </div>
+               </div> <!-- end of right -->
+            </li>
+        </ul>
+      </div>
     </div>
         </div>
 
