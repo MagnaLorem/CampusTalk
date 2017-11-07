@@ -39,8 +39,12 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
           .then(function(response){
 
             $scope.messages = []; 
-            for(var i = 0;i<response.data.messages.length;i++){
-              $scope.messages.push(response.data.messages[i]);
+            console.log("response.data");
+            console.log(response.data);
+            if(response.data != null){
+              for(var i = 0;i<response.data.messages.length;i++){
+                $scope.messages.push(response.data.messages[i]);
+              }
             }
             console.log($scope.messages);
           },function(err){
