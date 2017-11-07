@@ -26,27 +26,15 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     });
 
     $scope.setDefaultClassId = function(selectedClass){
+
       if(!$scope.isDefaultSet){
         $scope.currentlySelectedClassID = selectedClass.classId;
-        console.log("default currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
 
-        /*
-          make a function outside so that it will be used called.
-        */
         //retreived the default chat history
         if(!$scope.isDefaultSet){
           chatService.getAllChatData($scope.currentlySelectedClassID)
           .then(function(response){
-
-            $scope.messages = []; 
-            console.log("response.data");
-            console.log(response.data);
-            if(response.data != null){
-              for(var i = 0;i<response.data.messages.length;i++){
-                $scope.messages.push(response.data.messages[i]);
-              }
-            }
-            console.log($scope.messages);
+            getMessagesForSelectedClass(response);
           },function(err){
             console.log(err);
           });
@@ -54,6 +42,18 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
         $scope.isDefaultSet = true;
       }
+    }
+
+    function getMessagesForSelectedClass(response){
+      $scope.messages = [];
+
+      if(response.data != null){//if the selected class has no conversation
+        for(var i = 0;i<response.data.messages.length;i++){
+          $scope.messages.push(response.data.messages[i]);
+        }
+      }
+      
+      console.log($scope.messages);
     }
 
     // function not used
@@ -82,18 +82,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
         chatService.getAllChatData($scope.currentlySelectedClassID)
           .then(function(response){
-
-           // $scope.messages = response.data;
-           // everytime chat is switched, it reload the new chat
-            $scope.messages = [];
-            console.log("response.data");
-            console.log(response.data);
-            if(response.data != null){
-              for(var i = 0;i<response.data.messages.length;i++){
-                $scope.messages.push(response.data.messages[i]);
-              }
-            }
-            console.log($scope.messages);
+            getMessagesForSelectedClass(response);
           },function(err){
             console.log(err);
           });
