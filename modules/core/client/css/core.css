@@ -1,6 +1,6 @@
 /* Google Fonts*/
 /*@import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400italic,700italic,400,700)*/
-@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Muli');
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 
 /*From landing page template*/
@@ -8,10 +8,12 @@ body,
 html {
     width: 100%;
     height: 100%;
-    font-family: 'Oswald', sans-serif;
-    background-color: #92ef92;
+    font-family: 'Muli', sans-serif;
+    background-color: #697137;
     /*background-color: #a7efb9;*/
     font-weight: 500;
+    background-image: linear-gradient(to bottom, #151515 -30%, #697137 100%);
+
 }
 
 body,
@@ -21,7 +23,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Muli', sans-serif;
     font-weight: 700;
 }
 
@@ -202,11 +204,11 @@ a {
 }
 
 .navbar-inverse .navbar-brand {
-    color: #5cb85c;
+    color: #af7336;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #5cb85c;
+    color: #af7336;
 }
 
 /*End of css template*/
@@ -266,3 +268,9 @@ h1 {
 .btn-outline-success, .btn-outline-success:hover, .btn-primary:active, .btn-primary:visited {
   background-image: linear-gradient(to bottom, #62f442 0%, #d8ffda 100%);
 }
+
+.navbar-inverse{
+    background-color: rgba(000,000,000,0.5)!important;
+    border-bottom: none!important;
+}
+

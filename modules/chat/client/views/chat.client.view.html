@@ -1,71 +1,20 @@
 <!-- The chat view -->
 <section class="container" data-ng-controller="ChatController">
     <div class="page-header">
-        <h1>Chat </h1>
+        <h1 class="chatH1">ABE 3003 </h1>
     </div>
-    <!-- The message form
-    <form class="col-xs-12 col-md-offset-4 col-md-4" ng-submit="sendMessage();">
-      <fieldset class="row">
-        <div class="input-group">
-          <input type="text" id="messageText" name="messageText" class="form-control" data-ng-model="messageText" placeholder="Enter new message">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </span>
-        </div>
-      </fieldset>
-    </form>
-    <ul class="list-unstyled">-->
-    <!-- List all messages
-    <div ng-init="retrieveChatAllData()">
-      <li class="col-xs-12 col-md-offset-4 col-md-4 chat-message" data-ng-repeat="message in messages">
-        <div ng-init="userCheck(message.username)">
-        <div class = "isUser" ng-show="isUser">
-        <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" class="pull-right chat-profile-image" />
-        <div class="chat-body clearfix">
-          <div class = header>
-            <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"><i class="fa fa-clock-o"></i></small>
-            <strong data-ng-bind="message.username"></strong>
-          <br>
-          </div>
-          <span data-ng-bind="message.message"></span>
-        </div>
-        </div>
-        <div class = "notUser" ng-show="!isUser">
-          <small class="pull-right text-muted" data-ng-bind="message.created | date:'mediumTime'"></small>
-          <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" class="pull-left chat-profile-image" />
-          <div class="pull-left chat-message-details">
-            <strong data-ng-bind="message.username"></strong>
-            <br>
-            <span data-ng-bind="message.message"></span>
-          </div>
-        </div>
-        </div>
-      </li>
-    </div>
-  </ul>-->
 
-    <div class="col-md-4 bg-white ">
+    <div class="col-md-4 classesWrapper">
         <div class="row border-bottom padding-sm" style="height: 40px;">
             <h2 class="myclasses-heading">My Classes</h2>
         </div>
 
-        <!-- =============================================================== -->
-        <!-- class list -->
-        <!--<ul class="class-list">-->
-        <!--<li class="active bounceInDown">-->
-        <!--<a href="#" class="clearfix">-->
-        <!--<div class="class-name">-->
-        <!--<strong>List of a Users Classes will go here</strong>-->
-        <!--</div>-->
-        <!--</a>-->
-        <!--</li>-->
-        <!--</ul>-->
         <div class="class-list" ng-init="getAllCourses()">
             <ul>
                 <table class="table">
                     <tr>
-                        <th>Course Code</th>
-                        <th>Course Name</th>
+                        <th class="col-sm-4">Course Code</th>
+                        <th class="col-sm-8">Course Name</th>
                     </tr>
                     <tr data-ng-repeat="class in classes | orderBy:'courseCode'">
                         <td>{{ class.courseCode }}</td>
@@ -75,9 +24,11 @@
             </ul>
         </div>
     </div>
+    <div class="col-md-8">
     <!--=========================================================-->
     <!-- List All Messages -->
-    <div class="col-md-8 bg-white messageWrapper">
+        <div class="test">
+    <div class="bg-white messageWrapper">
         <div class="chat-message">
             <ul class="chat">
                 <div ng-init="retrieveChatAllData()">
@@ -97,9 +48,6 @@
                         </div><!-- end of left -->
                         <!--if they are the user display on the left-->
                         <div class="right clearfix" ng-show = "message.username == UserName">
-                        <span class="chat-img pull-right">
-                          <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
-                        </span>
                             <div class="chat-body clearfix">
                                 <div class="header">
                                     <strong class="primary-font" data-ng-bind="message.username"></strong>
@@ -113,6 +61,7 @@
             </ul>
         </div>
     </div>
+        </div>
 
     <!--=========================================================-->
     <!-- Send Messages -->
@@ -125,5 +74,6 @@
             </span>
             </div>
         </form>
+    </div>
     </div>
 </section>

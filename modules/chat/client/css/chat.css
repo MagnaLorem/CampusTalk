@@ -1,3 +1,18 @@
+.chatH1{
+  color: #af7336!important;
+  text-align: center;
+  font-size: 70px!important;
+  text-shadow: 1px 1px 3px #000000!important;
+}
+
+body{
+  height: 600px!important;
+}
+
+.page-header{
+  margin-bottom: 0px!important;
+}
+
 .myclasses-heading{
   text-align: center;
 }
@@ -47,9 +62,25 @@ small, .small {
   border-radius: 50%;
 }
 
+.classesWrapper{
+  max-height: 459px;
+  height: 459px;
+  overflow: auto;
+  background-color: #d8bb88;
+  border-radius: 10px;
+
+}
+
 .messageWrapper{
   max-height: 394px;
   overflow: auto;
+
+}
+
+.test{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px!important;
+  overflow: hidden;
 }
 
 .bg-white {
@@ -130,50 +161,50 @@ img {
   margin-left: 1px;
 }
 
-.chat div.right .chat-body:before {
-  position: absolute;
-  top: 10px;
-  right: -8px;
-  display: inline-block;
-  background: #d8ffda;
-  width: 16px;
-  height: 16px;
-  border-top: 1px solid #f1f5fc;
-  border-right: 1px solid #f1f5fc;
-  content: '';
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-}
-
 .chat div {
   margin: 15px 0;
 }
 
 .chat div.right .chat-body {
-  margin-right: 70px;
-  background-color: #d8ffda;
+  margin-right: 0px;
+  background-color: #d8bb88;
 }
 
 .chat-box {
-    float: right;
+  float: right;
   padding: 15px;
+  width: 100%;
+  margin-bottom: 10px;
   border-top: 1px solid #eee;
   transition: all .5s ease;
   -webkit-transition: all .5s ease;
   -moz-transition: all .5s ease;
   -ms-transition: all .5s ease;
   -o-transition: all .5s ease;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .primary-font {
-  color: #3c8dbc;
+  color: #af7336;
 }
 
 a:hover, a:active, a:focus {
   text-decoration: none;
   outline: 0;
 }
+
+.btn-success{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
+  border-color: #7A492C;
+}
+
+.btn-success:hover, .btn-success:focus {
+  background-color: #7A492C;
+  border-color: #7A492C;
+  background-position: 0 -15px;
+}
+
+
+
 
