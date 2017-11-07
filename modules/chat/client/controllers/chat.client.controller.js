@@ -7,6 +7,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.messages = [];
     $scope.UserName = Authentication.user.username;
     $scope.classes = [];
+    $scope.currentlySelectedClassID;
+    $scope.isDefaultSet = false;
     
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -23,6 +25,44 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       $scope.messages.push(message);
     });
 
+    $scope.setDefaultClassId = function(selectedClass){
+
+      if(!$scope.isDefaultSet){
+        $scope.currentlySelectedClassID = selectedClass.classId;
+
+        //retreived the default chat history
+        if(!$scope.isDefaultSet){
+          chatService.getAllChatData($scope.currentlySelectedClassID)
+          .then(function(response){
+            getMessagesForSelectedClass(response);
+          },function(err){
+            console.log(err);
+          });
+        }
+
+        $scope.isDefaultSet = true;
+      }
+    }
+
+    function getMessagesForSelectedClass(response){
+      $scope.messages = [];
+
+      if(response.data != null){//if the selected class has no conversation
+        for(var i = 0;i<response.data.messages.length;i++){
+          $scope.messages.push(response.data.messages[i]);
+        }
+      }
+      
+      console.log($scope.messages);
+    }
+
+    // function not used
+    $scope.getClassInfoOnChatPage = function(selectedClass){
+      $scope.currentlySelectedClassID = selectedClass.classId;
+      console.log("currentlySelectedClassID : " + $scope.currentlySelectedClassID+"\n");
+
+    }// end of getClassInfoOnChatPage
+
     $scope.getAllCourses = function(){
       // Find the user's classes through the factory
       UserclassesService.getUserclasses().then(function(response){
@@ -33,32 +73,32 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       });
     }
 
-    $scope.retrieveChatAllData = function(){
+    $scope.retrieveSelectedChat = function(selectedClass){
 
-      chatService.getAllChatData()
-        .then(function(response){
+      if($scope.currentlySelectedClassID != selectedClass.classId){
+        
+        //update the selected classID
+        $scope.currentlySelectedClassID = selectedClass.classId;
 
-          $scope.messages = response.data;
-          console.log($scope.messages);
-        },function(err){
-          console.log(err);
-        });
+        chatService.getAllChatData($scope.currentlySelectedClassID)
+          .then(function(response){
+            getMessagesForSelectedClass(response);
+          },function(err){
+            console.log(err);
+          });
+      }
     }
 
     // Create a controller method for sending messages
     $scope.sendMessage = function () {
 
       //create a object to save to db
-
-      var classID = "asd";
-     // var JsonClassID = JSON.stringify(classID);
-      
       var chatData = {
         "username": Authentication.user.username,
         "profileImageURL": Authentication.user.profileImageURL,
         "message" : this.messageText,
         "created" : Date.now(),
-        "classID" : classID
+        "classID" : $scope.currentlySelectedClassID
       }
       
       console.log(chatData);
@@ -80,5 +120,6 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.$on('$destroy', function () {
       Socket.removeListener('chatMessage');
     });
+
   }
 ]);
