@@ -1,24 +1,31 @@
-<section>
-    <div class="col-md-12 classeswrapper">
-    <div class="col-md-4 usersclassesdiv">
-        <h2 id="your_classes">Your Classes</h2>
-            <table class="table table-hover" ng-init="vm.findCourses()">
-                <tr>
-                    <th>Course Code</th>
-                    <th>Course Name</th>
-                </tr>
-                <tr ng-repeat="class in vm.userclasses | orderBy:'courseCode'">
-                    <td> {{ class.courseCode }} </td>
-                    <td> {{ class.name }} </td>
-                    <!--button to delete item listed-->
-                    <td>
-                        <button class="btn btn-danger btn-sm pull-right" type="button" ng-click="vm.deleteCourse(class)">
-                            <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
-    </div>
+<section class="container">
+        <div class="pageWrapper">
+            <div class="col-md-4 classesWrapper">
+                <div class="row border-bottom padding-sm" style="height: 40px;">
+                    <h2 class="myclasses-heading">My Classes</h2>
+                </div>
+
+                <div class="class-list" ng-init="vm.findCourses()">
+                    <ul>
+                        <table class="table">
+                            <tr id="firstRow">
+                                <th class="col-sm-4">Course Code</th>
+                                <th class="col-sm-8">Course Name</th>
+                            </tr>
+                            <tr ng-repeat="class in vm.userclasses | orderBy:'courseCode'">
+                                <td> {{ class.courseCode }} </td>
+                                <td> {{ class.name }} </td>
+                                <!--button to delete item listed-->
+                                <td>
+                                    <button class="btn btn-danger btn-sm pull-right" type="button" ng-click="vm.deleteCourse(class)">
+                                        <span class="glyphicon glyphicon-trash " aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </ul>
+                </div>
+            </div>
     <div class="col-md-8 searchclassesdiv">
         <h2 id="search_for_classes">Add A Class</h2>
         <div class="input-group" id="searchBar">

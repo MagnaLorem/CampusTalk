@@ -2,28 +2,10 @@
     text-align:center;
     border-bottom: none;
 }
-
-.list_of_classes{
-    margin: 0 auto;
-    font-size: 25px;
-    width: 60%;
-    border: solid #333 2px;
+#firstRow{
+    border-top: 1px solid white !important;
 }
 
-.list_of_classes a{
-    border-bottom: solid green 2px;
-    display: block;
-    padding: 10px;
-}
-
-.list_of_classes ul{
-    padding-left: 20px;
-    padding-right: 20px;
-}
-.list_of_classes{
-    font-size: 20px;
-    float: right;
-}
 #deleteButton{
     padding-top: 9px;
     padding-bottom: 9px;
@@ -74,9 +56,21 @@
     overflow: scroll;
 }
 
-.usersclassesdiv{
-    max-height: calc(100vh - 55px);
-    overflow: scroll;
+.classesWrapper{
+    max-height: 555px;
+    height: 555px;
+    overflow: auto;
+    background-color: #d8bb88;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px;
+}
+
+.myclasses-heading{
+    text-align: center;
+}
+
+#classListPage{
+    margin-left: 0px !important;
 }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
