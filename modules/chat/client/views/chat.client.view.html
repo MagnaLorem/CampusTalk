@@ -1,9 +1,6 @@
 <!-- The chat view -->
 <section class="container" data-ng-controller="ChatController">
-    <div class="page-header">
-        <h1 class="chatH1">ABE 3003 </h1>
-    </div>
-
+    <div class="pageWrapper">
     <div class="col-md-4 classesWrapper">
         <div class="row border-bottom padding-sm" style="height: 40px;">
             <h2 class="myclasses-heading">My Classes</h2>
@@ -17,7 +14,7 @@
               <th class="col-sm-8">Course Name</th>
           </tr>
           <tr data-ng-repeat="class in classes | orderBy:'courseCode'" ng-click = "retrieveSelectedChat(class)" ng-init = "setDefaultClassId(class)" 
-              ng-class = "{'custom-class': class.classId == currentlySelectedClassID}">
+              ng-class = "{'custom-class': class.classId == currentlySelectedClassID}" class="hover-classes">
               <td>{{ class.courseCode }}</td>
               <td>{{ class.name }}</td>
           </tr>
@@ -28,7 +25,7 @@
     <div class="col-md-8">
     <!--=========================================================-->
     <!-- List All Messages -->
-        <div class="test">
+        <div class="rounded-top-corners">
     <div class="bg-white messageWrapper">
         <div class="chat-message">
 
@@ -50,9 +47,6 @@
                         </div><!-- end of left -->
                         <!--if they are the user display on the left-->
                 <div class="right clearfix" ng-show = "message.username == UserName">
-                        <span class="chat-img pull-right">
-                          <img data-ng-src="{{message.profileImageURL}}" alt="{{message.username}}" />
-                        </span>
                 <div class="chat-body clearfix">
                   <div class="header">
                     <strong class="primary-font" data-ng-bind="message.username"></strong>
@@ -78,6 +72,7 @@
             </span>
             </div>
         </form>
+    </div>
     </div>
     </div>
 </section>
