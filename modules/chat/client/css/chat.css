@@ -110,10 +110,14 @@ img {
 
 .chat-body {
   padding-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .chat div.left .chat-body {
   margin-left: 70px;
+  margin-bottom: 0px;
+  margin-top: 0px;
   background-color: #fff;
 }
 
