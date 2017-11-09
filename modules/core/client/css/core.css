@@ -277,12 +277,25 @@ h1 {
   background-color: #d8ffda;
 }
 
-.btn-outline-success, .btn-outline-success:hover, .btn-primary:active, .btn-primary:visited {
-  background-image: linear-gradient(to bottom, #62f442 0%, #d8ffda 100%);
-}
-
 .navbar-inverse{
     background-color: rgba(000,000,000,0.5)!important;
     border-bottom: none!important;
 }
 
+.btn-danger{
+    background-image: linear-gradient(to bottom, #697137 0%, #414622 100%);
+    border-color: #414622;
+}
+
+.btn-danger:hover, .btn-danger:active, .btn-danger:focus{
+    border-color: #414622;
+    background-color: #414622;
+}
+
+.btn-default:focus{
+    background-position: 0 0;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{
+    outline: 5px auto #414622;
+}

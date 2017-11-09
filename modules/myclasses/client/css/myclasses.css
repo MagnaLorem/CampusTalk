@@ -126,12 +126,4 @@ small, .small {
     background-position: 0 -15px;
 }
 
-.btn-danger{
-    background-image: linear-gradient(to bottom, #697137 0%, #414622 100%);
-    border-color: #414622;
-}
 
-.btn-danger:hover{
-    border-color: #414622;
-    background-color: #414622;
-}

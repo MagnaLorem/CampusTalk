@@ -51,7 +51,7 @@
 }
 
 /*CSS for List of Users Page*/
-.input-group{
+.users-list{
   padding: 0px;
 }
 
@@ -74,7 +74,7 @@
   margin-top: 10px;
 }
 
-.pagination > .active > a, .btn-primary{
+.pagination > .active > a, .edit-btn{
   background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
   border-color: #af7336;
 
@@ -84,25 +84,25 @@
   border-color:  #af7336;
 }
 
-.btn-outline-success, .btn-outline-success:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus{
+.btn-outline-success, .btn-outline-success:hover, .edit-btn:active, .edit-btn:visited, .edit-btn:focus{
   background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
   border-color: #af7336!important;
 }
 
-.btn-primary:hover{
+.edit-btn:hover{
   color: white;
   background-color: #7a492c;
   border-color: #7a492c;
 }
 
-.btn-default{
+.edit-btn{
   background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
   border-color: #af7336;
   color: white!important;
   text-shadow: none!important;
 }
 
-.btn-default:hover{
+.edit-btn:hover{
   color: white;
   background-color: #7a492c;
   border-color: #7a492c;
