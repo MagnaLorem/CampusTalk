@@ -1,3 +1,33 @@
 .intro-message{
     margin-top: 0px;
 }
+
+.list-group-item{
+    background-color: #d8bb88;
+    border-color: #d8bb88;
+}
+
+.list-group-item:hover{
+    background-color: #af7336!important;
+    border-color: #af7336!important;
+}
+
+.news-h1{
+    color: #af7336!important;
+}
+
+h2{
+    padding-bottom: 10px;
+}
+
+.view-news{
+    border-bottom: none;
+}
+
+.news-article{
+    background-color: #d8bb88;
+    padding: 30px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px;
+}
