@@ -48,6 +48,11 @@ a {
     border-color: black;
 }
 
+.form-control:focus{
+    border-color: #697137;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #697137;
+}
+
 .topnav {
     font-size: 14px;
 }
@@ -83,34 +88,8 @@ a {
     margin-top: 45px;
 }
 
-.class-list {
-    list-style: none;
-    margin-left: -40px;
-    margin-top: 35px;
-}
-
-.class-list li {
-    border-bottom: 1px solid #eee;
-}
-
-.class-list li a {
-    position: relative;
-    display: block;
-    padding: 10px;
-    transition: all .2s ease;
-    -webkit-transition: all .2s ease;
-    -moz-transition: all .2s ease;
-    -ms-transition: all .2s ease;
-    -o-transition: all .2s ease;
-}
-
-.class-list li.active a {
-    background-color: #f1f5fc;
-}
-
-.class-list li a .class-name,
-.class-list li a .class-name:hover {
-    color: #777;
+.table > tbody > tr > td, .table > tbody > tr > th{
+    border-top: 1px solid #FFF!important;
 }
 
 #mainLogo {

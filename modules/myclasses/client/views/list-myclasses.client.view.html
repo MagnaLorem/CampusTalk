@@ -1,6 +1,7 @@
 <section class="container">
-        <div class="pageWrapper">
-            <div class="col-md-4 classesWrapper">
+<div class="pageWrapper">
+            <!--List of User's Classes on the Left -->
+    <div class="col-md-4 classesWrapper">
                 <div class="row border-bottom padding-sm" style="height: 40px;">
                     <h2 class="myclasses-heading">My Classes</h2>
                 </div>
@@ -8,9 +9,10 @@
                 <div class="class-list" ng-init="vm.findCourses()">
                     <ul>
                         <table class="table">
-                            <tr id="firstRow">
+                            <tr>
                                 <th class="col-sm-4">Course Code</th>
                                 <th class="col-sm-8">Course Name</th>
+                                <th class="col-sm-4"></th>
                             </tr>
                             <tr ng-repeat="class in vm.userclasses | orderBy:'courseCode'">
                                 <td> {{ class.courseCode }} </td>
@@ -26,34 +28,39 @@
                     </ul>
                 </div>
             </div>
-    <div class="col-md-8 searchclassesdiv">
-        <h2 id="search_for_classes">Add A Class</h2>
-        <div class="input-group" id="searchBar">
-            <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Enter the course code or name (e.g. 'IUF 1000' or 'What is the Good Life')" ng-model="query">
-        </div>
-        <table ng-show="query" class="table table-hover">
-            <tr>
-                <th>Course Code</th>
-                <th>Course Name</th>
-            </tr>
-        </table>
-        <div class="classestable">
-            <table class="table table-hover">
-                <tr ng-show="query" ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 200">
-                    <td> {{ myclass.courseCode }} </td>
-                    <td> {{ myclass.name }} </td>
-                    <td>
-                        <button ng-show="!vm.checkIfAdded(myclass)" class="btn btn-default btn-sm pull-right" type="button" ng-click="vm.addCourse(myclass)">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button>
-                        <button ng-show="vm.checkIfAdded(myclass)" class="btn btn-success btn-sm pull-right" type="button">
-                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                        </button>
-                    </td>
-                </tr>
-            </table>
+            <!--Search Div for Classes on the Right -->
+    <div class="col-md-8">
+        <div class ="rounded-corners">
+            <div class="searchWrapper">
+                <h2 id="search_for_classes">Add A Class</h2>
+                <div class="input-group" id="searchBar">
+                    <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control" placeholder="Enter the course code or name (e.g. 'IUF 1000' or 'What is the Good Life')" ng-model="query">
+                </div>
+                <table ng-show="query" class="table table-hover">
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                    </tr>
+                </table>
+                <div class="classestable">
+                <table class="table table-hover">
+                    <tr ng-show="query" ng-repeat="myclass in vm.myclasses | filter:query | orderBy:'courseCode' | limitTo: 200">
+                        <td> {{ myclass.courseCode }} </td>
+                        <td> {{ myclass.name }} </td>
+                        <td>
+                            <button ng-show="!vm.checkIfAdded(myclass)" class="btn btn-default btn-sm pull-right" type="button" ng-click="vm.addCourse(myclass)">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
+                            <button ng-show="vm.checkIfAdded(myclass)" class="btn btn-success btn-sm pull-right" type="button">
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+</div>
 </section>
