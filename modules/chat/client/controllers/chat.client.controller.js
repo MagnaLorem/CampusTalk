@@ -9,6 +9,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
+    $scope.noMessages = false;
     
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -51,6 +52,10 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
         for(var i = 0;i<response.data.messages.length;i++){
           $scope.messages.push(response.data.messages[i]);
         }
+      }
+      if($scope.messages.length === 0){
+        $scope.noMessages = true;
+        console.log("there are no messages");
       }
       
       console.log($scope.messages);

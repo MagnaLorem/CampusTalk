@@ -30,7 +30,10 @@
         <div class="rounded-top-corners">
         <div class="bg-white messageWrapper">
         <div class="chat-message">
-
+            <!--If there are no messages display this div -->
+            <div class="noMessages" ng-show="noMessages">
+                Start the conversation by sending a message below!
+            </div>
           <ul class="chat">
             <li data-ng-repeat="message in messages">
               <!--if they are not the user display on the left-->
