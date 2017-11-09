@@ -296,6 +296,16 @@ h1 {
     background-position: 0 0;
 }
 
+.btn-primary:focus{
+    background-position: 0 0;
+}
+
 .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{
     outline: 5px auto #414622;
+}
+
+.dropdown-menu > .active > a,.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover{
+    background-color: #FFF!important;
+    background-image: none;
+    color: #af7336;
 }

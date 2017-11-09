@@ -75,13 +75,18 @@
 }
 
 .pagination > .active > a, .edit-btn{
-  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
-  border-color: #af7336;
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
+  border-color: #af7336!important;
 
 }
 
 .pagination > .active > a:hover{
   border-color:  #af7336;
+}
+
+.btn-primary > .edit-btn:active, .btn-primary > .edit-btn:focus{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
+  border-color: #af7336!important;
 }
 
 .btn-outline-success, .btn-outline-success:hover, .edit-btn:active, .edit-btn:visited, .edit-btn:focus{
@@ -153,4 +158,40 @@
 
 .table-list{
   border-bottom: solid 2px #FFF;
+}
+
+/* Settings */
+.settings-menu{
+  margin-left: 30px;
+  background-color: rgba(000,000,000,0.5)!important;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#settings{
+  margin-left: 20px;
+}
+
+#h1-settings{
+  color: white;
+}
+
+.links{
+  color: #af7336!important;
+  background: none;
+}
+
+.links:hover {
+  color: #FFF!important;
+  background: none!important;
+}
+
+.nav-pills > li.active > a{
+  background-color: #FFF!important;
+}
+
+.nav-pills > li.active > a:hover{
+  color: #af7336!important;
 }
