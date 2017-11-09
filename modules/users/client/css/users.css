@@ -150,3 +150,7 @@
 .page-header{
   border: none;
 }
+
+.table-list{
+  border-bottom: solid 2px #FFF;
+}

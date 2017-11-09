@@ -10,7 +10,7 @@
             <input type="text" class="form-control" placeholder="Search for users" data-ng-model="search" ng-change="figureOutItemsToDisplay()" />
         </div>
             <div class="list_of_users list-group">
-                <a data-ng-repeat="user in pagedItems" data-ui-sref="admin.user({userId: user._id})" class="list-group-item">
+                <a data-ng-repeat="user in pagedItems" data-ui-sref="admin.user({userId: user._id})" class="list-group-item table-list">
                 <h4 class="list-group-item-heading" data-ng-bind="user.username"></h4>
                 <p class="list-group-item-text" data-ng-bind="user.email"></p>
                 </a>

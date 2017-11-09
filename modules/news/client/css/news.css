@@ -31,3 +31,13 @@ h2{
 .text-area{
     height: 250px!important;
 }
+
+.buttons{
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.news-list{
+    margin-bottom: 7px;
+    border-bottom: none!important;
+}

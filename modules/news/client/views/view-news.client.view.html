@@ -2,9 +2,9 @@
   <div class="page-header intro-message view-news">
     <h1 ng-bind="vm.news.name"></h1>
   </div>
-  <div class="pull-right"
+  <div class="pull-right buttons"
        ng-show="vm.news.isCurrentUserOwner">
-    <a class="btn btn-primary"
+    <a class="btn btn-primary edit-btn"
        ui-sref="news.edit({ newsId: vm.news._id })">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
