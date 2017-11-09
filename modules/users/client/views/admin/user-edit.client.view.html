@@ -1,8 +1,9 @@
 <section>
   <div class="page-header">
-    <h1>User <span data-ng-bind="user.username"</span</h1>
+    <h1 class="username edit-user">Username: <span data-ng-bind="user.username"</span</h1>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-6 col-md-offset-3 formWrapper">
+  <div class="inputs">
     <form name="userForm" class="form-horizontal" data-ng-submit="update()" novalidate>
       <fieldset>
         <div class="form-group">
@@ -31,5 +32,6 @@
         </div>
       </fieldset>
     </form>
+  </div>
   </div>
 </section>

@@ -1,25 +1,20 @@
 <section>
-  <div class="page-header">
-    <div class="row">
-      <div class="col-md-6">
-        <h1 data-ng-bind="user.username"></h1>
-      </div>
-      <div class="col-md-4">
-        <a class="btn btn-primary" data-ui-sref="admin.user-edit({userId: user._id})">
-          <i class="glyphicon glyphicon-edit"></i>
-        </a>
-        <a class="btn btn-primary" data-ng-click="remove();" ng-if="user._id !== authentication.user._id">
-          <i class="glyphicon glyphicon-trash"></i>
-        </a>
-      </div>
+    <div class="col-md-6 col-md-offset-3">
+        <h1 data-ng-bind="user.username" class="username"></h1>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-6 col-md-offset-3 dataWrapper">
       <div class="row">
-        <div class="col-md-3"><strong>First Name</strong></div>
-        <div class="col-md-6" data-ng-bind="user.firstName"></div>
+        <div class="col-md-3 vertical-align"><strong>First Name</strong></div>
+        <div class="col-md-6 vertical-align" data-ng-bind="user.firstName"></div>
+        <div class="col-md-3">
+          <a class="btn btn-primary edit-btn" data-ui-sref="admin.user-edit({userId: user._id})">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn btn-danger" data-ng-click="remove();" ng-if="user._id !== authentication.user._id">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </div>
       </div>
       <hr/>
       <div class="row">
@@ -32,20 +27,19 @@
         <div class="col-md-6" data-ng-bind="user.email"></div>
       </div>
       <hr/>
-      <div class="row">
+      <!--<div class="row">
         <div class="col-md-3"><strong>Provider</strong></div>
         <div class="col-md-6" data-ng-bind="user.provider"></div>
       </div>
-      <hr/>
+      <hr/>-->
       <div class="row">
-        <div class="col-md-3"><strong>Created</strong></div>
-        <div class="col-md-6" data-ng-bind="user.created"></div>
+        <div class="col-md-3"><strong>Created On</strong></div>
+        <div class="col-md-6" data-ng-bind="user.created | date:'short'"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Roles</strong></div>
+        <div class="col-md-3"><strong>Role</strong></div>
         <div class="col-md-6" data-ng-bind="user.roles"></div>
       </div>
     </div>
-  </div>
 </section>

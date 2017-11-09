@@ -45,8 +45,108 @@
 }
 
 .list_of_users{
-  margin-left: 9%;
-  margin-right: 9%;
   font-size: 25px;
-  border: solid #333 2px;
+  border: solid #FFF 1px;
+  border-top: none;
+}
+
+/*CSS for List of Users Page*/
+.input-group{
+  padding: 0px;
+}
+
+.intro-message{
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.user-table{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.list-group-item{
+  border-bottom: solid #FFF 1px;
+}
+
+.pagination{
+  padding-left: 53px;
+  margin-top: 10px;
+}
+
+.pagination > .active > a, .btn-primary{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
+  border-color: #af7336;
+
+}
+
+.pagination > .active > a:hover{
+  border-color:  #af7336;
+}
+
+.btn-outline-success, .btn-outline-success:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
+  border-color: #af7336!important;
+}
+
+.btn-primary:hover{
+  color: white;
+  background-color: #7a492c;
+  border-color: #7a492c;
+}
+
+.btn-default{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
+  border-color: #af7336;
+  color: white!important;
+  text-shadow: none!important;
+}
+
+.btn-default:hover{
+  color: white;
+  background-color: #7a492c;
+  border-color: #7a492c;
+}
+
+
+.edit-btn{
+  margin-right: 10px;
+}
+
+.username{
+  margin-bottom: 25px;
+  font-size: 55px;
+  color: #FFF;
+}
+
+.vertical-align{
+  padding-top: 10px;
+}
+
+.dataWrapper{
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #d8bb88;
+  box-shadow: 5px 5px 20px;
+}
+
+/*Edting User's Information Page*/
+.edit-user{
+  padding-top: 35px;
+}
+
+.formWrapper{
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #d8bb88;
+  box-shadow: 5px 5px 20px;
+}
+
+.inputs{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.page-header{
+  border: none;
 }
