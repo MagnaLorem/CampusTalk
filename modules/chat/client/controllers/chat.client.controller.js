@@ -107,18 +107,21 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       }
 
       console.log(chatData);
-      chatService.saveChatData(chatData)
-        .then(function(response){
-          console.log("succefully saved chat data");
-        },function(err){
-          console.log(err);
-      });
+      //check if the message is empty
+      if(this.messageText != '' && typeof(this.messageText) !== 'undefined'){
+        chatService.saveChatData(chatData)
+          .then(function(response){
+            console.log("succefully saved chat data");
+          },function(err){
+            console.log(err);
+        });
+        
+        // Emit a 'chatMessage' message event
+        Socket.emit('chatMessage', chatData);
 
-      // Emit a 'chatMessage' message event
-      Socket.emit('chatMessage', chatData);
-
-      // Clear the message text
-      this.messageText = '';
+        // Clear the message text
+        this.messageText = '';
+      }
     };
 
     // Remove the event listener when the controller instance is destroyed

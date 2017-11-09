@@ -4,8 +4,6 @@
 
 var chatData = require('../models/chat.server.model.js');
 module.exports = function (io, socket) {
-  // Emit the status event when a new socket client is connected
-  io.emit('message', "A user has connected");
 
   // Send a chat messages to all connected sockets when a message is received
   socket.on('chatMessage', function (chatData) {
@@ -26,17 +24,20 @@ module.exports = function (io, socket) {
     console.log("\ndisplayMessage");
     console.log(Message);
 
+    //send the message to specific room
     io.in(socket.room).emit('chatMessage', Message);
   });
 
   // Switch the room
   socket.on('switchRoom', function(newRoom){
-    console.log("======== Old Room ========");
-    console.log(socket.room);
-    console.log("==========================\n");
 
+    if(typeof(socket.room) !== 'undefined'){
+      console.log("======== Old Room ========");
+      console.log(socket.room);
+      console.log("==========================\n");
     // Leave the current room
-    socket.leave(socket.room);
+      socket.leave(socket.room);
+    }
 
     // Join the new room
     socket.room = newRoom;
