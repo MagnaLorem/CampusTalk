@@ -5,13 +5,7 @@
 var chatData = require('../models/chat.server.model.js');
 module.exports = function (io, socket) {
   // Emit the status event when a new socket client is connected
-  io.emit('chatMessage', {
-    type: 'status',
-    text: 'Is now connected',
-    created: Date.now(),
-    profileImageURL: socket.request.user.profileImageURL,
-    username: socket.request.user.username
-  });
+  io.emit('message', "A user has connected");
 
   // Send a chat messages to all connected sockets when a message is received
   socket.on('chatMessage', function (chatData) {
@@ -19,7 +13,7 @@ module.exports = function (io, socket) {
     console.log("charData : \n");
     console.log(chatData.message);
    // socket.join(chatData.classID);
-    //create the chat object to show 
+    //create the chat object to show
     var Message = {
       message: chatData.message,
       type:'message',
@@ -28,11 +22,30 @@ module.exports = function (io, socket) {
       username: chatData.username,
       classID: chatData.classID
     }
-    
+
     console.log("\ndisplayMessage");
     console.log(Message);
 
-    io.emit('chatMessage', Message);
+    io.in(socket.room).emit('chatMessage', Message);
+  });
+
+  // Switch the room
+  socket.on('switchRoom', function(newRoom){
+    console.log("======== Old Room ========");
+    console.log(socket.room);
+    console.log("==========================\n");
+
+    // Leave the current room
+    socket.leave(socket.room);
+
+    // Join the new room
+    socket.room = newRoom;
+    socket.join(newRoom);
+
+
+    console.log("======= New Room =======");
+    console.log(socket.room);
+    console.log("========================\n");
   });
 
   // Emit the status event when a socket client is disconnected
