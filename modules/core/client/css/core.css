@@ -38,8 +38,11 @@ p.copyright {
 }
 
 a {
-    color: #5cb85c;
+    color: #af7336;
     text-decoration: none;
+}
+a:hover{
+    color: #FFF;
 }
 
 .form-group input {
@@ -47,6 +50,8 @@ a {
     color: rgb(0, 0, 0);
     border-color: black;
 }
+
+
 
 .form-control:focus{
     border-color: #697137;
@@ -277,10 +282,11 @@ h1 {
   background-color: #d8ffda;
 }
 
-.navbar-inverse{
+.navbar-inverse, footer{
     background-color: rgba(000,000,000,0.5)!important;
     border-bottom: none!important;
 }
+
 
 .btn-danger{
     background-image: linear-gradient(to bottom, #697137 0%, #414622 100%);
