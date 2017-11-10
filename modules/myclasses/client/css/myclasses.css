@@ -1,51 +1,11 @@
-.page-header{
-    text-align:center;
-    border-bottom: none;
-}
-
-.list_of_classes{
-    margin: 0 auto;
-    font-size: 25px;
-    width: 60%;
-    border: solid #333 2px;
-}
-
-.list_of_classes a{
-    border-bottom: solid green 2px;
-    display: block;
-    padding: 10px;
-}
-
-.list_of_classes ul{
+#search_for_classes{
     padding-left: 20px;
-    padding-right: 20px;
+    padding-bottom: 13px;
 }
-.list_of_classes{
-    font-size: 20px;
-    float: right;
-}
+
 #deleteButton{
     padding-top: 9px;
     padding-bottom: 9px;
-}
-
-.search_box{
-    margin: 50px auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    border: 2px solid #333;
-    width: 60%
-}
-
-.search_box h2{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.form-control:focus {
-    outline: none !important;
-    box-shadow: 0 0 5px green;
 }
 
 .btn .glyphicon-plus{
@@ -65,25 +25,105 @@
     transition: background-color 0.5s ease-out;
 }
 
-.spacing_above_list_of_classes{
-    margin-top: 50px;
+.classesWrapper{
+    max-height: 555px;
+    height: 555px;
+    overflow: auto;
+    background-color: #d8bb88;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px;
 }
 
-.classestable{
-    max-height: calc(100vh - 205px);
-    overflow: scroll;
+.myclasses-heading{
+    text-align: center;
 }
 
-.usersclassesdiv{
-    max-height: calc(100vh - 55px);
-    overflow: scroll;
+.searchWrapper{
+    max-height: 555px;
+    height: 555px;
+    overflow: auto;
+    box-shadow: 5px 5px 20px;
+    background-color: #f9f9f9;
 }
 
-.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td{
-    border-top: 1px solid white;
+body{
+    height: 600px!important;
 }
 
-.firstRow{
-    border-top: none !important;
-    padding-top: 13px !important;
+.myclasses-heading{
+    text-align: center;
 }
+.class-list {
+    list-style: none;
+    margin-left: -40px;
+    margin-top: 35px;
+    overflow: auto;
+}
+
+.class-list li {
+    border-bottom: 1px solid #FFF;
+}
+
+.class-list li a {
+    position: relative;
+    display: block;
+    padding: 10px;
+    transition: all .2s ease;
+    -webkit-transition: all .2s ease;
+    -moz-transition: all .2s ease;
+    -ms-transition: all .2s ease;
+    -o-transition: all .2s ease;
+}
+
+.class-list li.active a {
+    background-color: #f1f5fc;
+}
+
+.class-list li a .class-name,
+.class-list li a .class-name:hover {
+    color: #777;
+}
+
+.input-group{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+small, .small {
+    font-size: 85%;
+}
+
+.classesWrapper{
+    max-height: 555px;
+    height: 555px;
+    overflow: auto;
+    background-color: #d8bb88;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px;
+
+}
+
+.rounded-corners{
+    overflow: hidden;
+    box-shadow: 5px 5px 20px;
+    border-radius: 10px;
+}
+
+.input-group-addon{
+    background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
+    border-color: #7A492C;
+    color: #FFF;
+}
+
+.btn-success{
+    background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
+    border-color: #7A492C;
+}
+
+.btn-success:hover, .btn-success:focus {
+    background-color: #7A492C;
+    border-color: #7A492C;
+    background-position: 0 -15px;
+}
+
+
