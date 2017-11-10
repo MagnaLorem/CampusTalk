@@ -315,3 +315,15 @@ h1 {
     background-image: none;
     color: #af7336;
 }
+
+.img1{
+    border-radius: 10px;
+    height: 70%;
+    width: 70%;
+    margin-left: 58px;
+}
+
+.img2{
+    border-radius: 10px;
+
+}
