@@ -1,7 +1,7 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService', 'UserclassesService', 
+angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService', 'UserclassesService',
   function ($scope, $location, Authentication, Socket, chatService, UserclassesService) {
     // Create a messages array
     $scope.messages = [];
@@ -9,7 +9,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
-    
+
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
       $location.path('/');
@@ -29,6 +29,9 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
       if(!$scope.isDefaultSet){
         $scope.currentlySelectedClassID = selectedClass.classId;
+
+        // Switch which room to chat to
+        switchRoom();
 
         //retreived the default chat history
         if(!$scope.isDefaultSet){
@@ -52,7 +55,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
           $scope.messages.push(response.data.messages[i]);
         }
       }
-      
+
       console.log($scope.messages);
     }
 
@@ -76,9 +79,11 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.retrieveSelectedChat = function(selectedClass){
 
       if($scope.currentlySelectedClassID != selectedClass.classId){
-        
         //update the selected classID
         $scope.currentlySelectedClassID = selectedClass.classId;
+
+        // Switch which room to chat to
+        switchRoom();
 
         chatService.getAllChatData($scope.currentlySelectedClassID)
           .then(function(response){
@@ -100,26 +105,38 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
         "created" : Date.now(),
         "classID" : $scope.currentlySelectedClassID
       }
-      
+
       console.log(chatData);
-      chatService.saveChatData(chatData)
-        .then(function(response){
-          console.log("succefully saved chat data");
-        },function(err){
-          console.log(err);
-      });
-      
-      // Emit a 'chatMessage' message event
-      Socket.emit('chatMessage', chatData);
-      
-      // Clear the message text
-      this.messageText = '';
+      //check if the message is empty
+      if(this.messageText != '' && typeof(this.messageText) !== 'undefined'){
+        chatService.saveChatData(chatData)
+          .then(function(response){
+            console.log("succefully saved chat data");
+          },function(err){
+            console.log(err);
+        });
+        
+        // Emit a 'chatMessage' message event
+        Socket.emit('chatMessage', chatData);
+
+        // Clear the message text
+        this.messageText = '';
+      }
     };
 
     // Remove the event listener when the controller instance is destroyed
     $scope.$on('$destroy', function () {
       Socket.removeListener('chatMessage');
     });
+
+    // Function to switch the chat room
+    function switchRoom(){
+      // Grab the current classId and convert it to String
+      var room = $scope.currentlySelectedClassID.toString();
+
+      // Switch rooms using socket.io function
+      Socket.emit('switchRoom', room);
+    }
 
   }
 ]);
