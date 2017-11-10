@@ -31,7 +31,7 @@
         <div class="bg-white messageWrapper">
         <div class="chat-message">
             <!--If there are no messages display this div -->
-            <div class="noMessages" ng-show="noMessages">
+            <div class="noMessages" ng-show="checkMessageArray(messages)">
                 Start the conversation by sending a message below!
             </div>
           <ul class="chat">

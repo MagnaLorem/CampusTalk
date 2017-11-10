@@ -9,7 +9,6 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
-    $scope.noMessages = false;
     
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -53,13 +52,15 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
           $scope.messages.push(response.data.messages[i]);
         }
       }
-      if($scope.messages.length === 0){
-        $scope.noMessages = true;
-        console.log("there are no messages");
-      }
       
       console.log($scope.messages);
     }
+    //check if message array is empty
+      $scope.checkMessageArray = function(messageArray){
+        if(messageArray.length === 0){
+          return true;
+        }
+      }
 
     // function not used
     $scope.getClassInfoOnChatPage = function(selectedClass){
