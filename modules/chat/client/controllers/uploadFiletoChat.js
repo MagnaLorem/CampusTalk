@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('users').controller('ChangeProfilePictureController', ['$scope', '$timeout', '$window', 'Authentication', 'FileUploader',
+angular.module('chat').controller('uploadImageController', ['$scope', '$timeout', '$window', 'Authentication', 'FileUploader',
   function ($scope, $timeout, $window, Authentication, FileUploader) {
     $scope.user = Authentication.user;
     $scope.imageURL = $scope.user.profileImageURL;
@@ -23,6 +23,11 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
     $scope.uploader.onAfterAddingFile = function (fileItem) {
 
     console.log("uploader.onAfterAddingFile in chat module");
+    console.log("fileItem");
+    console.log(fileItem);
+    console.log("fileItem._file = ");
+    console.log(fileItem._file);
+
       if ($window.FileReader) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(fileItem._file);
