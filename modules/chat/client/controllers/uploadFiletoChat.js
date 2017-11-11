@@ -23,15 +23,16 @@ angular.module('chat').controller('uploadImageController', ['$scope', '$timeout'
     $scope.uploader.onAfterAddingFile = function (fileItem) {
 
     console.log("uploader.onAfterAddingFile in chat module");
-    console.log("fileItem");
+    console.log("fileItem = ");
     console.log(fileItem);
     console.log("fileItem._file = ");
     console.log(fileItem._file);
+    console.log("$window.FileReader = ");
+    console.log($window.FileReader);
 
       if ($window.FileReader) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(fileItem._file);
-
         fileReader.onload = function (fileReaderEvent) {
           $timeout(function () {
             $scope.imageURL = fileReaderEvent.target.result;
@@ -72,6 +73,7 @@ angular.module('chat').controller('uploadImageController', ['$scope', '$timeout'
 
       // Start upload
       $scope.uploader.uploadAll();
+      console.log("after uploadAll");
     };
 
     // Cancel the upload process
