@@ -1,14 +1,66 @@
 'use strict';
 
 // Create the 'chat' controller
-angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService', 'UserclassesService',
-  function ($scope, $location, Authentication, Socket, chatService, UserclassesService) {
+angular.module('chat').controller('ChatController', ['$scope', '$location','$window','$timeout', 'Authentication', 'Socket','chatService', 'UserclassesService','FileUploader',
+  function ($scope, $location,$window,$timeout, Authentication, Socket, chatService, UserclassesService,FileUploader) {
     // Create a messages array
     $scope.messages = [];
     $scope.UserName = Authentication.user.username;
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
+    $scope.saveFileItem; 
+
+    // Create file uploader instance
+    $scope.uploader = new FileUploader({
+      url: 'api/chat/picture'
+    });
+
+    // Set file uploader image filter
+    $scope.uploader.filters.push({
+      name: 'imageFilter',
+      fn: function (item, options) {
+        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+        return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+      }
+    });
+
+    // Called after the user selected a new picture file
+    $scope.uploader.onAfterAddingFile = function (fileItem) {
+      
+    console.log("uploader.onAfterAddingFile in chat module");
+    console.log("fileItem = ");
+    console.log(fileItem);
+    console.log("fileItem._file = ");
+    console.log(fileItem._file);
+    console.log("$window.FileReader = ");
+    console.log($window.FileReader);
+    $scope.saveFileItem = fileItem;
+    console.log("$scope.saveFileItem = ");
+    console.log($scope.saveFileItem);
+
+      if ($window.FileReader) {
+        var fileReader = new FileReader();
+        fileReader.readAsDataURL(fileItem._file);
+        fileReader.onload = function (fileReaderEvent) {
+          $timeout(function () {
+            $scope.imageURL = fileReaderEvent.target.result;
+          }, 0);
+        };
+      }
+    };
+
+    // Change user profile picture
+    $scope.uploadProfilePicture = function () {
+      
+      console.log("uploadProfilePicture in chat module");
+      // Clear messages
+      $scope.success = $scope.error = null;
+
+      // Start upload
+      $scope.uploader.uploadAll();
+      console.log("after uploadAll");
+    };
 
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -109,10 +161,13 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
         "profileImageURL": Authentication.user.profileImageURL,
         "message" : this.messageText,
         "created" : Date.now(),
-        "classID" : $scope.currentlySelectedClassID
+        "classID" : $scope.currentlySelectedClassID,
+        "url" : $scope.saveFileItem.url,
+        "fileName": $scope.saveFileItem._file.name
       }
 
       console.log(chatData);
+
       //check if the message is empty
       if(this.messageText != '' && typeof(this.messageText) !== 'undefined'){
         chatService.saveChatData(chatData)

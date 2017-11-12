@@ -7,7 +7,7 @@ angular.module('chat').controller('uploadImageController', ['$scope', '$timeout'
 
     // Create file uploader instance
     $scope.uploader = new FileUploader({
-      url: 'api/users/picture'
+      url: 'api/chat/picture'
     });
 
     // Set file uploader image filter

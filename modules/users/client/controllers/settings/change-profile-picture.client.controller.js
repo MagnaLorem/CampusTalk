@@ -21,6 +21,15 @@ angular.module('users').controller('ChangeProfilePictureController', ['$scope', 
 
     // Called after the user selected a new picture file
     $scope.uploader.onAfterAddingFile = function (fileItem) {
+
+      console.log("uploader.onAfterAddingFile in chat module");
+      console.log("fileItem = ");
+      console.log(fileItem);
+      console.log("fileItem._file = ");
+      console.log(fileItem._file);
+      console.log("$window.FileReader = ");
+      console.log($window.FileReader);
+      
       if ($window.FileReader) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(fileItem._file);
