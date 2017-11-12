@@ -9,7 +9,9 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
-    $scope.saveFileItem; 
+    $scope.saveFileItem; // save FileItem if file is uploaded
+    $scope.saveFileReader; //save FileReader if file is uploaded
+
 
     // Create file uploader instance
     $scope.uploader = new FileUploader({
@@ -42,12 +44,17 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
       if ($window.FileReader) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(fileItem._file);
+        $scope.saveFileReader = fileReader; // save fileReader
+
         fileReader.onload = function (fileReaderEvent) {
           $timeout(function () {
             $scope.imageURL = fileReaderEvent.target.result;
           }, 0);
         };
       }
+
+      console.log("$scope.imageURL");
+      console.log($scope.imageURL);
     };
 
     // Change user profile picture
@@ -156,14 +163,28 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
     $scope.sendMessage = function () {
 
       //create a object to save to db
-      var chatData = {
-        "username": Authentication.user.username,
-        "profileImageURL": Authentication.user.profileImageURL,
-        "message" : this.messageText,
-        "created" : Date.now(),
-        "classID" : $scope.currentlySelectedClassID,
-        "url" : $scope.saveFileItem.url,
-        "fileName": $scope.saveFileItem._file.name
+      if($scope.saveFileItem){
+        var chatData = {
+          "username": Authentication.user.username,
+          "profileImageURL": Authentication.user.profileImageURL,
+          "message" : this.messageText,
+          "created" : Date.now(),
+          "classID" : $scope.currentlySelectedClassID,
+          "url" : $scope.saveFileItem.url,
+          "fileName": $scope.saveFileItem._file.name,
+          "img" :  $scope.saveFileReader.result
+        }
+      }else{
+        var chatData = {
+          "username": Authentication.user.username,
+          "profileImageURL": Authentication.user.profileImageURL,
+          "message" : this.messageText,
+          "created" : Date.now(),
+          "classID" : $scope.currentlySelectedClassID,
+          "url" : "",
+          "fileName": "",
+          "img" :  ""
+        }
       }
 
       console.log(chatData);

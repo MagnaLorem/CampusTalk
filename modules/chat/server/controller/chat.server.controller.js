@@ -13,6 +13,10 @@ exports.savechat = function(req, res) {
 
   newChatData = new chatData();
   newChatData.classID = req.body.classID;
+
+  console.log("savechat charData : \n");
+  console.log(req.body);
+
   var newMessage = {
     username: req.body.username, 
     message: req.body.message,
