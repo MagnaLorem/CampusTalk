@@ -2,23 +2,23 @@
     <div class="page-header intro-message">
         <h1>{{vm.myclass._id ? 'Edit Class' : 'New Class'}}</h1>
     </div>
-    <div class="search_box">
+    <div class="col-md-6 col-md-offset-3 formWrapper">
         <form name="vm.form.myclassForm" class="form-horizontal" ng-submit="vm.save(vm.form.myclassForm.$valid)" novalidate>
             <fieldset>
                 <div class="form-group" show-errors>
                     <label class="control-label" for="courseCode">Code</label>
                     <input name="courseCode" type="text" ng-model="vm.myclass.courseCode" id="courseCode" class="form-control" placeholder="Code" required>
                     <div ng-messages="vm.form.myclassForm.name.$error" role="alert">
-                        <p class="help-block error-text" ng-message="required">Code is required.</p>
+                        <p class="help-block error-text" ng-message="required"><sup>*Required</sup></p>
                     </div>
                     <label class="control-label" for="name">Course Name</label>
                     <input name="name" type="text" ng-model="vm.myclass.name" id="name" class="form-control" placeholder="Course Name" required>
                     <div ng-messages="vm.form.myclassForm.name.$error" role="alert">
-                        <p class="help-block error-text" ng-message="required">Course Name is required.</p>
+                        <p class="help-block error-text" ng-message="required"><sup>*Required</sup></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-default">{{vm.myclass._id ? 'Update' : 'Create'}}</button>
+                    <button type="submit" class="btn btn-default edit-btn">{{vm.myclass._id ? 'Update' : 'Create'}}</button>
                 </div>
                 <div ng-show="vm.error" class="text-danger">
                     <strong ng-bind="vm.error"></strong>

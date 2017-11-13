@@ -1,26 +1,26 @@
 <section>
   <div class="page-header intro-message">
-    <h1>{{vm.news._id ? 'Edit News' : 'New News'}}</h1>
+    <h1>{{vm.news._id ? 'Edit News' : 'New Post'}}</h1>
   </div>
-  <div class="search_box">
+  <div class="col-md-6 col-md-offset-3 formWrapper">
     <form name="vm.form.newsForm" class="form-horizontal" ng-submit="vm.save(vm.form.newsForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="title">Title</label>
           <input name="title" type="text" ng-model="vm.news.title" id="title" class="form-control" placeholder="Title" required>
           <div ng-messages="vm.form.newsForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">News title is required.</p>
+            <p class="help-block error-text" ng-message="required"><sup>*Required</sup></p>
           </div>
         </div>
         <div class="form-group" show-errors>
           <label class="control-label" for="content">Content</label>
-          <textarea name="title" type="text" ng-model="vm.news.content" id="content" class="form-control" placeholder="Content" required></textarea>
+          <textarea name="title" type="text" ng-model="vm.news.content" id="content" class="form-control text-area" placeholder="Content" required></textarea>
           <div ng-messages="vm.form.newsForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">News Content is required.</p>
+            <p class="help-block error-text" ng-message="required"><sup>*Required</sup></p>
           </div>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.news._id ? 'Update' : 'Create'}}</button>
+          <button type="submit" class="btn btn-default edit-btn">{{vm.news._id ? 'Update' : 'Create'}}</button>
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>

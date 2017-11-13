@@ -45,8 +45,209 @@
 }
 
 .list_of_users{
-  margin-left: 9%;
-  margin-right: 9%;
   font-size: 25px;
-  border: solid #333 2px;
+  border: solid #FFF 1px;
+  border-top: none;
+}
+
+/*CSS for List of Users Page*/
+.users-list{
+  padding: 0px;
+}
+
+.intro-message{
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.user-table{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.list-group-item{
+  border-bottom: solid #FFF 1px;
+}
+
+.pagination{
+  padding-left: 53px;
+  margin-top: 10px;
+}
+
+.pagination > li > a, .pagination > li > a:hover{
+  color: #af7336;
+}
+
+.pagination > .active > a, .edit-btn{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
+  border-color: #af7336!important;
+
+}
+
+.pagination > .active > a:hover{
+  border-color:  #af7336;
+}
+
+.btn-primary > .edit-btn:active, .btn-primary > .edit-btn:focus{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
+  border-color: #af7336!important;
+}
+
+.btn-outline-success, .btn-outline-success:hover, .edit-btn:active, .edit-btn:visited, .edit-btn:focus{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
+  border-color: #af7336!important;
+}
+
+.edit-btn:hover{
+  color: white;
+  background-color: #7a492c;
+  border-color: #7a492c;
+}
+
+.edit-btn{
+  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
+  border-color: #af7336;
+  color: white!important;
+  text-shadow: none!important;
+}
+
+.edit-btn:hover{
+  color: white;
+  background-color: #7a492c;
+  border-color: #7a492c;
+}
+
+
+.edit-btn{
+  margin-right: 10px;
+}
+
+.username{
+  margin-bottom: 25px;
+  font-size: 55px;
+  color: #FFF;
+}
+
+.vertical-align{
+  padding-top: 10px;
+}
+
+.dataWrapper{
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #d8bb88;
+  box-shadow: 5px 5px 20px;
+}
+
+/*Edting User's Information Page*/
+.edit-user{
+  padding-top: 35px;
+}
+
+.formWrapper{
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #d8bb88;
+  box-shadow: 5px 5px 20px;
+}
+
+.inputs{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.page-header{
+  border: none;
+}
+
+.table-list{
+  border-bottom: solid 2px #FFF;
+}
+
+/* Settings */
+.settings-menu{
+  margin-left: 30px;
+  background-color: rgba(000,000,000,0.5)!important;
+  border-radius: 10px;
+  padding-bottom: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#settings{
+  margin-left: 20px;
+}
+
+#h1-settings{
+  color: white;
+}
+
+.links{
+  color: #af7336!important;
+  background: none;
+}
+
+.links:hover {
+  color: #FFF!important;
+  background: none!important;
+}
+
+.nav-pills > li.active > a{
+  background-color: #FFF!important;
+}
+
+.nav-pills > li.active > a:hover{
+  color: #af7336!important;
+}
+
+/*Sign In Page*/
+#mainLogo{
+  width: 10%;
+  padding: 0px;
+}
+
+.logo{
+  color: #af7336;
+  font-size: 50px;
+  text-shadow: 2px 2px 2px black;
+}
+
+
+.intro-header{
+  padding-top: 20px;
+}
+
+.h1-sign-in{
+  font-size: 30px;
+  margin-top: 0px;
+}
+
+#sign-in{
+  margin-left: 368px;
+  padding-bottom: 20px;
+  margin-bottom: 27px;
+}
+.form-horizontal .form-group{
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.first-row{
+  margin-left: 15px;
+  margin-right: 15px;
+  display: inline-flex;
+}
+
+.first-name{
+  margin-right: 38px!important;
+}
+
+.info{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.sign-up{
+  margin-left: 317px;
+  margin-bottom: 25px;
 }

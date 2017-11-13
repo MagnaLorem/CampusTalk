@@ -1,10 +1,10 @@
-<section>
-  <div class="page-header intro-message">
+<section class="col-md-6 col-md-offset-3 container">
+  <div class="page-header intro-message view-news">
     <h1 ng-bind="vm.news.name"></h1>
   </div>
-  <div class="pull-right"
+  <div class="pull-right buttons"
        ng-show="vm.news.isCurrentUserOwner">
-    <a class="btn btn-primary"
+    <a class="btn btn-primary edit-btn"
        ui-sref="news.edit({ newsId: vm.news._id })">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
@@ -12,16 +12,18 @@
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-    <h2 class="list-group-item-heading" ng-bind="vm.news.title"></h2>
-    <p class="lead" ng-bind="vm.news.content"></p>
-    <small>
-        <em class="text-muted">
-            Posted on
-            <span ng-bind="vm.news.created | date:'mediumDate'"></span>
-            by
-            <span ng-if="vm.news.user"
+    <div class="news-article">
+       <h2 class="list-group-item-heading" ng-bind="vm.news.title"></h2>
+        <p class="lead" ng-bind="vm.news.content"></p>
+        <small>
+            <em class="text-muted">
+                Posted on
+                <span ng-bind="vm.news.created | date:'mediumDate'"></span>
+                by
+                <span ng-if="vm.news.user"
                   ng-bind="vm.news.user.displayName"></span>
-            <span ng-if="!vm.news.user">Deleted User</span>
-        </em>
-    </small>
+                <span ng-if="!vm.news.user">Deleted User</span>
+            </em>
+        </small>
+    </div>
 </section>
