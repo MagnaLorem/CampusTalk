@@ -6,8 +6,8 @@
         <div class="row border-bottom padding-sm" style="height: 40px;">
             <h2 class="myclasses-heading">My Classes</h2>
         </div>
-
-    <div class="class-list" ng-init="getAllCourses()">
+    <!--If there are no classes in a user's list -->
+    <div class="class-list" ng-init="getAllCourses()" ng-show="!checkClassesArray(classes)">
       <ul>
         <table class="table">
           <tr>
@@ -21,6 +21,9 @@
           </tr>
         </table>
       </ul>
+      </div>
+      <div class="noClasses" ng-show="checkClassesArray(classes)">
+          Add your classes by going <br /> to the "My Classes" Tab!
       </div>
     </div>
 

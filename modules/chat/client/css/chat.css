@@ -224,3 +224,8 @@ a:hover, a:active, a:focus {
   width: 50%;
   margin-left: 25%;
 }
+
+.noClasses{
+  padding-top: 40px;
+  text-align: center;
+}

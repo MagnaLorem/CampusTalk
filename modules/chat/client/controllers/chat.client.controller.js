@@ -64,6 +64,12 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
           return true;
         }
       }
+      //check if classes array is empty
+      $scope.checkClassesArray = function(classesArray){
+          if(classesArray.length === 0){
+              return true;
+          }
+      }
 
     // function not used
     $scope.getClassInfoOnChatPage = function(selectedClass){
