@@ -2,7 +2,7 @@
 <section class="container" data-ng-controller="ChatController">
     <div class="pageWrapper">
     <!--User's List of Classes on the Left -->
-    <div class="col-md-4 classesWrapper">
+    <div class="col-md-4 classesWrapper chat-page">
         <div class="row border-bottom padding-sm" style="height: 40px;">
             <h2 class="myclasses-heading">My Classes</h2>
         </div>
@@ -73,7 +73,11 @@
     <div class="chat-box bg-white col-md-4">
         <form ng-submit="sendMessage();">
             <div class="input-group">
-                <input type="text" name="messageText"class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
+                <!--<input type="text" name="messageText" class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
+                -->
+                <div class="expandingArea">
+                    <textarea name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="Type your message here" ></textarea>
+                </div>
                 <span class="input-group-btn">
               <button class="btn btn-success no-rounded" type="submit">Send</button>
             </span>
