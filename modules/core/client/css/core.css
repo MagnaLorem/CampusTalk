@@ -1,6 +1,6 @@
 /* Google Fonts*/
 /*@import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400italic,700italic,400,700)*/
-@import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Muli');
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
 
 /*From landing page template*/
@@ -8,10 +8,11 @@ body,
 html {
     width: 100%;
     height: 100%;
-    font-family: 'Oswald', sans-serif;
-    background-color: #92ef92;
-    /*background-color: #a7efb9;*/
+    font-family: 'Muli', sans-serif;
+    background-color: #697137;
     font-weight: 500;
+    /*background-image: linear-gradient(to bottom, #151515 -30%, #697137 100%);*/
+
 }
 
 body,
@@ -21,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Varela Round', sans-serif;
+    font-family: 'Muli', sans-serif;
     font-weight: 700;
 }
 
@@ -37,14 +38,24 @@ p.copyright {
 }
 
 a {
-    color: #5cb85c;
+    color: #af7336;
     text-decoration: none;
+}
+a:hover{
+    color: #FFF;
 }
 
 .form-group input {
     background-color: white;
     color: rgb(0, 0, 0);
     border-color: black;
+}
+
+
+
+.form-control:focus{
+    border-color: #697137;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #697137;
 }
 
 .topnav {
@@ -76,6 +87,14 @@ a {
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 5em;
     color: white;
+}
+
+.pageWrapper{
+    margin-top: 45px;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th{
+    border-top: 1px solid #FFF!important;
 }
 
 #mainLogo {
@@ -202,11 +221,11 @@ a {
 }
 
 .navbar-inverse .navbar-brand {
-    color: #5cb85c;
+    color: #af7336;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    color: #5cb85c;
+    color: #af7336;
 }
 
 /*End of css template*/
@@ -249,7 +268,7 @@ a:hover .header-profile-image {
 
 h1 {
   font-size: 80px;
-  align: center";
+  text-align: center;
 }
 
 .mainbutton{
@@ -263,6 +282,48 @@ h1 {
   background-color: #d8ffda;
 }
 
-.btn-outline-success, .btn-outline-success:hover, .btn-primary:active, .btn-primary:visited {
-  background-image: linear-gradient(to bottom, #62f442 0%, #d8ffda 100%);
+.navbar-inverse, footer{
+    background-color: rgba(000,000,000,0.5)!important;
+    border-bottom: none!important;
+}
+
+
+.btn-danger{
+    background-image: linear-gradient(to bottom, #697137 0%, #414622 100%);
+    border-color: #414622;
+}
+
+.btn-danger:hover, .btn-danger:active, .btn-danger:focus{
+    border-color: #414622;
+    background-color: #414622;
+}
+
+.btn-default:focus{
+    background-position: 0 0;
+}
+
+.btn-primary:focus{
+    background-position: 0 0;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{
+    outline: 5px auto #414622;
+}
+
+.dropdown-menu > .active > a,.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover{
+    background-color: #FFF!important;
+    background-image: none;
+    color: #af7336;
+}
+
+.img1{
+    border-radius: 10px;
+    height: 70%;
+    width: 70%;
+    margin-left: 58px;
+}
+
+.img2{
+    border-radius: 10px;
+
 }

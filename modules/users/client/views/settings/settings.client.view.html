@@ -1,21 +1,18 @@
 <section data-ng-controller="SettingsController">
   <div class="page-header">
-    <h1>Settings</h1>
+    <h1 id="h1-settings">Settings</h1>
   </div>
-  <div class="row">
-    <nav class="col-sm-3 col-md-3">
+  <div class="row settings-menu-list">
+    <nav class="col-sm-3 col-md-3 settings-menu">
       <ul class="nav nav-pills nav-stacked">
         <li data-ui-sref-active="active">
-          <a data-ui-sref="settings.profile">Edit Profile</a>
+          <a data-ui-sref="settings.profile" class="links current">Edit Profile</a>
         </li>
         <li data-ui-sref-active="active">
-          <a data-ui-sref="settings.picture">Change Profile Picture</a>
+          <a data-ui-sref="settings.picture" class="links">Change Profile Picture</a>
         </li>
         <li data-ui-sref-active="active" data-ng-show="user.provider === 'local'">
-          <a data-ui-sref="settings.password">Change Password</a>
-        </li>
-        <li data-ui-sref-active="active">
-          <a data-ui-sref="settings.accounts">Manage Social Accounts</a>
+          <a data-ui-sref="settings.password" class="links">Change Password</a>
         </li>
       </ul>
     </nav>
