@@ -415,7 +415,7 @@ __pycache__/
 *.xsd.cs
 
 # configuration files
-config/env/development.js
+
 
 ### VisualStudio Patch ###
 # By default, sensitive information, such as encrypted password
