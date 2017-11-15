@@ -1,6 +1,7 @@
 {
   "name": "campustalk",
   "description": "MongoDB",
+  "main": "server.js",
   "version": "0.4.0",
   "private": false,
   "author": "shin",
@@ -14,7 +15,7 @@
     "npm": "3.10.8"
   },
   "scripts": {
-    "start": "grunt",
+    "start": "node server.js",
     "test": "grunt test",
     "postinstall": "bower install --config.interactive=false"
   },
