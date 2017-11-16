@@ -1,33 +1,122 @@
-<section class="row" data-ng-controller="EditProfileController">
-    <div class="col-md-8 formWrapper" id="settings">
-        <form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
-            <fieldset>
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name">
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
-                </div>
-                <div class="text-center form-group">
-                    <button type="submit" class="btn btn-lg btn-primary edit-btn">Save Profile</button>
-                </div>
-                <div data-ng-show="success" class="text-center text-success">
-                    <strong>Profile Saved Successfully</strong>
-                </div>
-                <div data-ng-show="error" class="text-center text-danger">
-                    <strong data-ng-bind="error"></strong>
-                </div>
-            </fieldset>
-        </form>
+<!--<section class="row" data-ng-controller="EditProfileController">
+  <div class="col-md-8 formWrapper" id="settings">
+       <form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
+           <fieldset>
+               <div class="form-group">
+                   <label for="firstName">First Name</label>
+                   <input type="text" id="firstName" name="firstName" class="form-control" data-ng-model="user.firstName" placeholder="First Name">
+               </div>
+               <div class="form-group">
+                   <label for="lastName">Last Name</label>
+                   <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="user.lastName" placeholder="Last Name">
+               </div>
+               <div class="form-group">
+                   <label for="email">Email</label>
+                   <input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
+               </div>
+               <div class="form-group">
+                   <label for="username">Username</label>
+                   <input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
+               </div>
+               <div class="text-center form-group">
+                   <button type="submit" class="btn btn-lg btn-primary edit-btn">Save Profile</button>
+               </div>
+               <div data-ng-show="success" class="text-center text-success">
+                   <strong>Profile Saved Successfully</strong>
+               </div>
+               <div data-ng-show="error" class="text-center text-danger">
+                   <strong data-ng-bind="error"></strong>
+               </div>
+           </fieldset>
+       </form>
     </div>
-</section>
+</section>-->
+<!--<script src="https://www.paypalobjects.com/api/checkout.js"></script>-->
+<!--
+<script>
+    paypal.Button.driver('angular', window.angular);
+    angular.module('payments')
+        .controller('paymentsController', ['$scope', function($scope) {
+            $scope.opts = {
+                env: 'sandbox',
+                client: {
+                    sandbox:    'AcZ4-vax6W0CPvGPFSzP04-KeqFlZrtpGYhrTNMx0U5_zFQryYRXj4G254g_kkdr3-Vg-yqvFow006im',
+                    production: 'ATy4xMgr9YeIAUvgCG4HehN4uMMNBTsSqLoCeyXOyc6sPsXcNq6WFmh3Ah9bXGZHk8zshO-Cut5aTREa'
+                },
+                payment: function() {
+                    var env    = this.props.env;
+                    var client = this.props.client;
+                    return paypal.rest.payment.create(env, client, {
+                        transactions: [
+                            {
+                                amount: { total: '1.00', currency: 'USD' }
+                            }
+                        ]
+                    });
+                },
+                commit: true, // Optional: show a 'Pay Now' button in the checkout flow
+                onAuthorize: function(data, actions) {
+                    // Optional: display a confirmation page here
+                    return actions.payment.execute().then(function() {
+                        // Show a success page to the buyer
+                    });
+                }
+            };
+        }]);
+</script>
+
+<body ng-controller="paymentsController">-->
+<body>
+<h1>Pay here!</h1>
+<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+<div id="paypal-button-container" align="center"></div>
+
+<script>
+    paypal.Button.render({
+
+        env: 'production', // sandbox | production
+
+        client: {
+            sandbox:    'AcZ4-vax6W0CPvGPFSzP04-KeqFlZrtpGYhrTNMx0U5_zFQryYRXj4G254g_kkdr3-Vg-yqvFow006im',     //thor sandbox account key
+            production: 'ATy4xMgr9YeIAUvgCG4HehN4uMMNBTsSqLoCeyXOyc6sPsXcNq6WFmh3Ah9bXGZHk8zshO-Cut5aTREa'      //thor production account key
+        },
+
+        // Show the buyer a 'Pay Now' button in the checkout flow
+        commit: true,
+
+
+        // payment() is called when the button is clicked
+        payment: function(data, actions) {
+
+            // Make a call to the REST api to create the payment
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '3.00', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        //onAuthorize() is called when the buyer approves the payment
+        onAuthorize: function(data, actions) {
+
+            // Make a call to the REST api to execute the payment
+            return actions.payment.execute().then(function() {
+                window.alert('Payment Complete!');
+            });
+        }
+
+    }, '#paypal-button-container');
+
+</script>
+
+
+<!--<paypal-button env="opts.env" client="opts.client" payment="opts.payment" commit="opts.commit" on-authorize="opts.onAuthorize"></paypal-button>
+-->
+<p align="center">button should be right above this</p>
+</body>
+
+

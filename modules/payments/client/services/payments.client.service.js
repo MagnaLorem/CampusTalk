@@ -2,11 +2,11 @@
 (function () {
   'use strict';
 
-  angular
-    .module('payments')
-    .factory('PaymentsService', PaymentsService);
-
-  PaymentsService.$inject = ['$resource'];
+  // angular
+  //   .module('payments')
+  //   .factory('PaymentsService', PaymentsService);
+  //
+  // PaymentsService.$inject = ['$resource'];
 
   // function PaymentsService($resource) {
   //   return $resource('api/payments/:paymentId', {

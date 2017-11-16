@@ -9,6 +9,7 @@ module.exports = {
       ],
       js: [
         'public/lib/angular/angular.js',
+         //'https://www.paypalobjects.com/api/checkout.js',
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-ui-router/release/angular-ui-router.js',
