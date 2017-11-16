@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Create the 'chat' controller
 angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService', 'UserclassesService',
   function ($scope, $location, Authentication, Socket, chatService, UserclassesService) {
@@ -70,6 +71,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
               return true;
           }
       }
+
 
     // function not used
     $scope.getClassInfoOnChatPage = function(selectedClass){
@@ -149,6 +151,9 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       // Switch rooms using socket.io function
       Socket.emit('switchRoom', room);
     }
-
   }
+
 ]);
+
+
+
