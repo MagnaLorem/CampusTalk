@@ -105,6 +105,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
           },function(err){
             console.log(err);
           });
+
       }
     }
 
