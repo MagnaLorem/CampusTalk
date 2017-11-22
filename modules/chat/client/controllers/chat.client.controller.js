@@ -11,7 +11,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
     $scope.isDefaultSet = false;
     $scope.saveFileItem; // save FileItem if file is uploaded
     $scope.saveFileReader; //save FileReader if file is uploaded
-
+    $scope.user = Authentication.user;
+    $scope.imageURL;
 
     // Create file uploader instance
     $scope.uploader = new FileUploader({
@@ -44,6 +45,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
       if ($window.FileReader) {
         var fileReader = new FileReader();
         fileReader.readAsDataURL(fileItem._file);
+      //  fileReader.readAsArrayBuffer(fileItem._file);
         $scope.saveFileReader = fileReader; // save fileReader
 
         fileReader.onload = function (fileReaderEvent) {
@@ -63,10 +65,18 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
       console.log("uploadProfilePicture in chat module");
       // Clear messages
       $scope.success = $scope.error = null;
-
+      console.log("$scope.uploader");
+      console.log($scope.uploader);
+      
       // Start upload
       $scope.uploader.uploadAll();
       console.log("after uploadAll");
+    };
+
+    // Cancel the upload process
+    $scope.cancelUpload = function () {
+      $scope.uploader.clearQueue();
+      $scope.imageURL = $scope.user.profileImageURL;
     };
 
     // If user is not signed in then redirect back home
@@ -162,17 +172,19 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
     // Create a controller method for sending messages
     $scope.sendMessage = function () {
 
-      //create a object to save to db
-      if($scope.saveFileItem){
+      var fileURL = "/modules/chat/client/img/" + $scope.saveFileItem.file.name;
+      console.log("++++++++++++++++++++++++++");
+      console.log(fileURL);
+      console.log("++++++++++++++++++++++++++");
+
+      if($scope.imageURL){
         var chatData = {
           "username": Authentication.user.username,
           "profileImageURL": Authentication.user.profileImageURL,
           "message" : this.messageText,
           "created" : Date.now(),
           "classID" : $scope.currentlySelectedClassID,
-          "url" : $scope.saveFileItem.url,
-          "fileName": $scope.saveFileItem._file.name,
-          "img" :  $scope.saveFileReader.result
+          "fileURL": fileURL
         }
       }else{
         var chatData = {
@@ -181,9 +193,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location','$win
           "message" : this.messageText,
           "created" : Date.now(),
           "classID" : $scope.currentlySelectedClassID,
-          "url" : "",
-          "fileName": "",
-          "img" :  ""
+          "fileURL": ""
         }
       }
 

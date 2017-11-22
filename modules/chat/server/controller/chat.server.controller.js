@@ -5,7 +5,9 @@ var path = require('path'),
     config = require(path.resolve('./config/config')), /** not being used for now**/
     User = mongoose.model('User'),
     request = require('request'),
-    connect = require('connect');
+    connect = require('connect'),
+    fs = require('fs');
+
 /*object for chat data */
 var newChatData;
 
@@ -18,10 +20,11 @@ exports.savechat = function(req, res) {
   console.log(req.body);
 
   var newMessage = {
-    username: req.body.username, 
+    username: req.body.username,
     message: req.body.message,
     profileImageURL: req.body.profileImageURL,
-    created: req.body.created
+    created: req.body.created,
+    fileURL: req.body.fileURL
   }
 
   //upsert cretes new class if the classID does not exist.
@@ -82,31 +85,15 @@ exports.savePicture = function (req, res) {
   var user = req.user;
   var message = null;
 
-  console.log("changeProfilePicture in users.profile.server.controller.js");
+  console.log("changeProfilePicture in chat.profile.server.controller.js");
   console.log(req.user);
+
   if (user) {
-    fs.writeFile('./modules/users/client/img/profile/uploads/' + req.files.file.name, req.files.file.buffer, function (uploadError) {
+    //uploading the image to /modules/chat/client/img/
+    fs.writeFile('./modules/chat/client/img/' + req.files.file.name, req.files.file.buffer, function (uploadError) {
       if (uploadError) {
         return res.status(400).send({
           message: 'Error occurred while uploading profile picture'
-        });
-      } else {
-        user.profileImageURL = 'modules/users/img/profile/uploads/' + req.files.file.name;
-
-        user.save(function (saveError) {
-          if (saveError) {
-            return res.status(400).send({
-              message: errorHandler.getErrorMessage(saveError)
-            });
-          } else {
-            req.login(user, function (err) {
-              if (err) {
-                res.status(400).send(err);
-              } else {
-                res.json(user);
-              }
-            });
-          }
         });
       }
     });

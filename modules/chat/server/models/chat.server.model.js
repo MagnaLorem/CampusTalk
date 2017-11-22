@@ -12,7 +12,8 @@ var chatSchema = new Schema({
       username: {type:String}, 
       message: {type:String},
       profileImageURL: {type:String},
-      created: {type:Date,default:Date.now}
+      created: {type:Date,default:Date.now},
+      fileURL:{type:String} //image file for chat
     }]
 });
 
