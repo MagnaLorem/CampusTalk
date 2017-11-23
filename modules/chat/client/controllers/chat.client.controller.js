@@ -60,14 +60,14 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       console.log($scope.messages);
     }
     //check if message array is empty
-      $scope.checkMessageArray = function(messageArray){
-        if(messageArray.length === 0){
+      $scope.checkMessageArray = function(){
+        if($scope.messages.length === 0){
           return true;
         }
       }
       //check if classes array is empty
-      $scope.checkClassesArray = function(classesArray){
-          if(classesArray.length === 0){
+      $scope.checkClassesArray = function(){
+          if($scope.classes.length === 0){
               return true;
           }
       }
