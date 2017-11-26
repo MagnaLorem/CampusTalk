@@ -1,5 +1,6 @@
 'use strict';
 
+
 // Create the 'chat' controller
 angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket','chatService', 'UserclassesService',
   function ($scope, $location, Authentication, Socket, chatService, UserclassesService) {
@@ -59,11 +60,18 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       console.log($scope.messages);
     }
     //check if message array is empty
-      $scope.checkMessageArray = function(messageArray){
-        if(messageArray.length === 0){
+      $scope.checkMessageArray = function(){
+        if($scope.messages.length === 0){
           return true;
         }
       }
+      //check if classes array is empty
+      $scope.checkClassesArray = function(){
+          if($scope.classes.length === 0){
+              return true;
+          }
+      }
+
 
     // function not used
     $scope.getClassInfoOnChatPage = function(selectedClass){
@@ -97,6 +105,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
           },function(err){
             console.log(err);
           });
+
       }
     }
 
@@ -143,6 +152,10 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       // Switch rooms using socket.io function
       Socket.emit('switchRoom', room);
     }
-
   }
+
 ]);
+
+
+
+

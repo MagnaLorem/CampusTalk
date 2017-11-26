@@ -327,3 +327,9 @@ h1 {
     border-radius: 10px;
 
 }
+
+/*nav bar*/
+.swamp-link:hover{
+    cursor: default;
+    color: #af7336!important;
+}
