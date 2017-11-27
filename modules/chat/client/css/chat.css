@@ -52,9 +52,9 @@ small, .small {
 }
 
 
-.classesWrapper{
-  max-height: 555px;
-  height: 555px;
+.chat-page{
+  max-height: 571px!important;
+  height: 571px!important;
   overflow: auto;
   background-color: #d8bb88;
   border-radius: 10px;
@@ -94,7 +94,6 @@ small, .small {
 
 .chat-message{
   background: #f9f9f9;
-  height: 490px;
 }
 
 .chat div img {
@@ -178,6 +177,7 @@ img {
   float: right;
   padding: 15px;
   width: 100%;
+  height: 81px;
   margin-bottom: 10px;
   border-top: 1px solid #eee;
   box-shadow: 5px 5px 20px;
@@ -202,6 +202,7 @@ a:hover, a:active, a:focus {
 .btn-success{
   background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
   border-color: #7A492C;
+  height: 46px;!important;
 }
 
 .btn-success:hover, .btn-success:focus {
@@ -224,3 +225,61 @@ a:hover, a:active, a:focus {
   width: 50%;
   margin-left: 25%;
 }
+
+.noClasses{
+  padding-top: 40px;
+  text-align: center;
+}
+
+.send{
+  max-width: 602px;
+  height: 46px!important;
+  max-height: 300px;
+  border: 1px solid #333333;
+  border-top-left-radius: 4px!important;
+  border-bottom-left-radius: 4px!important;
+}
+
+textarea,
+pre {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+}
+.expandingArea {
+  position: relative;
+  background: #fff;
+}
+
+.expandingArea > textarea{
+  background: transparent;
+  /* Make the text soft-wrap */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.expandingArea > textarea {
+  /* The border-box box model is used to allow
+   * padding whilst still keeping the overall width
+   * at exactly that of the containing element.
+   */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  /* This height is used when JS is disabled */
+}
+.expandingArea.active > textarea {
+  /* Hide any scrollbars */
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* Remove WebKit user-resize widget */
+  resize: none;
+}
+

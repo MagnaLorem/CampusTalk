@@ -2,12 +2,12 @@
 <section class="container" data-ng-controller="ChatController">
     <div class="pageWrapper">
     <!--User's List of Classes on the Left -->
-    <div class="col-md-4 classesWrapper">
+    <div class="col-md-4 classesWrapper chat-page">
         <div class="row border-bottom padding-sm" style="height: 40px;">
             <h2 class="myclasses-heading">My Classes</h2>
         </div>
-
-    <div class="class-list" ng-init="getAllCourses()">
+    <!--If there are no classes in a user's list -->
+    <div class="class-list" ng-init="getAllCourses()" ng-show="!checkClassesArray()">
       <ul>
         <table class="table">
           <tr>
@@ -15,12 +15,15 @@
               <th class="col-sm-8">Course Name</th>
           </tr>
           <tr data-ng-repeat="class in classes | orderBy:'courseCode'" ng-click = "retrieveSelectedChat(class)" ng-init = "setDefaultClassId(class)" 
-              ng-class = "{'custom-class': class.classId == currentlySelectedClassID}" class="hover-classes">
+              ng-class = "{'custom-class': class.classId == currentlySelectedClassID}" class="hover-classes" onclick="isReloaded()">
               <td>{{ class.courseCode }}</td>
               <td>{{ class.name }}</td>
           </tr>
         </table>
       </ul>
+      </div>
+      <div class="noClasses" ng-show="checkClassesArray()">
+          Add your classes by going <br /> to the "My Classes" Tab!
       </div>
     </div>
 
@@ -29,9 +32,9 @@
     <!-- List All Messages on the Right -->
         <div class="rounded-top-corners">
         <div class="bg-white messageWrapper" id="messages">
-        <div class="chat-message">
+        <div class="chat-message scrollToBottom" id="chatScrolling">
             <!--If there are no messages display this div -->
-            <div class="noMessages" ng-show="checkMessageArray(messages)">
+            <div class="noMessages" ng-show="checkMessageArray()">
                 Start the conversation by sending a message below!
             </div>
           <ul class="chat">
@@ -67,16 +70,63 @@
 
     <!--=========================================================-->
     <!-- Send Messages -->
-    <div class="chat-box bg-white col-md-4">
+    
+    <div class="chat-box bg-white col-md-4" ng-show="!checkClassesArray()">
         <form ng-submit="sendMessage();">
             <div class="input-group">
-                <input type="text" name="messageText"class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
+                <!--<input type="text" name="messageText" class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
+                -->
+                <div class="expandingArea">
+                    <textarea name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="Type your message here" ></textarea>
+                </div>
                 <span class="input-group-btn">
-              <button class="btn btn-success no-rounded" type="submit">Send</button>
+              <button class="btn btn-success no-rounded" type="submit" >Send</button>
+            </span>
+            </div>
+        </form>
+    </div>
+   <!-- disable the button if there is no classese selected -->
+    <div class="chat-box bg-white col-md-4" ng-show="checkClassesArray()">
+        <form ng-submit="sendMessage();">
+            <div class="input-group">
+                <!--<input type="text" name="messageText" class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
+                -->
+                <div class="expandingArea">
+                    <textarea name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="select a class to chat!" disabled ></textarea>
+                </div>
+                <span class="input-group-btn">
+              <button class="btn btn-success no-rounded" type="submit" disabled>Send</button>
             </span>
             </div>
         </form>
     </div>
     </div>
     </div>
+    <script>
+      //Script for scrolling the chats to the bottom of their divs.
+      var scrolled = false;
+      var reloaded = false;
+
+      //if user switches chat, reset the scroll
+      function isReloaded(){
+          reloaded = true;
+      }
+       //if a user hasn't scrolled up or a chat was reloaded, scroll to the bottom
+       function updateScroll(){
+           if(!scrolled || reloaded) {
+               var element = document.getElementById('messages');
+               element.scrollTop = element.scrollHeight;
+           }
+           reloaded = false;
+       }
+
+       //set scrolled to true is a usesr has scroll up to see older messages
+        $('#messages').on('scroll', function(){
+           scrolled = true;
+        });
+        
+      //run the function every second.
+       setInterval(updateScroll, 1000);
+
+    </script>
 </section>
