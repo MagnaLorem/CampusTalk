@@ -21,8 +21,8 @@ var path = require('path'),
    console.log("Request Body: " + req.body);
 
    // Set userId to the given userId
-   newUserclasses.userId = req.body.userId; 
-   
+   newUserclasses.userId = req.body.userId;
+
     // Create a new variable for the course and set its fields to the given values
     var newClass = {
       "classId": req.body._id,
@@ -31,11 +31,12 @@ var path = require('path'),
     };
 
     // Find the user. If user has no classes then save a new entry, else update their courses array
-    Userclasses.findOneAndUpdate({userId: thisuserId}, {$push:{courses: newClass}}, {upsert: true}, function(err){
+    Userclasses.findOneAndUpdate({userId: thisuserId}, {$push:{courses: newClass}}, {upsert: true}, function(err, object){
       if(err){
         console.log(err);
-      } 
+      }
       else {
+        res.json(object);
         console.log("Course added to user's classes: ");
         console.log(newClass);
       }
@@ -48,7 +49,7 @@ var path = require('path'),
  exports.getclasses = function(req, res) {
     console.log(req.user);
     var thisuserId = req.user._id;
-    
+
     Userclasses.findOne({ userId: thisuserId }).exec(function (err, object) {
       console.log(object);
       res.json(object);
