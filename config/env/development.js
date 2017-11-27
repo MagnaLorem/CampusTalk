@@ -55,16 +55,16 @@ module.exports = {
     sandbox: true
   },
   mailer: {
-from: process.env.MAILER_FROM || 'MAILER_FROM' || 'campusally1@gmail.com',
-options: {
-service: 'Gmail',
-secure: false,
-port:25,
-auth: {
-user: 'campusally1@gmail.com',
-pass: 'machosheep1'
-}
-}
-},
-  livereload: true
+    from: process.env.MAILER_FROM || 'MAILER_FROM' || 'campusally1@gmail.com',
+    options: {
+      service: 'Gmail',
+      secure: false,
+      port:25,
+        auth: {
+        user: 'campusally1@gmail.com',
+        pass: 'M@ch0$H33p1'
+        }
+      }
+    },
+    livereload: true
 };
