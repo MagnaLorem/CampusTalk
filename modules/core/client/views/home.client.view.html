@@ -2,9 +2,7 @@
     
     <!--if you are logged in, navigate it to chat-->
     <section data-ng-controller="HeaderController">
-        <div class = "container" data-ng-hide="!authentication.user" >
-            <p data-ng-init="getDefaultPage()"></p>
-        </div>
+        <div class = "container" data-ng-hide="!authentication.user" data-ng-init="getDefaultPage()"></div>
     </section>
 
     <!--if you are not logged in-->
