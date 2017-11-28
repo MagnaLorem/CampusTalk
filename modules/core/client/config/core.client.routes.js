@@ -13,6 +13,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         url: '/',
         templateUrl: 'modules/core/views/home.client.view.html'
         })
+      
+      .state('home-signin', {
+          url: '/chat',
+          templateUrl: 'modules/chat/views/chat.client.view.html'
+          })
+          
 
       .state('not-found', {
         url: '/not-found',
