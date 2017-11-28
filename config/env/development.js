@@ -54,17 +54,15 @@ module.exports = {
     callbackURL: '/api/auth/paypal/callback',
     sandbox: true
   },
-  mailer: {
-from: process.env.MAILER_FROM || 'MAILER_FROM' || 'campusally1@gmail.com',
-options: {
-service: 'Gmail',
-secure: false,
-port:25,
-auth: {
-user: 'campusally1@gmail.com',
-pass: 'machosheep1'
-}
-}
-},
-  livereload: true
+    mailer: {
+        from: process.env.MAILER_FROM || 'campusally1@gmail.com',
+        options: {
+            service: process.env.MAILER_SERVICE_PROVIDER || 'Gmail',
+            auth: {
+                user: process.env.MAILER_EMAIL_ID || 'campusally1@gmail.com',
+                pass: process.env.MAILER_PASSWORD || 'M@ch0$H33p1'
+            }
+        }
+    },
+    livereload: true
 };
