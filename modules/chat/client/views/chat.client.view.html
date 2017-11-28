@@ -80,7 +80,7 @@
                     <textarea name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="Type your message here" ></textarea>
                 </div>
                 <span class="input-group-btn">
-              <button class="btn btn-success no-rounded" type="submit" >Send</button>
+              <button class="btn btn-success no-rounded" type="submit" onclick="messageSent()" >Send</button>
             </span>
             </div>
         </form>
@@ -106,25 +106,29 @@
       //Script for scrolling the chats to the bottom of their divs.
       var scrolled = false;
       var reloaded = false;
+      var sentMessage = false;
 
-      //if user switches chat, reset the scroll
-      function isReloaded(){
-          reloaded = true;
+      function messageSent(){
+          sentMessage = true;
       }
+
        //if a user hasn't scrolled up or a chat was reloaded, scroll to the bottom
        function updateScroll(){
-           if(!scrolled || reloaded) {
+           if(!scrolled || reloaded || sentMessage) {
                var element = document.getElementById('messages');
                element.scrollTop = element.scrollHeight;
            }
            reloaded = false;
        }
-
+      //if user switches chat, reset the scroll
+      function isReloaded(){
+          reloaded = true;
+      }
        //set scrolled to true is a usesr has scroll up to see older messages
         $('#messages').on('scroll', function(){
            scrolled = true;
         });
-        
+
       //run the function every second.
        setInterval(updateScroll, 1000);
 
