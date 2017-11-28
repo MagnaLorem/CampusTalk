@@ -126,4 +126,7 @@ small, .small {
     background-position: 0 -15px;
 }
 
+.selected{
+    height: 30px!important;
+}
 
