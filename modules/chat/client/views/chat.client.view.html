@@ -77,10 +77,10 @@
                 <!--<input type="text" name="messageText" class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
                 -->
                 <div class="expandingArea">
-                    <textarea name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="Type your message here" ></textarea>
+                    <textarea id="textArea" name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="Type your message here" ></textarea>
                 </div>
                 <span class="input-group-btn">
-              <button class="btn btn-success no-rounded" type="submit" onclick="messageSent()" >Send</button>
+              <button id="sendMessageButton" class="btn btn-success no-rounded" type="submit" onclick="messageSent()" >Send</button>
             </span>
             </div>
         </form>
@@ -131,6 +131,22 @@
 
       //run the function every second.
        setInterval(updateScroll, 1000);
+
+       //JS for textarea send message, sends message when a user presses enter in the text area
+      var textarea = document.getElementById("textArea");
+
+      try {
+          textarea.addEventListener("keydown", keyPress, false);
+      } catch (e) {
+          textarea.attachEvent("onkeydown", keyPress);
+      }
+
+      function keyPress(e) {
+          if (e.keyCode === 13) {
+            //e.preventDefault();
+            document.getElementById('sendMessageButton').click();
+          }
+      }
 
     </script>
 </section>
