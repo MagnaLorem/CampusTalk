@@ -1,5 +1,12 @@
 <section data-ng-controller="HomeController">
     
+    <!--if you are logged in, navigate it to chat-->
+    <section data-ng-controller="HeaderController">
+        <div class = "container" data-ng-hide="!authentication.user" >
+            <p data-ng-init="getDefaultPage()"></p>
+        </div>
+    </section>
+
     <!--if you are not logged in-->
     <div data-ng-hide="authentication.user">
         <div class="intro-header">
