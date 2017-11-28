@@ -117,6 +117,7 @@
            if(!scrolled || reloaded || sentMessage) {
                var element = document.getElementById('messages');
                element.scrollTop = element.scrollHeight;
+               sentMessage = false;
            }
            reloaded = false;
        }
