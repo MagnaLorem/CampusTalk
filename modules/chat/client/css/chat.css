@@ -283,3 +283,6 @@ pre {
   resize: none;
 }
 
+.message-box{
+  word-wrap: break-word;
+}
