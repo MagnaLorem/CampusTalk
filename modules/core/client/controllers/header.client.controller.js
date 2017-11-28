@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus','$rootScope',
-  function ($scope, $state, Authentication, Menus,$rootScope) {
+angular.module('core').controller('HeaderController', ['$scope', '$state', 'Authentication', 'Menus',
+  function ($scope, $state, Authentication, Menus) {
     // Expose view variables
     $scope.$state = $state;
     $scope.authentication = Authentication;
@@ -23,15 +23,9 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
     $scope.getDefaultPage = function(){
 
       if($scope.authentication.user){
-        console.log($state.previous.params.log);
-
-        console.log($rootScope.previous);
-        $state.previous.params.log = 'home-signin';
         $state.go('home-signin', $state.previous.params);
       }
       else{
-        console.log($state.previous.params.log);
-        $state.previous.params.log = 'home';
         $state.go('home', $state.previous.params);
       }
       
