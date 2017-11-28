@@ -1,30 +1,9 @@
 <section data-ng-controller="HomeController">
-    <!--if you are logged in-->
-    <div class = "container" data-ng-hide="!authentication.user">
-        <div class="intro-message col-lg-12 col-md-12">
-            <h1 align ="center">Hello, {{authentication.user.firstName}}</h1>
-        </div>
-        <div class="col-lg-12">
-            <div class="col-lg-6">
-                <a data-ui-sref="chat">
-                    <button type="button" class="btn btn-outline-success mainbutton">See my courses:</button>
-                </a>
-                <a data-ui-sref="myclasses.list">
-                    <button type="button" class="btn btn-outline-success mainbutton">Add my courses</button>
-                </a>
-                <a data-ui-sref="news.list">
-                    <button type="button" class="btn btn-outline-success mainbutton">News and offers</button>
-                </a>
-                <a data-ui-sref="news.list">
-                    <button type="button" class="btn btn-outline-success mainbutton">Coming-Soon :-)</button>
-                </a>
-            </div>
-            <div class="col-lg-6">
-                <p id="tempP" class="lead">Contrary to popular belief, <a target="_blank" href="https://outlook.office.com/owa/">To outlook UF mail</a> Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.</p>
-                <img id="tempImg" src="/modules/core/img/brand/studyCswamp.jpeg">
-            </div>
-        </div>
-    </div>
+    
+    <!--if you are logged in, navigate it to chat-->
+    <section data-ng-controller="HeaderController">
+        <div class = "container" data-ng-hide="!authentication.user" data-ng-init="getDefaultPage()"></div>
+    </section>
 
     <!--if you are not logged in-->
     <div data-ng-hide="authentication.user">

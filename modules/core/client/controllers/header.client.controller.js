@@ -22,7 +22,13 @@ angular.module('core').controller('HeaderController', ['$scope', '$state', 'Auth
 
     $scope.getDefaultPage = function(){
 
-      $state.go('home', $state.previous.params);
+      if($scope.authentication.user){
+        $state.go('home-signin', $state.previous.params);
+      }
+      else{
+        $state.go('home', $state.previous.params);
+      }
+      
     }
   }
 ]);
