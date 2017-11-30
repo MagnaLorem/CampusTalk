@@ -1,3 +1,13 @@
+.class-name-heading{
+  text-align: center;
+  font-size: 50px;
+  color: white;
+}
+#chat-page{
+  padding-top: 10px!important;
+  margin-top: 0px;
+}
+
 body{
   height: 600px!important;
 }
@@ -59,6 +69,7 @@ small, .small {
   background-color: #d8bb88;
   border-radius: 10px;
   box-shadow: 5px 5px 20px;
+  padding-bottom: 10px;
 
 }
 .hover-classes:hover{
@@ -213,6 +224,7 @@ a:hover, a:active, a:focus {
 
 .custom-class{
   background-color: #af7336;
+  color: white;
 }
 
 .custom-class:hover{
@@ -252,6 +264,7 @@ pre {
   background: #fff;
 }
 
+/*creating css for scrolling text area to send messages*/
 .expandingArea > textarea{
   background: transparent;
   /* Make the text soft-wrap */

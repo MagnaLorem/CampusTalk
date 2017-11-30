@@ -10,6 +10,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
+    $scope.currentlySelectedCourseCode;
+
 
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -30,6 +32,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
       if(!$scope.isDefaultSet){
         $scope.currentlySelectedClassID = selectedClass.classId;
+        $scope.currentlySelectedCourseCode = selectedClass.courseCode;
 
         // Switch which room to chat to
         switchRoom();
@@ -95,6 +98,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       if($scope.currentlySelectedClassID != selectedClass.classId){
         //update the selected classID
         $scope.currentlySelectedClassID = selectedClass.classId;
+          $scope.currentlySelectedCourseCode = selectedClass.courseCode;
 
         // Switch which room to chat to
         switchRoom();

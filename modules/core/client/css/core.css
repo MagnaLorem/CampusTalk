@@ -26,6 +26,10 @@ h6 {
     font-weight: 700;
 }
 
+body{
+    font-size: 15px;
+}
+
 footer {
     background: #333;
     color: #eee;

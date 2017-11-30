@@ -1,6 +1,11 @@
 <!-- The chat view -->
 <section class="container" data-ng-controller="ChatController">
-    <div class="pageWrapper">
+    <div class="pageWrapper" id="chat-page">
+    <!--Top container for chat class name-->
+    <div class ="col-md-4"></div>
+    <div class ="col-md-8 class-name-heading" ng-init="setDefaultClassID(class)">
+        {{ currentlySelectedCourseCode }}
+    </div>
     <!--User's List of Classes on the Left -->
     <div class="col-md-4 classesWrapper chat-page">
         <div class="row border-bottom padding-sm" style="height: 40px;">
