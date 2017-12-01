@@ -2,6 +2,7 @@
   text-align: center;
   font-size: 50px;
   color: white;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
 }
 #chat-page{
   padding-top: 10px!important;
@@ -63,8 +64,8 @@ small, .small {
 
 
 .chat-page{
-  max-height: 571px!important;
-  height: 571px!important;
+  max-height: 540px!important;
+  height: 540px!important;
   overflow: auto;
   background-color: #d8bb88;
   border-radius: 10px;
@@ -77,8 +78,8 @@ small, .small {
 }
 
 .messageWrapper{
-  height: 490px;
-  max-height: 490px;
+  height: 459px;
+  max-height: 459px;
   overflow: auto;
   box-shadow: 5px 5px 20px;
   background-color: #f9f9f9;
@@ -96,6 +97,7 @@ small, .small {
 }
 .chat-message {
   padding: 45px 20px 11px;
+  min-height: 459px;
 }
 
 .chat {

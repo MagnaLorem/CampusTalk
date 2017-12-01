@@ -187,7 +187,7 @@ a:hover{
 .banner h2 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
+    font-size: 30px;
 }
 
 .banner ul {
@@ -322,8 +322,8 @@ h1 {
 
 .img1{
     border-radius: 10px;
-    height: 70%;
-    width: 70%;
+    height: 55%;
+    width: 55%;
     margin-left: 58px;
 }
 
