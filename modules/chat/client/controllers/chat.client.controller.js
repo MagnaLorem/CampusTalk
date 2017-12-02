@@ -10,6 +10,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
+    //used to get the course code for a selected class to display above chats
     $scope.currentlySelectedCourseCode;
 
 
@@ -32,6 +33,7 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
       if(!$scope.isDefaultSet){
         $scope.currentlySelectedClassID = selectedClass.classId;
+        //set the course code for the chat title
         $scope.currentlySelectedCourseCode = selectedClass.courseCode;
 
         // Switch which room to chat to
@@ -98,7 +100,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       if($scope.currentlySelectedClassID != selectedClass.classId){
         //update the selected classID
         $scope.currentlySelectedClassID = selectedClass.classId;
-          $scope.currentlySelectedCourseCode = selectedClass.courseCode;
+        //update the currently course code for the title
+        $scope.currentlySelectedCourseCode = selectedClass.courseCode;
 
         // Switch which room to chat to
         switchRoom();

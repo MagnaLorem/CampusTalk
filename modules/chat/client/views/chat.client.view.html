@@ -28,7 +28,7 @@
       </ul>
       </div>
       <div class="noClasses" ng-show="noMessagesAndNoClasses()">
-          Add your classes by going <br /> to the "My Classes" Tab!
+          To add your classes go <br /> to the "My Classes" Tab!
       </div>
     </div>
 
@@ -42,8 +42,9 @@
             <div class="noMessages" ng-show="noMessages()">
                 Start the conversation by sending a message below!
             </div>
-            <div ng-show="noMessagesAndNoClasses()">
-
+            <!--If there are not classes display this div-->
+            <div class="noMessages" ng-show="noMessagesAndNoClasses()">
+                    Add your classes to start chatting with your classmates!
             </div>
           <ul class="chat">
             <li data-ng-repeat="message in messages">
