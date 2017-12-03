@@ -1,13 +1,18 @@
 <!-- The chat view -->
 <section class="container" data-ng-controller="ChatController">
-    <div class="pageWrapper">
+    <div class="pageWrapper" id="chat-page">
+    <!--Top container for chat class name-->
+    <div class ="col-md-4"></div>
+    <div class ="col-md-8 class-name-heading" ng-init="setDefaultClassID(class)">
+        {{ currentlySelectedCourseCode }}
+    </div>
     <!--User's List of Classes on the Left -->
     <div class="col-md-4 classesWrapper chat-page">
         <div class="row border-bottom padding-sm" style="height: 40px;">
             <h2 class="myclasses-heading">My Classes</h2>
         </div>
     <!--If there are no classes in a user's list -->
-    <div class="class-list" ng-init="getAllCourses()" ng-show="!checkClassesArray()">
+    <div class="class-list" ng-init="getAllCourses()" ng-show="!noMessagesAndNoClasses()">
       <ul>
         <table class="table">
           <tr>
@@ -22,8 +27,8 @@
         </table>
       </ul>
       </div>
-      <div class="noClasses" ng-show="checkClassesArray()">
-          Add your classes by going <br /> to the "My Classes" Tab!
+      <div class="noClasses" ng-show="noMessagesAndNoClasses()">
+          To add your classes go <br /> to the "My Classes" Tab!
       </div>
     </div>
 
@@ -34,8 +39,12 @@
         <div class="bg-white messageWrapper" id="messages">
         <div class="chat-message scrollToBottom" id="chatScrolling">
             <!--If there are no messages display this div -->
-            <div class="noMessages" ng-show="checkMessageArray()">
+            <div class="noMessages" ng-show="noMessages()">
                 Start the conversation by sending a message below!
+            </div>
+            <!--If there are not classes display this div-->
+            <div class="noMessages" ng-show="noMessagesAndNoClasses()">
+                    Add your classes to start chatting with your classmates!
             </div>
           <ul class="chat">
             <li data-ng-repeat="message in messages">
@@ -71,11 +80,9 @@
     <!--=========================================================-->
     <!-- Send Messages -->
     
-    <div class="chat-box bg-white col-md-4" ng-show="!checkClassesArray()">
+    <div class="chat-box bg-white col-md-4" ng-show="!noMessagesAndNoClasses()">
         <form ng-submit="sendMessage();">
             <div class="input-group">
-                <!--<input type="text" name="messageText" class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
-                -->
                 <div class="expandingArea">
                     <textarea id="textArea" name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="Type your message here" ></textarea>
                 </div>
@@ -85,18 +92,10 @@
             </div>
         </form>
     </div>
-   <!-- disable the button if there is no classese selected -->
-    <div class="chat-box bg-white col-md-4" ng-show="checkClassesArray()">
+   <!-- disable the button if there is no classes selected -->
+    <div class="chat-box bg-white col-md-4" ng-show="noMessagesAndNoClasses()">
         <form ng-submit="sendMessage();">
             <div class="input-group">
-                <!--<input type="text" name="messageText" class="form-control border no-shadow no-rounded" data-ng-model="messageText" placeholder="Type your message here">
-                -->
-                <div class="expandingArea">
-                    <textarea name="messageText" class="form-control border no-shadow no-rounded send" data-ng-model="messageText" placeholder="select a class to chat!" disabled ></textarea>
-                </div>
-                <span class="input-group-btn">
-              <button class="btn btn-success no-rounded" type="submit" disabled>Send</button>
-            </span>
             </div>
         </form>
     </div>

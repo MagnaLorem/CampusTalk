@@ -10,7 +10,7 @@
                     <ul>
                         <table class="table">
                             <tr>
-                                <th class="col-sm-4">Course Code</th>
+                                <th class="col-sm-5">Course Code</th>
                                 <th class="col-sm-8">Course Name</th>
                                 <th class="col-sm-4"></th>
                             </tr>
@@ -52,7 +52,7 @@
                             <button ng-show="!vm.checkIfAdded(myclass)" class="btn btn-default btn-sm pull-right" type="button" ng-click="vm.addCourse(myclass)">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </button>
-                            <button ng-show="vm.checkIfAdded(myclass)" class="btn btn-success btn-sm pull-right" type="button">
+                            <button ng-show="vm.checkIfAdded(myclass)" class="selected btn btn-success btn-sm pull-right" type="button">
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                             </button>
                         </td>
