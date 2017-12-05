@@ -10,6 +10,9 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
     $scope.classes = [];
     $scope.currentlySelectedClassID;
     $scope.isDefaultSet = false;
+    //used to get the course code for a selected class to display above chats
+    $scope.currentlySelectedCourseCode;
+
 
     // If user is not signed in then redirect back home
     if (!Authentication.user) {
@@ -30,6 +33,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
 
       if(!$scope.isDefaultSet){
         $scope.currentlySelectedClassID = selectedClass.classId;
+        //set the course code for the chat title
+        $scope.currentlySelectedCourseCode = selectedClass.courseCode;
 
         // Switch which room to chat to
         switchRoom();
@@ -60,14 +65,14 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       console.log($scope.messages);
     }
     //check if message array is empty
-      $scope.checkMessageArray = function(){
-        if($scope.messages.length === 0){
+      $scope.noMessages = function(){
+        if($scope.messages.length === 0 && $scope.classes.length > 0){
           return true;
         }
       }
-      //check if classes array is empty
-      $scope.checkClassesArray = function(){
-          if($scope.classes.length === 0){
+      //check if classes array and message array are empty
+      $scope.noMessagesAndNoClasses = function(){
+          if($scope.classes.length === 0 && $scope.messages.length === 0){
               return true;
           }
       }
@@ -95,6 +100,8 @@ angular.module('chat').controller('ChatController', ['$scope', '$location', 'Aut
       if($scope.currentlySelectedClassID != selectedClass.classId){
         //update the selected classID
         $scope.currentlySelectedClassID = selectedClass.classId;
+        //update the currently course code for the title
+        $scope.currentlySelectedCourseCode = selectedClass.courseCode;
 
         // Switch which room to chat to
         switchRoom();
