@@ -1,26 +1,19 @@
 <div data-ng-controller="AuthenticationController">
     <div class= "container">
-        <div class="intro-header">
-            <div class="intro-message">
-                <div class ="logo">Study <img id="mainLogo" src="/modules/core/img/brand/logo-orange-gradient.png">Swamp</div>
-            </div>
-        </div>
-        <div class="col-md-4 col-md-offset-4 formWrapper" id="sign-in">
+        <div class="col-md-6 col-md-offset-3 formWrapper sign-in">
         <h1 class="text-center h1-sign-in">Sign in</h1>
         <div class="">
             <form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
                 <fieldset>
                     <div class="form-group">
-                        <label for="username">Username</label>
                         <input type="text" id="username" name="username" class="form-control"
                                data-ng-model="credentials.username" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
                         <input type="password" id="password" name="password" class="form-control"
                                data-ng-model="credentials.password" placeholder="Password">
                     </div>
-                    <div class="text-center form-group">
+                    <div class="text-center form-end">
                         <button type="submit" class="btn btn-primary edit-btn">Sign in</button>
                     </div>
                     <div class="text-center forgot-password">

@@ -78,49 +78,20 @@
   color: #af7336;
 }
 
-.pagination > .active > a, .edit-btn{
-  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
-  border-color: #af7336!important;
-
-}
-
-.pagination > .active > a:hover{
-  border-color:  #af7336;
-}
-
-.btn-primary > .edit-btn:active, .btn-primary > .edit-btn:focus{
-  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
-  border-color: #af7336!important;
-}
-
-.btn-outline-success, .btn-outline-success:hover, .edit-btn:active, .edit-btn:visited, .edit-btn:focus{
-  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%)!important;
-  border-color: #af7336!important;
-}
 
 .edit-btn:hover{
   color: white;
-  background-color: #7a492c;
-  border-color: #7a492c;
+  background-color: #408BCB;
 }
 
 .edit-btn{
-  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
-  border-color: #af7336;
+  border: none;
   color: white!important;
   text-shadow: none!important;
+  font-size: 20px;
+  padding: 8px 14px;
 }
 
-.edit-btn:hover{
-  color: white;
-  background-color: #7a492c;
-  border-color: #7a492c;
-}
-
-
-.edit-btn{
-  margin-right: 10px;
-}
 
 .username{
   margin-bottom: 25px;
@@ -147,8 +118,7 @@
 .formWrapper{
   padding: 30px;
   border-radius: 10px;
-  background-color: #d8bb88;
-  box-shadow: 5px 5px 20px;
+  background-color: #04B4E7;
 }
 
 .inputs{
@@ -209,7 +179,6 @@
 .logo{
   color: #af7336;
   font-size: 50px;
-  text-shadow: 2px 2px 2px black;
 }
 
 
@@ -220,34 +189,46 @@
 .h1-sign-in{
   font-size: 30px;
   margin-top: 0px;
+  color: white;
 }
 
-#sign-in{
-  margin-left: 368px;
+.sign-in{
   padding-bottom: 20px;
-  margin-bottom: 27px;
+  margin-bottom: 25px;
+  margin-top: 25px;
 }
 .form-horizontal .form-group{
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.first-row{
-  margin-left: 15px;
-  margin-right: 15px;
-  display: inline-flex;
-}
-
-.first-name{
-  margin-right: 38px!important;
-}
-
-.info{
+  color: white;
+  margin-right: 38px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .sign-up{
-  margin-left: 317px;
+  margin-top: 25px;
   margin-bottom: 25px;
+}
+.form-group input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(238, 238, 238, 0.53);
+  box-shadow: none!important;
+  color:white;
+}
+
+.form-group input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #FFF;
+}
+.form-group input::-moz-placeholder { /* Firefox 19+ */
+  color: #FFF;
+}
+.form-group input:-ms-input-placeholder { /* IE 10+ */
+  color: #FFF;
+}
+.form-group input:-moz-placeholder { /* Firefox 18- */
+  color: #FFF;
+}
+.forgot-password {
+  padding-top: 20px;
 }

@@ -1,6 +1,7 @@
 #search_for_classes{
     padding-left: 20px;
     padding-bottom: 13px;
+    text-align: center;
 }
 
 #deleteButton{
@@ -29,9 +30,8 @@
     max-height: 555px;
     height: 555px;
     overflow: auto;
-    background-color: #d8bb88;
-    border-radius: 10px;
-    box-shadow: 5px 5px 20px;
+    border-radius: 4px;
+    background-color: #F5F5F5;
 }
 
 .myclasses-heading{
@@ -42,7 +42,6 @@
     max-height: 555px;
     height: 555px;
     overflow: auto;
-    box-shadow: 5px 5px 20px;
     background-color: #f9f9f9;
 }
 
@@ -93,40 +92,62 @@ small, .small {
     font-size: 85%;
 }
 
-.classesWrapper{
-    max-height: 555px;
-    height: 555px;
-    overflow: auto;
-    background-color: #d8bb88;
-    border-radius: 10px;
-    box-shadow: 5px 5px 20px;
 
-}
 
 .rounded-corners{
     overflow: hidden;
-    box-shadow: 5px 5px 20px;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .input-group-addon{
-    background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
-    border-color: #7A492C;
+    background-color: #04B4E7;
     color: #FFF;
+    border: none;
 }
 
 .btn-success{
-    background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
-    border-color: #7A492C;
+    background-color: #04B4E7;
+    border: none;
+    border-radius: 4px;
 }
 
 .btn-success:hover, .btn-success:focus {
-    background-color: #7A492C;
-    border-color: #7A492C;
-    background-position: 0 -15px;
+    background-color: #02a4d1;
+    border: none;
+    border-radius: 4px;
 }
 
 .selected{
     height: 30px!important;
 }
+.col-sm-5
+{
+    font-size: 14px;
+    font-weight: lighter;
+}
+.form-add-class{
+    background-color: #D3D6D8;
+    border-bottom: none;
+}
 
+.form-add-class::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #65696B;
+}
+.form-add-class:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #65696B;
+    opacity:  1;
+}
+.form-add-class::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #65696B;
+    opacity:  1;
+}
+.form-add-class:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color:    #65696B;
+}
+.form-add-class:-ms-input-placeholder { /* Microsoft Edge */
+    color:    #65696B;
+}
+
+.form-add-class::placeholder { /* Most modern browsers support this now. */
+    color:    #65696B;
+}

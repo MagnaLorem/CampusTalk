@@ -51,7 +51,7 @@ small, .small {
 }
 
 .chat-message:not(:first-child) {
-  border-top: 2px solid #e7e7e7;
+  border-top: 1px solid #e7e7e7;
 }
 .chat-message-details {
   margin-left: 10px;
@@ -67,7 +67,7 @@ small, .small {
   max-height: 540px!important;
   height: 540px!important;
   overflow: auto;
-  background-color: #d8bb88;
+  background-color: #f9f9f9;
   border-radius: 10px;
   box-shadow: 5px 5px 20px;
   padding-bottom: 10px;
@@ -131,7 +131,8 @@ img {
   margin-left: 70px;
   margin-bottom: 0px;
   margin-top: 0px;
-  background-color: #fff;
+  background-color: #E5E5E5;
+  border-radius: 3px;
 }
 
 .chat div .chat-body {
@@ -146,7 +147,7 @@ img {
 
 .chat div .chat-body .header {
   padding-bottom: 5px;
-  border-bottom: 1px solid #f1f5fc;
+  border-bottom: 1px solid rgba(255,255,255,0.7);
   margin-top: 0px;
 }
 
@@ -183,28 +184,27 @@ img {
 .chat div.right .chat-body {
   margin-right: 0px;
   margin: 0px;
-  background-color: #d8bb88;
+  background-color: #04B4E7;
 }
 
 .chat-box {
   float: right;
   padding: 15px;
   width: 100%;
-  height: 81px;
-  margin-bottom: 10px;
-  border-top: 1px solid #eee;
-  box-shadow: 5px 5px 20px;
+  height: 70px;
+  margin-bottom: 5px;
+  border-top: 1px solid #E5E5E5;
   transition: all .5s ease;
   -webkit-transition: all .5s ease;
   -moz-transition: all .5s ease;
   -ms-transition: all .5s ease;
   -o-transition: all .5s ease;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .primary-font {
-  color: #af7336;
+  color: #000000;
 }
 
 a:hover, a:active, a:focus {
@@ -213,20 +213,19 @@ a:hover, a:active, a:focus {
 }
 
 .btn-success{
-  background-image: linear-gradient(to bottom, #af7336 0%, #7a492c 100%);
-  border-color: #7A492C;
-  height: 46px;!important;
+  background-color: #04B4E7;
+  border: none;
+  border-radius: 4px;
 }
 
 .btn-success:hover, .btn-success:focus {
-  background-color: #7A492C;
-  border-color: #7A492C;
-  background-position: 0 -15px;
+  background-color: #02a4d1;
+  border: none;
+  border-radius: 4px;
 }
 
 .custom-class{
-  background-color: #af7336;
-  color: white;
+  background-color: #D8D8D8;
 }
 
 .custom-class:hover{
@@ -249,7 +248,6 @@ a:hover, a:active, a:focus {
   max-width: 602px;
   height: 46px!important;
   max-height: 300px;
-  border: 1px solid #333333;
   border-top-left-radius: 4px!important;
   border-bottom-left-radius: 4px!important;
 }
@@ -268,7 +266,7 @@ pre {
 
 /*creating css for scrolling text area to send messages*/
 .expandingArea > textarea{
-  background: transparent;
+  background: #F5F5F5;
   /* Make the text soft-wrap */
   white-space: pre-wrap;
   word-wrap: break-word;

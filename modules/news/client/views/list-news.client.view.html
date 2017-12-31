@@ -5,7 +5,7 @@
     <div class="list-group">
      <a ng-repeat="news in vm.news" ui-sref="news.view({ newsId: news._id })" class="list-group-item news-list">
         <h2 class="list-group-item-heading" ng-bind="news.title"></h2>
-        <h4 class="list-group-item-heading" ng-bind="news.content"></h4>
+        <h4 class="list-group-item-subheading" ng-bind="news.content"></h4>
           <small class="list-group-item-text">
             Posted on
             <span ng-bind="news.created | date:'mediumDate'"></span>

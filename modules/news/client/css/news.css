@@ -3,17 +3,17 @@
 }
 
 .list-group-item{
-    background-color: #d8bb88;
-    border-color: #d8bb88;
+    background-color: #F5F5F5;
+    border-color: #F5F5F5;
 }
 
 .list-group-item:hover{
-    background-color: #af7336!important;
-    border-color: #af7336!important;
+    background-color: #D8D8D8!important;
+    border-color: #D8D8D8!important;
 }
 
 h2{
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 
 .view-news{
@@ -21,11 +21,10 @@ h2{
 }
 
 .news-article{
-    background-color: #d8bb88;
+    background-color: #F5F5F5;
     padding: 30px;
     padding-bottom: 10px;
-    border-radius: 10px;
-    box-shadow: 5px 5px 20px;
+    border-radius: 4px;
 }
 
 .text-area{
@@ -40,4 +39,11 @@ h2{
 .news-list{
     margin-bottom: 7px;
     border-bottom: none!important;
+}
+.list-group-item-heading{
+    font-size: 24px;
+}
+.list-group-item-subheading{
+    font-size: 16px;
+
 }

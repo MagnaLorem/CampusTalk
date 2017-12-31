@@ -1,50 +1,31 @@
 <div data-ng-controller="AuthenticationController">
     <div class="container">
-        <div class="intro-header">
-            <div class="intro-message">
-                <div class ="logo">Study <img id="mainLogo" src="/modules/core/img/brand/logo-orange-gradient.png">Swamp</div>
-            </div>
-        </div>
-        <div class="col-md-5 col-md-offset-3 formWrapper sign-up" >
+        <div class="col-md-6 col-md-offset-3 formWrapper sign-up" >
         <div>
             <h1 class="h1-sign-in">Sign Up!</h1>
             <form name="userForm" data-ng-submit="signup()" class="signin form-horizontal" novalidate autocomplete="off">
                 <fieldset>
-                    <div class="first-row">
                     <div class="form-group first-name">
-                        <label for="firstName">First Name</label>
                         <input type="text" required id="firstName" name="firstName" class="form-control"
                                data-ng-model="credentials.firstName" placeholder="First Name">
                     </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" id="lastName" name="lastName" class="form-control"
+                    <div class="form-group last-name">
+                        <input type="text" required id="lastName" name="lastName" class="form-control"
                                data-ng-model="credentials.lastName" placeholder="Last Name">
                     </div>
-                    </div>
                     <div class="form-group info">
-                        <label for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control" data-ng-model="credentials.email"
                                placeholder="Email">
                     </div>
                     <div class="form-group info">
-                        <label for="username">Username</label>
                         <input type="text" id="username" name="username" class="form-control"
                                data-ng-model="credentials.username" placeholder="Username">
                     </div>
                     <div class="form-group info">
-                        <label for="password">Password</label>
                         <input type="password" id="password" name="password" class="form-control"
                                data-ng-model="credentials.password" placeholder="Password">
                     </div>
-                    <!--Payment services will be add here using paypall api
-                    <div class="form-group">
-                        <label>Paypal</label>
-                        <a href="https://www.paypal.com/signin?country.x=US&locale.x=en_US">Go here</a>
-                        <img ng-src="/modules/users/img/buttons/paypal.png">
-                    </div>-->
-                    <!-- Payment will end here -->
-                    <div class="text-center form-group">
+                    <div class="text-center form-end">
                         <button type="submit" class="btn btn-large btn-primary edit-btn">Sign up</button>
                     </div>
                     <div data-ng-show="error" class="text-center text-danger">
