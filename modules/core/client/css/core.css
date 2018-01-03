@@ -245,9 +245,6 @@ a:hover{
 .ng-invalid.ng-dirty {
   border-color: #FA787E;
 }
-.ng-valid.ng-dirty {
-  border-color: black;
-}
 .header-profile-image {
   opacity: 0.8;
   height: 28px;
