@@ -292,3 +292,6 @@ pre {
 .message-box{
   word-wrap: break-word;
 }
+#sendMessageButton{
+  height: 46px;
+}
