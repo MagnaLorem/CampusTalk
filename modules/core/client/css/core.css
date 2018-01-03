@@ -308,9 +308,11 @@ h1 {
 }
 
 .dropdown-menu > .active > a,.dropdown-menu > .active > a, .dropdown-menu > .active > a:hover{
-    background-color: #FFF!important;
-    background-image: none;
-    color: #af7336;
+    background-color: #02a4d1!important;
+    color: white;
+}
+.dropdown-menu {
+    background-color: #02a4d1!important;
 }
 
 .img1{
